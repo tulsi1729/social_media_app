@@ -1,0 +1,397 @@
+[
+    {
+        "label": "fastapi",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Header",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Header",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "jwt",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "jwt",
+        "description": "jwt",
+        "detail": "jwt",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.ext.declarative",
+        "description": "sqlalchemy.ext.declarative",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.ext.declarative",
+        "documentation": {}
+    },
+    {
+        "label": "TEXT",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "VARCHAR",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "LargeBinary",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "models.base",
+        "description": "models.base",
+        "isExtraImport": true,
+        "detail": "models.base",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "models.base",
+        "description": "models.base",
+        "isExtraImport": true,
+        "detail": "models.base",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "models.base",
+        "description": "models.base",
+        "isExtraImport": true,
+        "detail": "models.base",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "auth_middleware",
+        "importPath": "middleware.auth_middleware",
+        "description": "middleware.auth_middleware",
+        "isExtraImport": true,
+        "detail": "middleware.auth_middleware",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "bcrypt",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "bcrypt",
+        "description": "bcrypt",
+        "detail": "bcrypt",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "models.user",
+        "description": "models.user",
+        "isExtraImport": true,
+        "detail": "models.user",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreate",
+        "importPath": "pydantic_schemas.user_create",
+        "description": "pydantic_schemas.user_create",
+        "isExtraImport": true,
+        "detail": "pydantic_schemas.user_create",
+        "documentation": {}
+    },
+    {
+        "label": "joinedload",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "UserLogin",
+        "importPath": "pydantic_schemas.user_login",
+        "description": "pydantic_schemas.user_login",
+        "isExtraImport": true,
+        "detail": "pydantic_schemas.user_login",
+        "documentation": {}
+    },
+    {
+        "label": "auth",
+        "importPath": "routes",
+        "description": "routes",
+        "isExtraImport": true,
+        "detail": "routes",
+        "documentation": {}
+    },
+    {
+        "label": "auth_middleware",
+        "kind": 2,
+        "importPath": "middleware.auth_middleware",
+        "description": "middleware.auth_middleware",
+        "peekOfCode": "def auth_middleware(x_auth_token = Header()):\n    try:\n        # get the user token from the Header\n        if not x_auth_token :\n            raise HTTPException(401, 'No auth token,access denied!')\n        # decode the token \n        verified_token = jwt.decode(x_auth_token,'password_key',['HS256'])\n        if not  verified_token:\n            raise HTTPException(401, 'Token verification failed,authorization')\n        # get the id from the token",
+        "detail": "middleware.auth_middleware",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "kind": 5,
+        "importPath": "models.base",
+        "description": "models.base",
+        "peekOfCode": "Base = declarative_base()",
+        "detail": "models.base",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "models.user",
+        "description": "models.user",
+        "peekOfCode": "class User(Base):\n    __tablename__ = 'users'\n    id = Column(TEXT,primary_key = True )\n    name = Column(VARCHAR(100))\n    email = Column(VARCHAR(100))\n    password = Column(LargeBinary)",
+        "detail": "models.user",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreate",
+        "kind": 6,
+        "importPath": "pydantic_schemas.user_create",
+        "description": "pydantic_schemas.user_create",
+        "peekOfCode": "class UserCreate(BaseModel):\n    name:str\n    email:str\n    password:str",
+        "detail": "pydantic_schemas.user_create",
+        "documentation": {}
+    },
+    {
+        "label": "UserLogi",
+        "kind": 6,
+        "importPath": "pydantic_schemas.user_login",
+        "description": "pydantic_schemas.user_login",
+        "peekOfCode": "class UserLogin (BaseModel):\n    email : str\n    password : str",
+        "detail": "pydantic_schemas.user_login",
+        "documentation": {}
+    },
+    {
+        "label": "signup_user",
+        "kind": 2,
+        "importPath": "routes.auth",
+        "description": "routes.auth",
+        "peekOfCode": "def signup_user(user : UserCreate,db :Session = Depends(get_db)):\n    print(user.name)\n    print(user.email)\n    print(user.password)\n    # extract data that coming from req\n    # check is user already exits in db\n    user_db = db.query(User).filter(User.email == user.email).first() \n    if user_db :\n        raise HTTPException(400,'User with the same email already exists!')\n    hashed_pw = bcrypt.hashpw(user.password.encode(),bcrypt.gensalt())",
+        "detail": "routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "login_user",
+        "kind": 2,
+        "importPath": "routes.auth",
+        "description": "routes.auth",
+        "peekOfCode": "def login_user(user : UserLogin,db: Session = Depends(get_db)):\n    # check if user with same email already exits \n    user_db = db.query(User).filter(User.email == user.email).first()\n    if not user_db :\n        raise HTTPException(400,\"User with this email does not exits!\")\n    # password matching or not\n    is_match = bcrypt.hashpw(user.password.encode(),user_db.password)\n    if not is_match:\n        raise HTTPException(400,'Incorrect password!')\n    token = jwt.encode({'id': user_db.id}, 'password_key')",
+        "detail": "routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "current_user_data",
+        "kind": 2,
+        "importPath": "routes.auth",
+        "description": "routes.auth",
+        "peekOfCode": "def current_user_data(db: Session=Depends(get_db), \n                     user_dict = Depends(auth_middleware)):\n    user = db.query(User).filter(User.id == user_dict['uid']).first()\n    if not user:\n        raise HTTPException(404,'User not found! ')\n    return user",
+        "detail": "routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "routes.auth",
+        "description": "routes.auth",
+        "peekOfCode": "router = APIRouter()\n@router.post('/signup',status_code = 201 )\ndef signup_user(user : UserCreate,db :Session = Depends(get_db)):\n    print(user.name)\n    print(user.email)\n    print(user.password)\n    # extract data that coming from req\n    # check is user already exits in db\n    user_db = db.query(User).filter(User.email == user.email).first() \n    if user_db :",
+        "detail": "routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "@router.post('/signup',status_code",
+        "kind": 5,
+        "importPath": "routes.auth",
+        "description": "routes.auth",
+        "peekOfCode": "@router.post('/signup',status_code = 201 )\ndef signup_user(user : UserCreate,db :Session = Depends(get_db)):\n    print(user.name)\n    print(user.email)\n    print(user.password)\n    # extract data that coming from req\n    # check is user already exits in db\n    user_db = db.query(User).filter(User.email == user.email).first() \n    if user_db :\n        raise HTTPException(400,'User with the same email already exists!')",
+        "detail": "routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASE_url",
+        "kind": 5,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "DATABASE_url = 'postgresql://postgres:root@localhost:5432/socialmediaapp'\nengine = create_engine(DATABASE_url)\nSessionLocal = sessionmaker(autocommit = False,autoflush = False,bind= engine)\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "kind": 5,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "engine = create_engine(DATABASE_url)\nSessionLocal = sessionmaker(autocommit = False,autoflush = False,bind= engine)\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
+        "kind": 5,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "SessionLocal = sessionmaker(autocommit = False,autoflush = False,bind= engine)\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "app = FastAPI()\napp.include_router(auth.router,prefix='/auth')\nBase.metadata.create_all(engine)",
+        "detail": "main",
+        "documentation": {}
+    }
+]
