@@ -1,191 +1,184 @@
+import 'package:client/features/home/models/post_model.dart';
+import 'package:client/features/home/view/screens/create_post_screen.dart';
+import 'package:client/features/home/view/widgets/heart_animation_widget.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:client/features/auth/view/widgets/loader.dart';
+import 'package:client/features/home/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 
-class PostsScreen extends StatefulWidget {
-  const PostsScreen({super.key});
+class PostsScreen extends ConsumerStatefulWidget {
+  final bool isEditMode;
+  final PostModel? preFilledPost;
+  const PostsScreen({super.key, this.isEditMode = false, this.preFilledPost});
 
   @override
-  State<PostsScreen> createState() => _PostsScreenState();
+  ConsumerState<PostsScreen> createState() => _PostsScreenState();
 }
 
-class _PostsScreenState extends State<PostsScreen> {
+class _PostsScreenState extends ConsumerState<PostsScreen> {
+  final captionController = TextEditingController();
   bool isHeartAnimation = false;
   bool isLiked = false;
 
-  // Future<void> signOut() async {
-  //   await supabase.auth.signOut();
-  // }
+  void navigateToCreatePost(BuildContext context, PostModel postModel) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => CreatePostScreen(
+          isEditMode: true,
+          preFilledPost: postModel,
+        ),
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.isEditMode) {
+      captionController.text = widget.preFilledPost!.caption;
+    }
+  }
+
+  Future<void> signOut() async {}
 
   @override
   Widget build(BuildContext context) {
-    // final postsStream = supabase
-    //     .from(SupabaseTableNames.postTable)
-    //     .stream(primaryKey: [SupabaseFieldNames.id]);
-
-    // final icon = isLiked ? Icons.favorite : Icons.favorite_border_outlined;
-    // final color = isLiked ? Colors.red : Colors.grey;
+    final icon = isLiked ? Icons.favorite : Icons.favorite_border_outlined;
+    final color = isLiked ? Colors.red : Colors.grey;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text("Posts"),
         elevation: 4,
         actions: [
-          TextButton(
-              onPressed: () {
-                //signuot
-              },
-              child: const Text("Sign out"))
+          TextButton(onPressed: signOut, child: const Text("Sign out"))
         ],
       ),
-      body: Text("Posts"),
-      // StreamBuilder(
-      //   stream: postsStream,
-      //   builder: (context, snapshot) {
-      //     if (!snapshot.hasData) {
-      //       return const Center(child: CircularProgressIndicator());
-      //     }
-      //     final posts = snapshot.data!;
-      //     return Card(
-      //       child: ListView.builder(
-      //         // itemCount: posts.length,
-      //         itemBuilder: (context, index) {
-      //           final post = posts[index];
-      //           return ListTile(
-      //             leading: const Column(
-      //               children: [
-      //                 CircleAvatar(
-      //                   radius: 20.0,
-      //                   backgroundImage: NetworkImage('assets/animal.jpg'),
-      //                   // backgroundColor: Color.fromARGB(0, 91, 15, 15),
-      //                 ),
-      //                 Text("Name"),
-      //               ],
-      //             ),
-      //             title: Column(
-      //               children: [
-      //                 // if (post[SupabaseFieldNames.mediaUrl] != null)
-      //                 //   GestureDetector(
-      //                 //     child: Stack(
-      //                 //       alignment: Alignment.center,
-      //                 //       children: [
-      //                 //         Image.network(
-      //                 //           post[SupabaseFieldNames.mediaUrl],
-      //                 //           height: 200,
-      //                 //           width: 500,
-      //                 //           fit: BoxFit.cover,
-      //                 //         ),
-      //                 //         Opacity(
-      //                 //           opacity: isHeartAnimation ? 1 : 0,
-      //                 //           child: HeartAnimationWidget(
-      //                 //             isAnimating: isHeartAnimation,
-      //                 //             duration: const Duration(milliseconds: 700),
-      //                 //             child: const Icon(
-      //                 //               Icons.favorite,
-      //                 //               color: Colors.white,
-      //                 //               size: 150,
-      //                 //             ),
-      //                 //             onEnd: () =>
-      //                 //                 setState(() => isHeartAnimation = false),
-      //                 //           ),
-      //                 //         ),
-      //                 //       ],
-      //                 //     ),
-      //                 //     onDoubleTap: () {
-      //                 //       setState(
-      //                 //         () {
-      //                 //           isHeartAnimation = true;
-      //                 //           isLiked = true;
-      //                 //         },
-      //                 //       );
-      //                 //     },
-      //                 //   ),
-      //                 // if (post[SupabaseFieldNames.mediaUrl] != null)
-      //                 GestureDetector(
-      //                   child: Stack(
-      //                     alignment: Alignment.center,
-      //                     children: [
-      //                       Image.asset(
-      //                         'assets/animal.jpg',
-      //                         height: 200,
-      //                         width: 500,
-      //                         fit: BoxFit.cover,
-      //                       ),
-      //                       Opacity(
-      //                         opacity: isHeartAnimation ? 1 : 0,
-      //                         // child: HeartAnimationWidget(
-      //                         //   isAnimating: isHeartAnimation,
-      //                         //   duration: const Duration(milliseconds: 700),
-      //                         //   child: const Icon(
-      //                         //     Icons.favorite,
-      //                         //     color: Colors.white,
-      //                         //     size: 150,
-      //                         //   ),
-      //                         //   onEnd: () =>
-      //                         //       setState(() => isHeartAnimation = false),
-      //                         // ),
-      //                       ),
-      //                     ],
-      //                   ),
-      //                   onDoubleTap: () {
-      //                     setState(
-      //                       () {
-      //                         isHeartAnimation = true;
-      //                         isLiked = true;
-      //                       },
-      //                     );
-      //                   },
-      //                 ),
-      //                 Row(
-      //                   children: [
-      //                     Column(
-      //                       children: [
-      //                         // HeartAnimationWidget(
-      //                         //   isAnimating: isLiked,
-      //                         //   child: IconButton(
-      //                         //     icon: Icon(
-      //                         //       icon,
-      //                         //       color: color,
-      //                         //       size: 28,
-      //                         //     ),
-      //                         //     onPressed: () =>
-      //                         //         setState(() => isLiked = !isLiked),
-      //                         //   ),
-      //                         // ),
-      //                       ],
-      //                     ),
-      //                     Column(
-      //                       children: [
-      //                         IconButton(
-      //                           icon: const Icon(Icons.comment),
-      //                           onPressed: () => showModalBottomSheet(
-      //                             isScrollControlled: true,
-      //                             context: context,
-      //                             builder: (context) => buildSheet(),
-      //                           ),
-      //                         ),
-      //                       ],
-      //                     ),
-      //                     Column(
-      //                       children: [
-      //                         IconButton(
-      //                           icon: const Icon(Icons.share),
-      //                           onPressed: () {},
-      //                         ),
-      //                       ],
-      //                     )
-      //                   ],
-      //                 ),
-      //                 const SizedBox(
-      //                   height: 10,
-      //                 ),
-      //                 // Text('Caption : ${post[SupabaseFieldNames.caption]}'),
-      //               ],
-      //             ),
-      //           );
-      //         },
-      //       ),
-      //     );
-      //   },
-      // ),
+      body: ref.watch(getPostsProvider).when(
+            data: (posts) {
+              return Card(
+                child: ListView.builder(
+                  itemCount: posts.length,
+                  itemBuilder: (context, index) {
+                    final post = posts[index];
+                    return Container(
+                      decoration:
+                          BoxDecoration(border: Border.all(color: Colors.red)),
+                      child: ListTile(
+                        leading: Column(
+                          children: [
+                            CircleAvatar(
+                              radius: 20.0,
+                              backgroundImage: NetworkImage(post.postMediaUrl),
+                            ),
+                            Text("Name"),
+                          ],
+                        ),
+                        title: Column(
+                          children: [
+                            GestureDetector(
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  Image.network(
+                                    post.postMediaUrl,
+                                    fit: BoxFit.contain,
+                                  ),
+                                  Opacity(
+                                    opacity: isHeartAnimation ? 1 : 0,
+                                    child: HeartAnimationWidget(
+                                      isAnimating: isHeartAnimation,
+                                      duration:
+                                          const Duration(milliseconds: 700),
+                                      child: const Icon(
+                                        Icons.favorite,
+                                        color: Colors.white,
+                                        size: 150,
+                                      ),
+                                      onEnd: () => setState(
+                                          () => isHeartAnimation = false),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              onDoubleTap: () {
+                                setState(
+                                  () {
+                                    isHeartAnimation = true;
+                                    isLiked = true;
+                                  },
+                                );
+                              },
+                            ),
+                            Row(
+                              children: [
+                                Column(
+                                  children: [
+                                    HeartAnimationWidget(
+                                      isAnimating: isLiked,
+                                      child: IconButton(
+                                        icon: Icon(
+                                          icon,
+                                          color: color,
+                                          size: 28,
+                                        ),
+                                        onPressed: () =>
+                                            setState(() => isLiked = !isLiked),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    IconButton(
+                                      icon: const Icon(Icons.comment),
+                                      onPressed: () => showModalBottomSheet(
+                                        isScrollControlled: true,
+                                        context: context,
+                                        builder: (context) => buildSheet(),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    IconButton(
+                                      icon: const Icon(Icons.share),
+                                      onPressed: () {},
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text('Caption : ${post.caption}'),
+                                SizedBox(
+                                  width: 50,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              );
+            },
+            error: (error, st) {
+              return Center(
+                child: Text(
+                  error.toString(),
+                ),
+              );
+            },
+            loading: () => const Loader(),
+          ),
     );
   }
 

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:client/core/utils.dart';
 import 'package:client/features/auth/view/pages/login_page.dart';
 import 'package:client/features/auth/view/widgets/auth_gradient_button.dart';
@@ -40,7 +38,7 @@ class _SignupPageState extends ConsumerState<SignupPage> {
           data: (data) {
             showSnackBar(
               context,
-              'Account created successfully! Please  login.',
+              'Account created successfully! .',
             );
             Navigator.push(
               context,
@@ -100,7 +98,6 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                           name: nameController.text,
                           password: passwordController.text,
                         );
-                    log(emailController.text.toString());
 
                     showSnackBar(context, 'successfully signup!');
                     Navigator.push(

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:client/core/utils.dart';
 import 'package:client/features/auth/view/pages/signup_page.dart';
 import 'package:client/features/auth/view/widgets/auth_gradient_button.dart';
@@ -89,7 +87,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           email: emailController.text,
                           password: passwordController.text,
                         );
-                    log(emailController.text.toString());
                     Navigator.push(
                       context,
                       MaterialPageRoute(
