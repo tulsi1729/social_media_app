@@ -58,11 +58,9 @@ class AuthViewModel extends _$AuthViewModel {
     );
 
     final val = switch (res) {
-      Left(value: final l) => state = AsyncValue.error(
-          l.message,
-          StackTrace.current,
-        ),
-      Right(value: final r) => _loginSuccess(r)
+      Left(value: final l) => state =
+          AsyncValue.error(l.message, StackTrace.current),
+      Right(value: final r) => _loginSuccess(r),
     };
     print(val);
   }

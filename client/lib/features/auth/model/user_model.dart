@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class UserModel {
@@ -53,7 +52,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(name: $name, email: $email, id: $id, token: $token)';
+    return 'UserModel(name: $name, email: $email, id: $id, token: $token,)';
   }
 
   @override

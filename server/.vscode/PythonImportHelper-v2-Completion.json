@@ -73,6 +73,14 @@
         "documentation": {}
     },
     {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "File",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -81,31 +89,7 @@
         "documentation": {}
     },
     {
-        "label": "Depends",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "HTTPException",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
         "label": "UploadFile",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "Depends",
         "importPath": "fastapi",
         "description": "fastapi",
         "isExtraImport": true,
@@ -163,6 +147,15 @@
         "documentation": {}
     },
     {
+        "label": "sqlalchemy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "TEXT",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -188,6 +181,118 @@
     },
     {
         "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "DateTime",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "TEXT",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "VARCHAR",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "TEXT",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "VARCHAR",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -232,6 +337,14 @@
         "description": "sqlalchemy",
         "isExtraImport": true,
         "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "models.base",
+        "description": "models.base",
+        "isExtraImport": true,
+        "detail": "models.base",
         "documentation": {}
     },
     {
@@ -365,14 +478,6 @@
         "documentation": {}
     },
     {
-        "label": "Session",
-        "importPath": "sqlalchemy.orm",
-        "description": "sqlalchemy.orm",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.orm",
-        "documentation": {}
-    },
-    {
         "label": "sessionmaker",
         "importPath": "sqlalchemy.orm",
         "description": "sqlalchemy.orm",
@@ -431,11 +536,43 @@
         "documentation": {}
     },
     {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "Post",
         "importPath": "models.post",
         "description": "models.post",
         "isExtraImport": true,
         "detail": "models.post",
+        "documentation": {}
+    },
+    {
+        "label": "Like",
+        "importPath": "models.like",
+        "description": "models.like",
+        "isExtraImport": true,
+        "detail": "models.like",
+        "documentation": {}
+    },
+    {
+        "label": "Comment",
+        "importPath": "models.comment",
+        "description": "models.comment",
+        "isExtraImport": true,
+        "detail": "models.comment",
         "documentation": {}
     },
     {
@@ -475,11 +612,29 @@
         "documentation": {}
     },
     {
+        "label": "Comment",
+        "kind": 6,
+        "importPath": "models.comment",
+        "description": "models.comment",
+        "peekOfCode": "class Comment(Base):\n    __tablename__  = 'comments'\n    id = Column(Integer, primary_key=True, autoincrement=True) \n    post_id = Column(TEXT, ForeignKey(\"posts.id\"))\n    user_id = Column(TEXT, ForeignKey(\"users.id\"))\n    comment = Column(TEXT)\n    time = Column(DateTime)",
+        "detail": "models.comment",
+        "documentation": {}
+    },
+    {
+        "label": "Like",
+        "kind": 6,
+        "importPath": "models.like",
+        "description": "models.like",
+        "peekOfCode": "class Like(Base):\n    __tablename__  = 'likes'\n    id = Column(Integer, primary_key=True, autoincrement=True) \n    post_id = Column(TEXT, ForeignKey(\"posts.id\"))\n    liked_by = Column(TEXT, ForeignKey(\"users.id\"))",
+        "detail": "models.like",
+        "documentation": {}
+    },
+    {
         "label": "Post",
         "kind": 6,
         "importPath": "models.post",
         "description": "models.post",
-        "peekOfCode": "class Post(Base):\n    __tablename__ = 'posts'\n    id = Column(TEXT, primary_key=True)\n    caption = Column(TEXT)\n    post_media = Column(TEXT)\n    uid = Column(TEXT, ForeignKey(\"users.id\"))",
+        "peekOfCode": "class Post(Base):\n    __tablename__ = 'posts'\n    id = Column(TEXT, primary_key=True)\n    caption = Column(TEXT)\n    image_url = Column(TEXT) \n    uid = Column(TEXT, ForeignKey(\"users.id\"))",
         "detail": "models.post",
         "documentation": {}
     },
@@ -556,11 +711,11 @@
         "documentation": {}
     },
     {
-        "label": "upload_post",
+        "label": "create_post",
         "kind": 2,
         "importPath": "routes.post",
         "description": "routes.post",
-        "peekOfCode": "def upload_post(\n    caption :str= Form(...),\n    post_media:UploadFile = File(...),\n    db:Session= Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    post_id = str(uuid.uuid4())\n    post_media_res = cloudinary.uploader.upload(\n        post_media.file,",
+        "peekOfCode": "def create_post(\n    caption :str= Form(...),\n    image_url: str = Form(...),\n    db:Session= Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    post_id = str(uuid.uuid4())\n    new_post = Post(\n        id=post_id,",
         "detail": "routes.post",
         "documentation": {}
     },
@@ -587,7 +742,7 @@
         "kind": 2,
         "importPath": "routes.post",
         "description": "routes.post",
-        "peekOfCode": "def update_post(\n    post_id: str,\n    caption :str= Form(...),\n    post_media:UploadFile = File(...),\n    db: Session = Depends(get_db),\n    ):\n    post = db.query(Post).filter(Post.id == post_id).first()\n    if not post:\n        raise HTTPException(status_code=404, detail=\"Post not found\")\n    if caption:",
+        "peekOfCode": "def update_post(\n    post_id: str,\n    caption :str= Form(...),\n    image_url:UploadFile = File(...),\n    db: Session = Depends(get_db),\n    ):\n    post = db.query(Post).filter(Post.id == post_id).first()\n    if not post:\n        raise HTTPException(status_code=404, detail=\"Post not found\")\n    if caption:",
         "detail": "routes.post",
         "documentation": {}
     },
@@ -596,7 +751,25 @@
         "kind": 2,
         "importPath": "routes.post",
         "description": "routes.post",
-        "peekOfCode": "def delete_post(post_id: str, db: Session = Depends(get_db)):\n    post = db.query(Post).filter(Post.id == post_id).first()\n    if not post:\n        raise HTTPException(status_code=404, detail=\"Post not found\")\n    db.delete(post)\n    db.commit()\n    db.refresh(post)\n    return {\"message\": \"Post deleted successfully\"}",
+        "peekOfCode": "def delete_post(post_id: str, db: Session = Depends(get_db)):\n    post = db.query(Post).filter(Post.id == post_id).first()\n    if not post:\n        raise HTTPException(status_code=404, detail=\"Post not found\")\n    db.delete(post)\n    db.commit()\n    db.refresh(post)\n    return {\"message\": \"Post deleted successfully\"}\n@router.post(\"/like_post\")\ndef like_post(",
+        "detail": "routes.post",
+        "documentation": {}
+    },
+    {
+        "label": "like_post",
+        "kind": 2,
+        "importPath": "routes.post",
+        "description": "routes.post",
+        "peekOfCode": "def like_post(\n    post_id: str = Form(...),  \n    db: Session = Depends(get_db),\n    auth_details= Depends(auth_middleware)\n):\n    uid = auth_details['uid']\n    # Check if the post exists\n    post = db.query(Post).filter(Post.id == post_id).first()\n    if not post:\n        raise HTTPException(status_code=404, detail=\"Post not found\")",
+        "detail": "routes.post",
+        "documentation": {}
+    },
+    {
+        "label": "create_comment",
+        "kind": 2,
+        "importPath": "routes.post",
+        "description": "routes.post",
+        "peekOfCode": "def create_comment(\n    post_id: str = Form(...),\n    comment : str = Form(...),\n    time : datetime = Form(...),\n    db: Session = Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    new_comment = Comment(\n        post_id=post_id,",
         "detail": "routes.post",
         "documentation": {}
     },
@@ -605,16 +778,16 @@
         "kind": 5,
         "importPath": "routes.post",
         "description": "routes.post",
-        "peekOfCode": "router = APIRouter()\n# Configuration       \ncloudinary.config( \n    cloud_name = \"dppvl48gh\", \n    api_key = \"793662588633836\", \n    api_secret = \"fO8kYKe1uzTHNVspVrPVoP5CdwU\", # Click 'View API Keys' above to copy your API secret\n    secure=True\n)\n@router.post('/upload',status_code = 201)\ndef upload_post(",
+        "peekOfCode": "router = APIRouter()\n@router.post('/create_post',status_code = 201)\ndef create_post(\n    caption :str= Form(...),\n    image_url: str = Form(...),\n    db:Session= Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    post_id = str(uuid.uuid4())",
         "detail": "routes.post",
         "documentation": {}
     },
     {
-        "label": "@router.post('/upload',status_code",
+        "label": "@router.post('/create_post',status_code",
         "kind": 5,
         "importPath": "routes.post",
         "description": "routes.post",
-        "peekOfCode": "@router.post('/upload',status_code = 201)\ndef upload_post(\n    caption :str= Form(...),\n    post_media:UploadFile = File(...),\n    db:Session= Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    post_id = str(uuid.uuid4())\n    post_media_res = cloudinary.uploader.upload(",
+        "peekOfCode": "@router.post('/create_post',status_code = 201)\ndef create_post(\n    caption :str= Form(...),\n    image_url: str = Form(...),\n    db:Session= Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    post_id = str(uuid.uuid4())\n    new_post = Post(",
         "detail": "routes.post",
         "documentation": {}
     },

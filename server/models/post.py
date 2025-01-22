@@ -1,5 +1,5 @@
 import routes
-from sqlalchemy import TEXT, VARCHAR, Column,ForeignKey
+from sqlalchemy import TEXT, VARCHAR, Column,ForeignKey,String
 from models.base import Base
 
 
@@ -8,6 +8,5 @@ class Post(Base):
 
     id = Column(TEXT, primary_key=True)
     caption = Column(TEXT)
-    post_media = Column(TEXT)
+    image_url = Column(TEXT) 
     uid = Column(TEXT, ForeignKey("users.id"))
-    

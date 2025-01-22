@@ -1,4 +1,6 @@
+import 'package:client/features/home/view/screens/create_post_screen.dart';
 import 'package:client/features/home/view/screens/explore_screen.dart';
+import 'package:client/features/home/view/screens/posts_screen.dart';
 import 'package:client/features/home/view/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -17,8 +19,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
   void initState() {
     super.initState();
     screens = [
-      // const PostsScreen(),
-      // const CreatePostScreen(),
+      const PostsScreen(),
+      const CreatePostScreen(),
       const ExploreScreen(),
       const ProfileScreen(),
     ];

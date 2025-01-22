@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:client/core/providers/current_user_notifier.dart';
 import 'package:client/features/home/models/post_model.dart';
 import 'package:client/features/home/repository/home_repository.dart';
@@ -48,14 +46,14 @@ class HomeViewModel extends _$HomeViewModel {
     return null;
   }
 
-  Future<void> uploadPost({
+  Future<void> createPost({
     required String caption,
-    required File selectedPostMedia,
+    required String selectedImage,
   }) async {
     state = const AsyncValue.loading();
-    final res = await _homeRepository.uploadPost(
+    final res = await _homeRepository.createPost(
       caption: caption,
-      selectedPostMedia: selectedPostMedia,
+      selectedImage: selectedImage,
       token: ref.read(currentUserNotifierProvider)!.token,
     );
 
@@ -67,26 +65,26 @@ class HomeViewModel extends _$HomeViewModel {
     print(val);
   }
 
-  Future<void> editedPost({
-    required String caption,
-    required String postId,
-    required File selectedPostMedia,
-  }) async {
-    state = const AsyncValue.loading();
-    final res = await _homeRepository.editPost(
-      caption: caption,
-      postId: postId,
-      token: ref.read(currentUserNotifierProvider)!.token,
-    );
+  // Future<void> editedPost({
+  //   required String caption,
+  //   required String postId,
+  //   required File selectedPostMedia,
+  // }) async {
+  //   state = const AsyncValue.loading();
+  //   final res = await _homeRepository.editPost(
+  //     caption: caption,
+  //     postId: postId,
+  //     token: ref.read(currentUserNotifierProvider)!.token,
+  //   );
 
-    final val = switch (res) {
-      Left(value: final l) => state =
-          AsyncValue.error(l.message, StackTrace.current),
-      Right(value: final r) => state = AsyncValue.data(r),
-    };
+  //   final val = switch (res) {
+  //     Left(value: final l) => state =
+  //         AsyncValue.error(l.message, StackTrace.current),
+  //     Right(value: final r) => state = AsyncValue.data(r),
+  //   };
 
-    print(val);
-  }
+  //   print(val);
+  // }
 
   Future<void> deletedPost({
     required String postId,
@@ -99,5 +97,53 @@ class HomeViewModel extends _$HomeViewModel {
     );
 
     return res;
+  }
+
+  Future<void> likePost({
+    required String postId,
+  }) async {
+    state = const AsyncValue.loading();
+
+    final uid =
+        ref.read(currentUserNotifierProvider.select((user) => user!.id));
+
+    final res = await _homeRepository.likePost(
+      postId: postId,
+      uid: uid,
+      token: ref.read(currentUserNotifierProvider)!.token,
+    );
+
+    final val = switch (res) {
+      Left(value: final l) => state =
+          AsyncValue.error(l.message, StackTrace.current),
+      Right(value: final r) => state = AsyncValue.data(r),
+    };
+    print(val);
+  }
+
+  Future<void> commentPost({
+    required String postId,
+    required String comment,
+    required DateTime time,
+  }) async {
+    state = const AsyncValue.loading();
+
+    final uid =
+        ref.read(currentUserNotifierProvider.select((user) => user!.id));
+
+    final res = await _homeRepository.commentPost(
+      postId: postId,
+      uid: uid,
+      comment: comment,
+      time: time,
+      token: ref.read(currentUserNotifierProvider)!.token,
+    );
+
+    final val = switch (res) {
+      Left(value: final l) => state =
+          AsyncValue.error(l.message, StackTrace.current),
+      Right(value: final r) => state = AsyncValue.data(r),
+    };
+    print(val);
   }
 }

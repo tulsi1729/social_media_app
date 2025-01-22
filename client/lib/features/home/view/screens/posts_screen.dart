@@ -23,10 +23,7 @@ class _PostsScreenState extends ConsumerState<PostsScreen> {
   void navigateToCreatePost(BuildContext context, PostModel postModel) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => CreatePostScreen(
-          isEditMode: true,
-          preFilledPost: postModel,
-        ),
+        builder: (context) => CreatePostScreen(),
       ),
     );
   }
@@ -61,6 +58,7 @@ class _PostsScreenState extends ConsumerState<PostsScreen> {
                   itemCount: posts.length,
                   itemBuilder: (context, index) {
                     final post = posts[index];
+                    List<String> imageUrlList = post.imageUrl.split(",");
                     return Container(
                       decoration:
                           BoxDecoration(border: Border.all(color: Colors.red)),
@@ -69,7 +67,7 @@ class _PostsScreenState extends ConsumerState<PostsScreen> {
                           children: [
                             CircleAvatar(
                               radius: 20.0,
-                              backgroundImage: NetworkImage(post.postMediaUrl),
+                              backgroundImage: NetworkImage(post.imageUrl),
                             ),
                             Text("Name"),
                           ],
@@ -80,9 +78,28 @@ class _PostsScreenState extends ConsumerState<PostsScreen> {
                               child: Stack(
                                 alignment: Alignment.center,
                                 children: [
-                                  Image.network(
-                                    post.postMediaUrl,
-                                    fit: BoxFit.contain,
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis
+                                        .horizontal, // Allow horizontal scrolling
+                                    child: Row(
+                                      children: imageUrlList.map((imageUrl) {
+                                        return Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Image.network(
+                                            imageUrl, // Trim spaces to avoid errors
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.7,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.7,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        );
+                                      }).toList(),
+                                    ),
                                   ),
                                   Opacity(
                                     opacity: isHeartAnimation ? 1 : 0,

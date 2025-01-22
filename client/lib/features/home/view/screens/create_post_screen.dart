@@ -1,11 +1,13 @@
+import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
-
-import 'package:client/core/utils.dart';
 import 'package:client/features/home/models/post_model.dart';
 import 'package:client/features/home/view/screens/profile_screen.dart';
 import 'package:client/features/home/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
 
 class CreatePostScreen extends ConsumerStatefulWidget {
   final bool isEditMode;
@@ -22,10 +24,13 @@ class CreatePostScreen extends ConsumerStatefulWidget {
 
 class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
   final TextEditingController captionController = TextEditingController();
-  File? selectedImage;
   final formKey = GlobalKey<FormState>();
-  // final ImagePicker imagePicker = ImagePicker();
-  // List<XFile>? imageFileList = [];
+  final ImagePicker imagePicker = ImagePicker();
+  List<XFile>? imageFileList = [];
+  String? uploadedImageUrl;
+  XFile? selectedImageUrl;
+  XFile? selectedUrl;
+  String? commaSeparatedUrl;
 
   @override
   void initState() {
@@ -35,22 +40,55 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
     }
   }
 
-  void selectImage() async {
-    final pickedImage = await pickImage();
-    if (pickedImage != null) {
-      setState(() {
-        selectedImage = pickedImage;
-      });
+  void selectedImage() async {
+    try {
+      final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
+      if (selectedImages != null && selectedImages.isNotEmpty) {
+        setState(() {
+          imageFileList!.addAll(selectedImages);
+        });
+      }
+    } catch (e) {
+      print('Error selecting images: $e');
     }
   }
 
-  // void selectedImage() async {
-  //   final List<XFile> selectedImages = await imagePicker.pickMultiImage();
-  //   if (selectedImages.isNotEmpty) {
-  //     imageFileList!.addAll(selectedImages);
-  //   }
-  //   setState(() {});
-  // }
+  Future<void> _uploadImage() async {
+    if (imageFileList == null || imageFileList!.isEmpty) {
+      log('No images selected.');
+      return;
+    }
+    List<String> uploadedUrls = [];
+
+    try {
+      for (XFile image in imageFileList!) {
+        final url =
+            Uri.parse('https://api.cloudinary.com/v1_1/dppvl48gh/upload');
+        final request = http.MultipartRequest("POST", url)
+          ..fields['upload_preset'] = 'xzxyhatj'
+          ..files.add(await http.MultipartFile.fromPath('file', image.path));
+
+        final response = await request.send();
+        if (response.statusCode == 200) {
+          final responseData = await response.stream.toBytes();
+
+          final responseString = String.fromCharCodes(responseData);
+          final jsonMap = jsonDecode(responseString);
+          final uploadedImageUrl = jsonMap['secure_url'];
+
+          uploadedUrls.add(uploadedImageUrl);
+
+          log('Image uploaded: $uploadedImageUrl');
+        } else {
+          log('Failed to upload image. Status code: ${response.statusCode}');
+        }
+      }
+    } catch (e) {
+      print('Error uploading image: $e');
+    }
+    commaSeparatedUrl = uploadedUrls.join(",");
+    log(commaSeparatedUrl.toString(), name: " comma separate url");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,75 +102,57 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
-                child: Stack(clipBehavior: Clip.none, children: [
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.black,
-                  ),
-                ),
-                child: GestureDetector(
-                  onTap: () {
-                    if (selectedImage != null) {
-                      selectImage();
-                    }
-                  },
-                  child: selectedImage != null
-                      ? SizedBox(
-                          height: 150,
-                          width: double.infinity,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.file(
-                              File(selectedImage!.path),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        )
-                      : Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black),
-                          ),
-                          child: const SizedBox(
+            ElevatedButton(
+              onPressed: () {
+                selectedImage();
+              },
+              child: Text("select from gallery"),
+            ),
+            if (imageFileList != null && imageFileList!.isNotEmpty)
+              SizedBox(
+                height: 200,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: imageFileList!.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          Image.file(
+                            File(imageFileList![index].path),
+                            fit: BoxFit.cover,
+                            width: 150,
                             height: 150,
-                            width: double.infinity,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.folder_open,
-                                  size: 40,
-                                ),
-                                SizedBox(height: 15),
-                                Text(
-                                  'Select the Image for your Post',
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                  ),
-                                )
-                              ],
+                          ),
+                          Positioned(
+                            top: -24,
+                            right: -24,
+                            child: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  imageFileList?[index] == null;
+                                });
+                              },
+                              icon: const Icon(
+                                Icons.cancel,
+                                size: 28,
+                              ),
                             ),
                           ),
-                        ),
-                ),
-              ),
-              Positioned(
-                top: -24,
-                right: -24,
-                child: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      selectedImage = null;
-                    });
+                        ],
+                      ),
+                    );
                   },
-                  icon: const Icon(
-                    Icons.cancel,
-                    size: 28,
-                  ),
                 ),
               ),
-            ])),
+            ElevatedButton(
+              onPressed: () {
+                _uploadImage();
+              },
+              child: Text("Upload to cloudinary"),
+            ),
             const SizedBox(
               height: 12,
             ),
@@ -148,19 +168,20 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
             ),
             ElevatedButton(
               onPressed: () async {
-                if (selectedImage != null) {
+                if (imageFileList != null) {
                   if (widget.isEditMode) {
-                    ref.read(homeViewModelProvider.notifier).editedPost(
-                          caption: captionController.text,
-                          selectedPostMedia: selectedImage!,
-                          postId: widget.preFilledPost!.id,
-                        );
+                    // ref.read(homeViewModelProvider.notifier).editedPost(
+                    //       caption: captionController.text,
+                    //       selectedPostMedia: imageFileList!,
+                    //       postId: widget.preFilledPost!.id,
+                    //     );
                     Navigator.pop(context);
                   } else {
-                    ref.read(homeViewModelProvider.notifier).uploadPost(
+                    await ref.read(homeViewModelProvider.notifier).createPost(
                           caption: captionController.text,
-                          selectedPostMedia: selectedImage!,
+                          selectedImage: commaSeparatedUrl!,
                         );
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(

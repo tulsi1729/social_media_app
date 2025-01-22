@@ -2,47 +2,38 @@ import os
 import shutil
 import routes
 import uuid
-from fastapi import APIRouter ,Form, File, Depends ,HTTPException ,UploadFile,Depends
+from typing import List
+import sqlalchemy
+import fastapi
+from fastapi import APIRouter,Form,Depends,File,UploadFile 
+from datetime import datetime
 from database import get_db
 from sqlalchemy.orm import Session
 from middleware.auth_middleware import auth_middleware
 from models.post import Post
+from models.like import Like
 from models.user import User
-from sqlalchemy.orm import Session
+from models.comment import Comment
 import cloudinary
 import cloudinary.uploader
 
 router = APIRouter()
 
-# Configuration       
-cloudinary.config( 
-    cloud_name = "dppvl48gh", 
-    api_key = "793662588633836", 
-    api_secret = "fO8kYKe1uzTHNVspVrPVoP5CdwU", # Click 'View API Keys' above to copy your API secret
-    secure=True
-)
-
-@router.post('/upload',status_code = 201)
-def upload_post(
+@router.post('/create_post',status_code = 201)
+def create_post(
     caption :str= Form(...),
-    post_media:UploadFile = File(...),
+    image_url: str = Form(...),
     db:Session= Depends(get_db),
     auth_details= Depends(auth_middleware)
-    
     ):
     uid = auth_details['uid']
 
     post_id = str(uuid.uuid4())
-    post_media_res = cloudinary.uploader.upload(
-        post_media.file,
-        resource_type = 'image',
-        folder = f'posts/{post_id}'
-    )
   
     new_post = Post(
         id=post_id,
         caption=caption,  
-        post_media = post_media_res['url'],
+        image_url = image_url,
         uid = uid
     )
 
@@ -72,7 +63,7 @@ def get_my_posts(db: Session=Depends(get_db),
 def update_post(
     post_id: str,
     caption :str= Form(...),
-    post_media:UploadFile = File(...),
+    image_url:UploadFile = File(...),
     db: Session = Depends(get_db),
     ):
 
@@ -83,12 +74,12 @@ def update_post(
     if caption:
         post.caption = caption
 
-    if post_media :
+    if image_url :
         os.makedirs("upload", exist_ok=True)
-        media_path = f"upload/{post_media.filename}"
+        media_path = f"upload/{image_url.filename}"
         with open(media_path, "wb") as buffer:
-            shutil.copyfileobj(post_media.file, buffer)
-        post.post_media = media_path  
+            shutil.copyfileobj(image_url.file, buffer)
+        post.image_url = media_path  
 
     db.commit()
     db.refresh(post)
@@ -105,3 +96,47 @@ def delete_post(post_id: str, db: Session = Depends(get_db)):
     db.refresh(post)
     return {"message": "Post deleted successfully"}
 
+@router.post("/like_post")
+def like_post(
+    post_id: str = Form(...),  
+    db: Session = Depends(get_db),
+    auth_details= Depends(auth_middleware)
+):
+    uid = auth_details['uid']
+
+    # Check if the post exists
+    post = db.query(Post).filter(Post.id == post_id).first()
+    if not post:
+        raise HTTPException(status_code=404, detail="Post not found")
+
+    # Check if the user has already liked the post
+    like = db.query(Like).filter(Like.liked_by == uid, Like.post_id == post_id).first()
+    if like:
+        raise HTTPException(status_code=400, detail="You already liked this item")
+
+    # Add the like
+    new_like = Like(liked_by=uid, post_id=post_id)
+    db.add(new_like)
+    db.commit()
+    return {"message": "Liked successfully"}
+
+@router.post("/create_comment")
+def create_comment(
+    post_id: str = Form(...),
+    comment : str = Form(...),
+    time : datetime = Form(...),
+    db: Session = Depends(get_db),
+    auth_details= Depends(auth_middleware)
+    ):
+    uid = auth_details['uid']
+
+    new_comment = Comment(
+        post_id=post_id,
+        user_id=uid,
+        comment= comment,
+        time= time,
+    )
+    db.add(new_comment)
+    db.commit()
+    db.refresh(new_comment)
+    return new_comment

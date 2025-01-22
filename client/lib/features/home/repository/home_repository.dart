@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:io';
-import 'package:client/features/home/models/post_model.dart';
-import 'package:http/http.dart' as http;
+
 import 'package:client/core/app_failure/app_failure.dart';
 import 'package:client/core/constants/server_constant.dart';
+import 'package:client/features/home/models/post_model.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:http/http.dart' as http;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'home_repository.g.dart';
@@ -16,37 +16,27 @@ HomeRepository homeRepository(HomeRepositoryRef ref) {
 }
 
 class HomeRepository {
-  Future<Either<AppFailure, String>> uploadPost({
+  Future<Either<AppFailure, String>> createPost({
     required String caption,
-    required File selectedPostMedia,
+    required String selectedImage,
     required String token,
   }) async {
     try {
-      final response = http.MultipartRequest(
+      final request = http.MultipartRequest(
         'POST',
-        Uri.parse('${ServerConstant.serverURL}/post/upload'),
+        Uri.parse('${ServerConstant.serverURL}/post/create_post'),
       );
 
-      response
-        ..files.addAll(
-          {
-            await http.MultipartFile.fromPath(
-                'post_media', selectedPostMedia.path),
-          },
-        )
-        ..fields.addAll(
-          {
-            'caption': caption,
-          },
-        )
-        ..headers.addAll(
-          {
-            'x-auth-token': token,
-          },
-        );
+      log(selectedImage.toString(), name: "repo selected image");
+      // Add caption and token
+      request.fields['image_url'] = selectedImage;
 
-      final res = await response.send();
-      log(res.toString(), name: "res in home repo");
+      request.fields['caption'] = caption;
+      request.headers['x-auth-token'] = token;
+
+      final res = await request.send();
+      log(res.toString(), name: "Response in home repo");
+
       if (res.statusCode != 201) {
         return Left(AppFailure(await res.stream.bytesToString()));
       }
@@ -168,6 +158,65 @@ class HomeRepository {
       }
     } catch (e) {
       print("Error deleting post: $e");
+    }
+  }
+
+  Future<Either<AppFailure, String>> likePost({
+    required String postId,
+    required String uid,
+    required String token,
+  }) async {
+    try {
+      final request = http.MultipartRequest(
+        'POST',
+        Uri.parse('${ServerConstant.serverURL}/post/like_post'),
+      );
+
+      request.fields['post_id'] = postId;
+
+      request.fields['liked_by'] = uid;
+      request.headers['x-auth-token'] = token;
+
+      final res = await request.send();
+      log(res.toString(), name: "Response in home repo");
+
+      if (res.statusCode != 201) {
+        return Left(AppFailure(await res.stream.bytesToString()));
+      }
+      return Right(await res.stream.bytesToString());
+    } catch (e) {
+      return Left(AppFailure(e.toString()));
+    }
+  }
+
+  Future<Either<AppFailure, String>> commentPost({
+    required String postId,
+    required String uid,
+    required String comment,
+    required DateTime time,
+    required String token,
+  }) async {
+    try {
+      final request = http.MultipartRequest(
+        'POST',
+        Uri.parse('${ServerConstant.serverURL}/post/create_comment'),
+      );
+
+      request.fields['post_id'] = postId;
+      request.fields['user_id'] = uid;
+      request.fields['comment'] = comment;
+      request.fields['time'] = time.toString();
+      request.headers['x-auth-token'] = token;
+
+      final res = await request.send();
+      log(res.toString(), name: "Response in home repo");
+
+      if (res.statusCode != 201) {
+        return Left(AppFailure(await res.stream.bytesToString()));
+      }
+      return Right(await res.stream.bytesToString());
+    } catch (e) {
+      return Left(AppFailure(e.toString()));
     }
   }
 }

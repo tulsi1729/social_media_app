@@ -1,11 +1,11 @@
 import 'package:client/core/providers/current_user_notifier.dart';
+import 'package:client/features/auth/view/widgets/loader.dart';
 import 'package:client/features/home/models/post_model.dart';
 import 'package:client/features/home/view/screens/create_post_screen.dart';
 import 'package:client/features/home/view/widgets/heart_animation_widget.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:client/features/auth/view/widgets/loader.dart';
 import 'package:client/features/home/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProfileScreen extends ConsumerStatefulWidget {
   final bool isEditMode;
@@ -20,14 +20,12 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   final captionController = TextEditingController();
   bool isHeartAnimation = false;
   bool isLiked = false;
+  late Future<List<PostModel>> futurePosts;
 
   void navigateToCreatePost(BuildContext context, PostModel postModel) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => CreatePostScreen(
-          isEditMode: true,
-          preFilledPost: postModel,
-        ),
+        builder: (context) => CreatePostScreen(),
       ),
     );
   }
@@ -62,54 +60,81 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   itemCount: posts.length,
                   itemBuilder: (context, index) {
                     final post = posts[index];
+                    List<String> imageUrlList = post.imageUrl.split(",");
+
                     return Container(
                       decoration:
                           BoxDecoration(border: Border.all(color: Colors.red)),
                       child: ListTile(
-                        leading: Column(
-                          children: [
-                            CircleAvatar(
-                              radius: 20.0,
-                              backgroundImage: NetworkImage(post.postMediaUrl),
-                            ),
-                            Text("Name"),
-                          ],
-                        ),
                         title: Column(
                           children: [
-                            GestureDetector(
-                              child: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  Image.network(
-                                    post.postMediaUrl,
-                                    fit: BoxFit.contain,
-                                  ),
-                                  Opacity(
-                                    opacity: isHeartAnimation ? 1 : 0,
-                                    child: HeartAnimationWidget(
-                                      isAnimating: isHeartAnimation,
-                                      duration:
-                                          const Duration(milliseconds: 700),
-                                      child: const Icon(
-                                        Icons.favorite,
-                                        color: Colors.white,
-                                        size: 150,
-                                      ),
-                                      onEnd: () => setState(
-                                          () => isHeartAnimation = false),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                CircleAvatar(
+                                  radius: 20.0,
+                                ),
+                                Text("Name"),
+                              ],
+                            ),
+                            Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: GestureDetector(
+                                    child: Row(
+                                      children: imageUrlList.map((imageUrl) {
+                                        return Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Image.network(
+                                            imageUrl,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.7,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.7,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        );
+                                      }).toList(),
                                     ),
+                                    onDoubleTap: () async {
+                                      await ref
+                                          .read(homeViewModelProvider.notifier)
+                                          .likePost(
+                                            postId: post.id,
+                                          );
+                                      // isLiked == true
+                                      //     ? Icon(Icons.favorite)
+                                      //     : Icon(Icons.abc);
+                                      setState(
+                                        () {
+                                          isHeartAnimation = true;
+                                          isLiked = true;
+                                        },
+                                      );
+                                    },
                                   ),
-                                ],
-                              ),
-                              onDoubleTap: () {
-                                setState(
-                                  () {
-                                    isHeartAnimation = true;
-                                    isLiked = true;
-                                  },
-                                );
-                              },
+                                ),
+                                Opacity(
+                                  opacity: isHeartAnimation ? 1 : 0,
+                                  child: HeartAnimationWidget(
+                                    isAnimating: isHeartAnimation,
+                                    duration: const Duration(milliseconds: 700),
+                                    child: const Icon(
+                                      Icons.favorite,
+                                      color: Colors.white,
+                                      size: 150,
+                                    ),
+                                    onEnd: () => setState(
+                                        () => isHeartAnimation = false),
+                                  ),
+                                ),
+                              ],
                             ),
                             Row(
                               children: [
@@ -118,27 +143,49 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                                     HeartAnimationWidget(
                                       isAnimating: isLiked,
                                       child: IconButton(
-                                        icon: Icon(
-                                          icon,
-                                          color: color,
-                                          size: 28,
-                                        ),
-                                        onPressed: () =>
-                                            setState(() => isLiked = !isLiked),
-                                      ),
+                                          icon: Icon(
+                                            icon,
+                                            color: color,
+                                            size: 28,
+                                          ),
+                                          onPressed: () async {
+                                            if (post.id == post.id)
+                                              setState(() {
+                                                isLiked = !isLiked;
+                                              });
+
+                                            await ref
+                                                .read(homeViewModelProvider
+                                                    .notifier)
+                                                .likePost(
+                                                  postId: post.id,
+                                                );
+                                            // isLiked == true
+                                            //     ? Icon(Icons.favorite)
+                                            //     : Icon(Icons.abc);
+                                          }),
                                     ),
                                   ],
                                 ),
                                 Column(
                                   children: [
                                     IconButton(
-                                      icon: const Icon(Icons.comment),
-                                      onPressed: () => showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        context: context,
-                                        builder: (context) => buildSheet(),
-                                      ),
-                                    ),
+                                        icon: const Icon(Icons.comment),
+                                        onPressed: () async {
+                                          await ref
+                                              .read(homeViewModelProvider
+                                                  .notifier)
+                                              .commentPost(
+                                                postId: post.id,
+                                                comment: "comment",
+                                                time: DateTime.now(),
+                                              );
+                                          showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            context: context,
+                                            builder: (context) => buildSheet(),
+                                          );
+                                        }),
                                   ],
                                 ),
                                 Column(

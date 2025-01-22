@@ -4,22 +4,23 @@ import 'dart:convert';
 class PostModel {
   final String id;
   final String caption;
-  final String postMediaUrl;
+  final String imageUrl;
+
   PostModel({
     required this.id,
     required this.caption,
-    required this.postMediaUrl,
+    required this.imageUrl,
   });
 
   PostModel copyWith({
     String? id,
     String? caption,
-    String? postMediaUrl,
+    String? imageUrl,
   }) {
     return PostModel(
       id: id ?? this.id,
       caption: caption ?? this.caption,
-      postMediaUrl: postMediaUrl ?? this.postMediaUrl,
+      imageUrl: imageUrl ?? this.imageUrl,
     );
   }
 
@@ -27,7 +28,7 @@ class PostModel {
     return <String, dynamic>{
       'id': id,
       'caption': caption,
-      'post_media': postMediaUrl,
+      'image_url': imageUrl,
     };
   }
 
@@ -35,7 +36,7 @@ class PostModel {
     return PostModel(
       id: map['id'] ?? "",
       caption: map['caption'] ?? "",
-      postMediaUrl: map['post_media'] ?? "",
+      imageUrl: map['image_url'] ?? "",
     );
   }
 
@@ -46,7 +47,7 @@ class PostModel {
 
   @override
   String toString() =>
-      'PostModel(id: $id, caption: $caption, post_media: $postMediaUrl)';
+      'PostModel(id: $id, caption: $caption, image_url: $imageUrl)';
 
   @override
   bool operator ==(covariant PostModel other) {
@@ -54,9 +55,9 @@ class PostModel {
 
     return other.id == id &&
         other.caption == caption &&
-        other.postMediaUrl == postMediaUrl;
+        other.imageUrl == imageUrl;
   }
 
   @override
-  int get hashCode => id.hashCode ^ caption.hashCode ^ postMediaUrl.hashCode;
+  int get hashCode => id.hashCode ^ caption.hashCode ^ imageUrl.hashCode;
 }
