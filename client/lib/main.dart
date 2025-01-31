@@ -3,9 +3,7 @@ import 'dart:developer';
 import 'package:client/core/providers/current_user_notifier.dart';
 import 'package:client/features/auth/view/pages/signup_page.dart';
 import 'package:client/features/auth/viewmodel/auth_viewmodel.dart';
-import 'package:client/features/home/view/create/dashboard_screen.dart';
-import 'package:client/features/home/view/screens/create_post_screen.dart';
-import 'package:client/features/home/view/screens/posts_screen.dart';
+import 'package:client/features/home/view/screens/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

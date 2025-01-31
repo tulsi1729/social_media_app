@@ -29,7 +29,6 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
   List<XFile>? imageFileList = [];
   String? uploadedImageUrl;
   XFile? selectedImageUrl;
-  XFile? selectedUrl;
   String? commaSeparatedUrl;
 
   @override
@@ -94,7 +93,7 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.isEditMode ? "Edit Post" : "Create Post "),
+        title: Text(widget.isEditMode ? "Edit Post" : "Create Post"),
       ),
       resizeToAvoidBottomInset: false,
       body: Padding(
@@ -108,7 +107,7 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
               },
               child: Text("select from gallery"),
             ),
-            if (imageFileList != null && imageFileList!.isNotEmpty)
+            if (imageFileList != null)
               SizedBox(
                 height: 200,
                 child: ListView.builder(
@@ -132,7 +131,7 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
                             child: IconButton(
                               onPressed: () {
                                 setState(() {
-                                  imageFileList?[index] == null;
+                                  imageFileList?.removeAt(index);
                                 });
                               },
                               icon: const Icon(
@@ -168,13 +167,16 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
             ),
             ElevatedButton(
               onPressed: () async {
-                if (imageFileList != null) {
+                if (commaSeparatedUrl != null) {
                   if (widget.isEditMode) {
-                    // ref.read(homeViewModelProvider.notifier).editedPost(
-                    //       caption: captionController.text,
-                    //       selectedPostMedia: imageFileList!,
-                    //       postId: widget.preFilledPost!.id,
-                    //     );
+                    final editedPost =
+                        ref.read(homeViewModelProvider.notifier).editedPost(
+                              caption: captionController.text,
+                              selectedImage: commaSeparatedUrl!,
+                              postId: widget.preFilledPost!.id,
+                            );
+                    log(editedPost.toString(), name: "create in  edit ");
+
                     Navigator.pop(context);
                   } else {
                     await ref.read(homeViewModelProvider.notifier).createPost(
@@ -191,7 +193,7 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
                   }
                 }
               },
-              child: Text(widget.isEditMode ? "Edit Post" : "Create Post "),
+              child: Text(widget.isEditMode ? "Edit Post" : "Create Post"),
             ),
           ],
         ),

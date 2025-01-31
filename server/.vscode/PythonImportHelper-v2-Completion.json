@@ -97,6 +97,150 @@
         "documentation": {}
     },
     {
+        "label": "Form",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Form",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "File",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "UploadFile",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Form",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "File",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "UploadFile",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Form",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "File",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "FastAPI",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -140,6 +284,30 @@
     },
     {
         "label": "post",
+        "importPath": "routes",
+        "description": "routes",
+        "isExtraImport": true,
+        "detail": "routes",
+        "documentation": {}
+    },
+    {
+        "label": "story",
+        "importPath": "routes",
+        "description": "routes",
+        "isExtraImport": true,
+        "detail": "routes",
+        "documentation": {}
+    },
+    {
+        "label": "comment",
+        "importPath": "routes",
+        "description": "routes",
+        "isExtraImport": true,
+        "detail": "routes",
+        "documentation": {}
+    },
+    {
+        "label": "like",
         "importPath": "routes",
         "description": "routes",
         "isExtraImport": true,
@@ -308,6 +476,54 @@
         "documentation": {}
     },
     {
+        "label": "VARCHAR",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "DateTime",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "TEXT",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "Column",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -325,6 +541,30 @@
     },
     {
         "label": "LargeBinary",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "select",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "delete",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "desc",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -380,6 +620,190 @@
         "documentation": {}
     },
     {
+        "label": "Base",
+        "importPath": "models.base",
+        "description": "models.base",
+        "isExtraImport": true,
+        "detail": "models.base",
+        "documentation": {}
+    },
+    {
+        "label": "relationship",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "relationship",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "joinedload",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "relationship",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "joinedload",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Like",
+        "importPath": "models.like",
+        "description": "models.like",
+        "isExtraImport": true,
+        "detail": "models.like",
+        "documentation": {}
+    },
+    {
+        "label": "Like",
+        "importPath": "models.like",
+        "description": "models.like",
+        "isExtraImport": true,
+        "detail": "models.like",
+        "documentation": {}
+    },
+    {
+        "label": "Like",
+        "importPath": "models.like",
+        "description": "models.like",
+        "isExtraImport": true,
+        "detail": "models.like",
+        "documentation": {}
+    },
+    {
+        "label": "Comment",
+        "importPath": "models.comment",
+        "description": "models.comment",
+        "isExtraImport": true,
+        "detail": "models.comment",
+        "documentation": {}
+    },
+    {
+        "label": "Comment",
+        "importPath": "models.comment",
+        "description": "models.comment",
+        "isExtraImport": true,
+        "detail": "models.comment",
+        "documentation": {}
+    },
+    {
+        "label": "Comment",
+        "importPath": "models.comment",
+        "description": "models.comment",
+        "isExtraImport": true,
+        "detail": "models.comment",
+        "documentation": {}
+    },
+    {
+        "label": "Comment",
+        "importPath": "models.comment",
+        "description": "models.comment",
+        "isExtraImport": true,
+        "detail": "models.comment",
+        "documentation": {}
+    },
+    {
+        "label": "Comment",
+        "importPath": "models.comment",
+        "description": "models.comment",
+        "isExtraImport": true,
+        "detail": "models.comment",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "BaseModel",
         "importPath": "pydantic",
         "description": "pydantic",
@@ -393,6 +817,30 @@
         "description": "pydantic",
         "isExtraImport": true,
         "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "auth_middleware",
+        "importPath": "middleware.auth_middleware",
+        "description": "middleware.auth_middleware",
+        "isExtraImport": true,
+        "detail": "middleware.auth_middleware",
+        "documentation": {}
+    },
+    {
+        "label": "auth_middleware",
+        "importPath": "middleware.auth_middleware",
+        "description": "middleware.auth_middleware",
+        "isExtraImport": true,
+        "detail": "middleware.auth_middleware",
+        "documentation": {}
+    },
+    {
+        "label": "auth_middleware",
+        "importPath": "middleware.auth_middleware",
+        "description": "middleware.auth_middleware",
+        "isExtraImport": true,
+        "detail": "middleware.auth_middleware",
         "documentation": {}
     },
     {
@@ -446,6 +894,30 @@
         "documentation": {}
     },
     {
+        "label": "User",
+        "importPath": "models.user",
+        "description": "models.user",
+        "isExtraImport": true,
+        "detail": "models.user",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "models.user",
+        "description": "models.user",
+        "isExtraImport": true,
+        "detail": "models.user",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "models.user",
+        "description": "models.user",
+        "isExtraImport": true,
+        "detail": "models.user",
+        "documentation": {}
+    },
+    {
         "label": "UserCreate",
         "importPath": "pydantic_schemas.user_create",
         "description": "pydantic_schemas.user_create",
@@ -454,35 +926,35 @@
         "documentation": {}
     },
     {
-        "label": "joinedload",
-        "importPath": "sqlalchemy.orm",
-        "description": "sqlalchemy.orm",
+        "label": "get_db",
+        "importPath": "database",
+        "description": "database",
         "isExtraImport": true,
-        "detail": "sqlalchemy.orm",
+        "detail": "database",
         "documentation": {}
     },
     {
-        "label": "Session",
-        "importPath": "sqlalchemy.orm",
-        "description": "sqlalchemy.orm",
+        "label": "get_db",
+        "importPath": "database",
+        "description": "database",
         "isExtraImport": true,
-        "detail": "sqlalchemy.orm",
+        "detail": "database",
         "documentation": {}
     },
     {
-        "label": "Session",
-        "importPath": "sqlalchemy.orm",
-        "description": "sqlalchemy.orm",
+        "label": "get_db",
+        "importPath": "database",
+        "description": "database",
         "isExtraImport": true,
-        "detail": "sqlalchemy.orm",
+        "detail": "database",
         "documentation": {}
     },
     {
-        "label": "sessionmaker",
-        "importPath": "sqlalchemy.orm",
-        "description": "sqlalchemy.orm",
+        "label": "get_db",
+        "importPath": "database",
+        "description": "database",
         "isExtraImport": true,
-        "detail": "sqlalchemy.orm",
+        "detail": "database",
         "documentation": {}
     },
     {
@@ -518,6 +990,94 @@
         "documentation": {}
     },
     {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "Post",
+        "importPath": "models.post",
+        "description": "models.post",
+        "isExtraImport": true,
+        "detail": "models.post",
+        "documentation": {}
+    },
+    {
+        "label": "Post",
+        "importPath": "models.post",
+        "description": "models.post",
+        "isExtraImport": true,
+        "detail": "models.post",
+        "documentation": {}
+    },
+    {
+        "label": "Post",
+        "importPath": "models.post",
+        "description": "models.post",
+        "isExtraImport": true,
+        "detail": "models.post",
+        "documentation": {}
+    },
+    {
+        "label": "create_post",
+        "importPath": "routes.post",
+        "description": "routes.post",
+        "isExtraImport": true,
+        "detail": "routes.post",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -536,46 +1096,6 @@
         "documentation": {}
     },
     {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "Post",
-        "importPath": "models.post",
-        "description": "models.post",
-        "isExtraImport": true,
-        "detail": "models.post",
-        "documentation": {}
-    },
-    {
-        "label": "Like",
-        "importPath": "models.like",
-        "description": "models.like",
-        "isExtraImport": true,
-        "detail": "models.like",
-        "documentation": {}
-    },
-    {
-        "label": "Comment",
-        "importPath": "models.comment",
-        "description": "models.comment",
-        "isExtraImport": true,
-        "detail": "models.comment",
-        "documentation": {}
-    },
-    {
         "label": "cloudinary",
         "kind": 6,
         "isExtraImport": true,
@@ -591,6 +1111,14 @@
         "importPath": "cloudinary.uploader",
         "description": "cloudinary.uploader",
         "detail": "cloudinary.uploader",
+        "documentation": {}
+    },
+    {
+        "label": "Story",
+        "importPath": "models.story",
+        "description": "models.story",
+        "isExtraImport": true,
+        "detail": "models.story",
         "documentation": {}
     },
     {
@@ -616,7 +1144,7 @@
         "kind": 6,
         "importPath": "models.comment",
         "description": "models.comment",
-        "peekOfCode": "class Comment(Base):\n    __tablename__  = 'comments'\n    id = Column(Integer, primary_key=True, autoincrement=True) \n    post_id = Column(TEXT, ForeignKey(\"posts.id\"))\n    user_id = Column(TEXT, ForeignKey(\"users.id\"))\n    comment = Column(TEXT)\n    time = Column(DateTime)",
+        "peekOfCode": "class Comment(Base):\n    __tablename__  = 'comments'\n    id = Column(Integer, primary_key=True, autoincrement=True) \n    post_id = Column(TEXT,ForeignKey(\"posts.id\" ,ondelete='CASCADE'))\n    created_by = Column(TEXT, ForeignKey(\"users.id\"))\n    comment = Column(TEXT)\n    created_at = Column(DateTime)\n    # Relationship to fetch user details\n    user = relationship(\"User\", backref=\"comments\")",
         "detail": "models.comment",
         "documentation": {}
     },
@@ -625,7 +1153,7 @@
         "kind": 6,
         "importPath": "models.like",
         "description": "models.like",
-        "peekOfCode": "class Like(Base):\n    __tablename__  = 'likes'\n    id = Column(Integer, primary_key=True, autoincrement=True) \n    post_id = Column(TEXT, ForeignKey(\"posts.id\"))\n    liked_by = Column(TEXT, ForeignKey(\"users.id\"))",
+        "peekOfCode": "class Like(Base):\n    __tablename__  = 'likes'\n    id = Column(Integer, primary_key=True, autoincrement=True) \n    post_id = Column(TEXT,ForeignKey(\"posts.id\" ,ondelete='CASCADE'))\n    liked_by = Column(TEXT, ForeignKey(\"users.id\"))",
         "detail": "models.like",
         "documentation": {}
     },
@@ -634,8 +1162,17 @@
         "kind": 6,
         "importPath": "models.post",
         "description": "models.post",
-        "peekOfCode": "class Post(Base):\n    __tablename__ = 'posts'\n    id = Column(TEXT, primary_key=True)\n    caption = Column(TEXT)\n    image_url = Column(TEXT) \n    uid = Column(TEXT, ForeignKey(\"users.id\"))",
+        "peekOfCode": "class Post(Base):\n    __tablename__ = 'posts'\n    id = Column(TEXT, primary_key=True)\n    caption = Column(TEXT)\n    image_url = Column(TEXT) \n    uid = Column(TEXT, ForeignKey(\"users.id\"))\n    like = relationship(Like ,backref= 'posts' ,cascade=\"all, delete-orphan\",passive_deletes=True)\n    comment = relationship(Comment ,backref= 'posts' ,cascade=\"all, delete-orphan\",passive_deletes=True)",
         "detail": "models.post",
+        "documentation": {}
+    },
+    {
+        "label": "Story",
+        "kind": 6,
+        "importPath": "models.story",
+        "description": "models.story",
+        "peekOfCode": "class Story(Base):\n    __tablename__ = 'stories'\n    id = Column(TEXT, primary_key=True)\n    image_url = Column(TEXT) \n    created_at = Column(DateTime)\n    views = Column(TEXT)\n    uid = Column(TEXT,ForeignKey(\"users.id\"))",
+        "detail": "models.story",
         "documentation": {}
     },
     {
@@ -711,6 +1248,69 @@
         "documentation": {}
     },
     {
+        "label": "create_comment",
+        "kind": 2,
+        "importPath": "routes.comment",
+        "description": "routes.comment",
+        "peekOfCode": "def create_comment(\n    post_id: str = Form(...),\n    comment: str = Form(...),\n    created_at: datetime = datetime.now(),  \n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)\n):\n    # Validate post_id\n    post = db.query(Post).filter(Post.id == post_id).first()\n    if not post:",
+        "detail": "routes.comment",
+        "documentation": {}
+    },
+    {
+        "label": "get_comments",
+        "kind": 2,
+        "importPath": "routes.comment",
+        "description": "routes.comment",
+        "peekOfCode": "def get_comments(post_id : str, db: Session = Depends(get_db)):\n    # Query to fetch comments for a specific post_id\n    comments = db.query(Comment).options(joinedload(Comment.user)).filter(Comment.post_id == post_id).all()\n    if not comments:\n        raise HTTPException(status_code=404, detail=\"No comments found for this post\")\n    return [\n        {\n            \"id\": comment.id,\n            \"comment\": comment.comment,\n            \"post_id\": comment.post_id,",
+        "detail": "routes.comment",
+        "documentation": {}
+    },
+    {
+        "label": "delete_comment",
+        "kind": 2,
+        "importPath": "routes.comment",
+        "description": "routes.comment",
+        "peekOfCode": "def delete_comment(comment_id: str, db: Session = Depends(get_db)):\n    comment = db.query(Comment).filter(Comment.id == comment_id).one()\n    if not comment:\n        raise HTTPException(status_code=404, detail=\"Comment not found\")\n    db.delete(comment)\n    db.commit()\n    return {\"message\": \"Comment deleted successfully\"}",
+        "detail": "routes.comment",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "routes.comment",
+        "description": "routes.comment",
+        "peekOfCode": "router = APIRouter()\n@router.post(\"/create_comment\")\ndef create_comment(\n    post_id: str = Form(...),\n    comment: str = Form(...),\n    created_at: datetime = datetime.now(),  \n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)\n):\n    # Validate post_id",
+        "detail": "routes.comment",
+        "documentation": {}
+    },
+    {
+        "label": "create_like",
+        "kind": 2,
+        "importPath": "routes.like",
+        "description": "routes.like",
+        "peekOfCode": "def create_like(\n    post_id: str = Form(...),  \n    db: Session = Depends(get_db),\n    auth_details= Depends(auth_middleware)\n):\n    uid = auth_details['uid']\n    like = db.query(Like).filter(Like.liked_by == uid, Like.post_id == post_id).first()\n    if like:\n        db.delete(like)\n        db.commit()",
+        "detail": "routes.like",
+        "documentation": {}
+    },
+    {
+        "label": "get_likes",
+        "kind": 2,
+        "importPath": "routes.like",
+        "description": "routes.like",
+        "peekOfCode": "def get_likes(post_id: str = Form(...), db: Session = Depends(get_db)):\n    likes = db.query(Like).filter(Like.post_id == post_id).first()\n    return {\"likes\": likes}",
+        "detail": "routes.like",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "routes.like",
+        "description": "routes.like",
+        "peekOfCode": "router = APIRouter()\n@router.post(\"/create_like\")\ndef create_like(\n    post_id: str = Form(...),  \n    db: Session = Depends(get_db),\n    auth_details= Depends(auth_middleware)\n):\n    uid = auth_details['uid']\n    like = db.query(Like).filter(Like.liked_by == uid, Like.post_id == post_id).first()\n    if like:",
+        "detail": "routes.like",
+        "documentation": {}
+    },
+    {
         "label": "create_post",
         "kind": 2,
         "importPath": "routes.post",
@@ -733,16 +1333,16 @@
         "kind": 2,
         "importPath": "routes.post",
         "description": "routes.post",
-        "peekOfCode": "def get_my_posts(db: Session=Depends(get_db), \n               auth_details=Depends(auth_middleware)):\n    uid = auth_details['uid']\n    print(uid)\n    posts = db.query(Post).filter(Post.uid == uid).all()\n    return posts\n@router.put(\"/update_post/{post_id}\")\ndef update_post(\n    post_id: str,\n    caption :str= Form(...),",
+        "peekOfCode": "def get_my_posts(db: Session=Depends(get_db), \n               auth_details=Depends(auth_middleware)):\n    uid = auth_details['uid']\n    print(uid)\n    posts = db.query(Post).filter(Post.uid == uid).all()\n    return posts\n@router.put(\"/edit_post/{post_id}\")\ndef edit_post(\n    post_id: str,\n    caption :str= Form(...),",
         "detail": "routes.post",
         "documentation": {}
     },
     {
-        "label": "update_post",
+        "label": "edit_post",
         "kind": 2,
         "importPath": "routes.post",
         "description": "routes.post",
-        "peekOfCode": "def update_post(\n    post_id: str,\n    caption :str= Form(...),\n    image_url:UploadFile = File(...),\n    db: Session = Depends(get_db),\n    ):\n    post = db.query(Post).filter(Post.id == post_id).first()\n    if not post:\n        raise HTTPException(status_code=404, detail=\"Post not found\")\n    if caption:",
+        "peekOfCode": "def edit_post(\n    post_id: str,\n    caption :str= Form(...),\n    image_url:str = Form(...),\n    db: Session = Depends(get_db),\n    ):\n    post = db.query(Post).filter(Post.id == post_id).first()\n    if not post:\n        raise HTTPException(status_code=404, detail=\"Post not found\")\n    if caption:",
         "detail": "routes.post",
         "documentation": {}
     },
@@ -751,25 +1351,7 @@
         "kind": 2,
         "importPath": "routes.post",
         "description": "routes.post",
-        "peekOfCode": "def delete_post(post_id: str, db: Session = Depends(get_db)):\n    post = db.query(Post).filter(Post.id == post_id).first()\n    if not post:\n        raise HTTPException(status_code=404, detail=\"Post not found\")\n    db.delete(post)\n    db.commit()\n    db.refresh(post)\n    return {\"message\": \"Post deleted successfully\"}\n@router.post(\"/like_post\")\ndef like_post(",
-        "detail": "routes.post",
-        "documentation": {}
-    },
-    {
-        "label": "like_post",
-        "kind": 2,
-        "importPath": "routes.post",
-        "description": "routes.post",
-        "peekOfCode": "def like_post(\n    post_id: str = Form(...),  \n    db: Session = Depends(get_db),\n    auth_details= Depends(auth_middleware)\n):\n    uid = auth_details['uid']\n    # Check if the post exists\n    post = db.query(Post).filter(Post.id == post_id).first()\n    if not post:\n        raise HTTPException(status_code=404, detail=\"Post not found\")",
-        "detail": "routes.post",
-        "documentation": {}
-    },
-    {
-        "label": "create_comment",
-        "kind": 2,
-        "importPath": "routes.post",
-        "description": "routes.post",
-        "peekOfCode": "def create_comment(\n    post_id: str = Form(...),\n    comment : str = Form(...),\n    time : datetime = Form(...),\n    db: Session = Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    new_comment = Comment(\n        post_id=post_id,",
+        "peekOfCode": "def delete_post(post_id: str, db: Session = Depends(get_db)):\n    post = db.query(Post).filter(Post.id == post_id).first()\n    if not post:\n        raise HTTPException(status_code=404, detail=\"Post not found\")\n    db.delete(post)\n    db.commit()\n    return {\"message\": \"Post deleted successfully\"}",
         "detail": "routes.post",
         "documentation": {}
     },
@@ -789,6 +1371,42 @@
         "description": "routes.post",
         "peekOfCode": "@router.post('/create_post',status_code = 201)\ndef create_post(\n    caption :str= Form(...),\n    image_url: str = Form(...),\n    db:Session= Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    post_id = str(uuid.uuid4())\n    new_post = Post(",
         "detail": "routes.post",
+        "documentation": {}
+    },
+    {
+        "label": "create_story",
+        "kind": 2,
+        "importPath": "routes.story",
+        "description": "routes.story",
+        "peekOfCode": "def create_story(\n    image_url: str = Form(...),\n    views :str= Form(...),\n    db:Session= Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    story_id = str(uuid.uuid4())   \n    created_at =datetime.now()\n    new_story = Story(",
+        "detail": "routes.story",
+        "documentation": {}
+    },
+    {
+        "label": "get_stories",
+        "kind": 2,
+        "importPath": "routes.story",
+        "description": "routes.story",
+        "peekOfCode": "def get_stories(\n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)\n):\n    uid = auth_details['uid']\n    yesterday = datetime.now() - timedelta(days = 1)\n    query = (\n       select(Story)\n        .where(Story.created_at > yesterday)\n        .where(Story.uid == uid)",
+        "detail": "routes.story",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "routes.story",
+        "description": "routes.story",
+        "peekOfCode": "router = APIRouter()\n@router.post('/create_story',status_code = 201)\ndef create_story(\n    image_url: str = Form(...),\n    views :str= Form(...),\n    db:Session= Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    story_id = str(uuid.uuid4())   ",
+        "detail": "routes.story",
+        "documentation": {}
+    },
+    {
+        "label": "@router.post('/create_story',status_code",
+        "kind": 5,
+        "importPath": "routes.story",
+        "description": "routes.story",
+        "peekOfCode": "@router.post('/create_story',status_code = 201)\ndef create_story(\n    image_url: str = Form(...),\n    views :str= Form(...),\n    db:Session= Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    story_id = str(uuid.uuid4())   \n    created_at =datetime.now()",
+        "detail": "routes.story",
         "documentation": {}
     },
     {
@@ -832,7 +1450,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "app = FastAPI()\napp.include_router(auth.router,prefix='/auth')\napp.include_router(post.router,prefix='/post')\nBase.metadata.create_all(engine)",
+        "peekOfCode": "app = FastAPI()\napp.include_router(auth.router,prefix='/auth')\napp.include_router(post.router,prefix='/post')\napp.include_router(like.router,prefix='/like')\napp.include_router(comment.router,prefix='/comment')\napp.include_router(story.router,prefix='/story')\nBase.metadata.create_all(engine)",
         "detail": "main",
         "documentation": {}
     }

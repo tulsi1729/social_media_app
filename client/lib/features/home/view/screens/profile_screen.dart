@@ -1,11 +1,16 @@
+import 'dart:convert';
+
+import 'package:client/core/constants/server_constant.dart';
 import 'package:client/core/providers/current_user_notifier.dart';
 import 'package:client/features/auth/view/widgets/loader.dart';
 import 'package:client/features/home/models/post_model.dart';
 import 'package:client/features/home/view/screens/create_post_screen.dart';
-import 'package:client/features/home/view/widgets/heart_animation_widget.dart';
+import 'package:client/features/home/view/widgets/comment_tile.dart';
+import 'package:client/features/home/view/widgets/like_button.dart';
 import 'package:client/features/home/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:http/http.dart' as http;
 
 class ProfileScreen extends ConsumerStatefulWidget {
   final bool isEditMode;
@@ -17,41 +22,28 @@ class ProfileScreen extends ConsumerStatefulWidget {
 }
 
 class _ProfileScreenState extends ConsumerState<ProfileScreen> {
-  final captionController = TextEditingController();
   bool isHeartAnimation = false;
-  bool isLiked = false;
+  bool like = false;
   late Future<List<PostModel>> futurePosts;
 
   void navigateToCreatePost(BuildContext context, PostModel postModel) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => CreatePostScreen(),
+        builder: (context) => CreatePostScreen(
+          isEditMode: true,
+          preFilledPost: postModel,
+        ),
       ),
     );
   }
 
   @override
-  void initState() {
-    super.initState();
-    if (widget.isEditMode) {
-      captionController.text = widget.preFilledPost!.caption;
-    }
-  }
-
-  Future<void> signOut() async {}
-
-  @override
   Widget build(BuildContext context) {
-    final icon = isLiked ? Icons.favorite : Icons.favorite_border_outlined;
-    final color = isLiked ? Colors.red : Colors.grey;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("My Posts"),
         elevation: 4,
-        actions: [
-          TextButton(onPressed: signOut, child: const Text("Sign out"))
-        ],
+        actions: [TextButton(onPressed: () {}, child: const Text("Sign out"))],
       ),
       body: ref.watch(getMyPostsProvider).when(
             data: (posts) {
@@ -103,91 +95,41 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                                       }).toList(),
                                     ),
                                     onDoubleTap: () async {
-                                      await ref
-                                          .read(homeViewModelProvider.notifier)
-                                          .likePost(
-                                            postId: post.id,
-                                          );
-                                      // isLiked == true
-                                      //     ? Icon(Icons.favorite)
-                                      //     : Icon(Icons.abc);
-                                      setState(
-                                        () {
-                                          isHeartAnimation = true;
-                                          isLiked = true;
-                                        },
-                                      );
+                                      // await ref
+                                      //     .read(homeViewModelProvider.notifier)
+                                      //     .likePost(
+                                      //       postId: post.id,
+                                      //     );
+
+                                      // setState(
+                                      //   () {
+                                      //     isHeartAnimation = true;
+                                      //     isLiked = true;
+                                      //   },
+                                      // );
                                     },
                                   ),
                                 ),
-                                Opacity(
-                                  opacity: isHeartAnimation ? 1 : 0,
-                                  child: HeartAnimationWidget(
-                                    isAnimating: isHeartAnimation,
-                                    duration: const Duration(milliseconds: 700),
-                                    child: const Icon(
-                                      Icons.favorite,
-                                      color: Colors.white,
-                                      size: 150,
-                                    ),
-                                    onEnd: () => setState(
-                                        () => isHeartAnimation = false),
-                                  ),
-                                ),
+                                // Opacity(
+                                //   opacity: isHeartAnimation ? 1 : 0,
+                                //   child: HeartAnimationWidget(
+                                //     isAnimating: isHeartAnimation,
+                                //     duration: const Duration(milliseconds: 700),
+                                //     child: const Icon(
+                                //       Icons.favorite,
+                                //       color: Colors.white,
+                                //       size: 150,
+                                //     ),
+                                //     onEnd: () => setState(
+                                //         () => isHeartAnimation = false),
+                                //   ),
+                                // ),
                               ],
                             ),
                             Row(
                               children: [
-                                Column(
-                                  children: [
-                                    HeartAnimationWidget(
-                                      isAnimating: isLiked,
-                                      child: IconButton(
-                                          icon: Icon(
-                                            icon,
-                                            color: color,
-                                            size: 28,
-                                          ),
-                                          onPressed: () async {
-                                            if (post.id == post.id)
-                                              setState(() {
-                                                isLiked = !isLiked;
-                                              });
-
-                                            await ref
-                                                .read(homeViewModelProvider
-                                                    .notifier)
-                                                .likePost(
-                                                  postId: post.id,
-                                                );
-                                            // isLiked == true
-                                            //     ? Icon(Icons.favorite)
-                                            //     : Icon(Icons.abc);
-                                          }),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    IconButton(
-                                        icon: const Icon(Icons.comment),
-                                        onPressed: () async {
-                                          await ref
-                                              .read(homeViewModelProvider
-                                                  .notifier)
-                                              .commentPost(
-                                                postId: post.id,
-                                                comment: "comment",
-                                                time: DateTime.now(),
-                                              );
-                                          showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            context: context,
-                                            builder: (context) => buildSheet(),
-                                          );
-                                        }),
-                                  ],
-                                ),
+                                LikeButton(postId: post.id),
+                                CommentTile(postId: post.id),
                                 Column(
                                   children: [
                                     IconButton(
@@ -223,10 +165,6 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                                         .read(homeViewModelProvider.notifier)
                                         .deletedPost(
                                           postId: post.id,
-                                          token: ref
-                                              .read(
-                                                  currentUserNotifierProvider)!
-                                              .token,
                                         );
                                   },
                                   icon: Icon(Icons.delete),
@@ -252,35 +190,4 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
           ),
     );
   }
-
-  Widget buildSheet() => DraggableScrollableSheet(
-        initialChildSize: 0.7,
-        maxChildSize: 0.9,
-        minChildSize: 0.4,
-        builder: (_, controller) => Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView(
-            children: const [
-              Text(
-                " Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
-                style: TextStyle(
-                  fontSize: 17,
-                ),
-              ),
-              Text(
-                " Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
-                style: TextStyle(
-                  fontSize: 17,
-                ),
-              ),
-              Text(
-                " Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
-                style: TextStyle(
-                  fontSize: 17,
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
 }

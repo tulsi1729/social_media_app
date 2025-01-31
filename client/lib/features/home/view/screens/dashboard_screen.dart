@@ -1,7 +1,8 @@
-import 'package:client/features/home/view/screens/create_post_screen.dart';
-import 'package:client/features/home/view/screens/explore_screen.dart';
-import 'package:client/features/home/view/screens/posts_screen.dart';
+import 'package:client/features/home/view/screens/create_screen.dart';
+import 'package:client/features/home/view/screens/home_screen.dart';
 import 'package:client/features/home/view/screens/profile_screen.dart';
+import 'package:client/features/home/view/widgets/profile_widget.dart';
+import 'package:client/features/story/view/screens/story.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -19,10 +20,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
   void initState() {
     super.initState();
     screens = [
-      const PostsScreen(),
-      const CreatePostScreen(),
-      const ExploreScreen(),
+      const HomeScreen(),
+      const Story(),
+      // const ExploreScreen(),
+      const CreateScreen(),
+      // const ReelsScreen(),
       const ProfileScreen(),
+      const ProfileWidget(),
     ];
   }
 
@@ -49,11 +53,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
             label: '',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: '',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.post_add),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.ondemand_video_rounded),
             label: '',
           ),
           BottomNavigationBarItem(
