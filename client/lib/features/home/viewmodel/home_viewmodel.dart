@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:client/core/providers/current_user_notifier.dart';
 import 'package:client/features/home/models/post_model.dart';
-import 'package:client/features/home/models/story_model.dart';
 import 'package:client/features/home/repository/home_repository.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -99,12 +98,6 @@ class HomeViewModel extends _$HomeViewModel {
       selectedImage: selectedImage,
       token: ref.read(currentUserNotifierProvider)!.token,
     );
-    // final val = switch (res) {
-    //   Left(value: final l) => state =
-    //       AsyncValue.error(l.message, StackTrace.current),
-    //   Right(value: final r) => state = AsyncValue.data(r),
-    // };
-    // print(val);
   }
 
   Future<void> deletedPost({

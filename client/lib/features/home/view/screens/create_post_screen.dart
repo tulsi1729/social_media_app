@@ -36,6 +36,13 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
     super.initState();
     if (widget.isEditMode) {
       captionController.text = widget.preFilledPost!.caption;
+      if (widget.preFilledPost!.imageUrl.isNotEmpty) {
+        List<String> existingImages = widget.preFilledPost!.imageUrl.split(",");
+        setState(() {
+          uploadedImageUrl = widget.preFilledPost!.imageUrl;
+          imageFileList = existingImages.map((url) => XFile(url)).toList();
+        });
+      }
     }
   }
 
@@ -61,6 +68,11 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
 
     try {
       for (XFile image in imageFileList!) {
+        if (image.path.startsWith("http") || image.path.startsWith("https")) {
+          uploadedUrls.add(image.path); // Keep existing Cloudinary images
+          continue; // Skip re-uploading already uploaded images
+        }
+
         final url =
             Uri.parse('https://api.cloudinary.com/v1_1/dppvl48gh/upload');
         final request = http.MultipartRequest("POST", url)
@@ -114,17 +126,28 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
                   scrollDirection: Axis.horizontal,
                   itemCount: imageFileList!.length,
                   itemBuilder: (context, index) {
+                    String imagePath = imageFileList![index].path;
+                    bool isNetworkImage = imagePath.startsWith("http") ||
+                        imagePath.startsWith("https");
+
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Stack(
                         clipBehavior: Clip.none,
                         children: [
-                          Image.file(
-                            File(imageFileList![index].path),
-                            fit: BoxFit.cover,
-                            width: 150,
-                            height: 150,
-                          ),
+                          isNetworkImage
+                              ? Image.network(
+                                  imagePath,
+                                  fit: BoxFit.cover,
+                                  width: 150,
+                                  height: 150,
+                                )
+                              : Image.file(
+                                  File(imagePath),
+                                  fit: BoxFit.cover,
+                                  width: 150,
+                                  height: 150,
+                                ),
                           Positioned(
                             top: -24,
                             right: -24,
@@ -177,7 +200,12 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
                             );
                     log(editedPost.toString(), name: "create in  edit ");
 
-                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProfileScreen(),
+                      ),
+                    );
                   } else {
                     await ref.read(homeViewModelProvider.notifier).createPost(
                           caption: captionController.text,
