@@ -16,6 +16,7 @@ class PostModel {
     String? id,
     String? caption,
     String? imageUrl,
+    int? postCount,
   }) {
     return PostModel(
       id: id ?? this.id,

@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'dart:developer';
+
 import 'package:client/core/constants/server_constant.dart';
 import 'package:client/core/providers/current_user_notifier.dart';
 import 'package:client/features/auth/model/user_model.dart';
-import 'package:client/features/profile/viewmodel/profile_viewmodel.dart';
+import 'package:client/features/follow/viewmodel/follow_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
@@ -56,11 +57,11 @@ class _SearchWidgetState extends ConsumerState<SearchWidget> {
 
     if (isCurrentlyFollowing) {
       await ref
-          .read(profileViewModelProvider.notifier)
+          .read(followViewModelProvider.notifier)
           .unFollowUser(targetUserId: userId);
     } else {
       await ref
-          .read(profileViewModelProvider.notifier)
+          .read(followViewModelProvider.notifier)
           .followUser(targetUserId: userId);
     }
 

@@ -1,8 +1,7 @@
-import 'package:client/features/story/view/screens/story.dart';
 import 'package:client/features/story/view/widgets/story_circles.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:client/features/story/view/widgets/story_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class StoryScreen extends ConsumerStatefulWidget {
   const StoryScreen({super.key});

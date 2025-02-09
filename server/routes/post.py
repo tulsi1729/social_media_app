@@ -95,8 +95,8 @@ def delete_post(post_id: str, db: Session = Depends(get_db)):
     
 @router.get("/post_counts/{user_id}")
 def get_post_counts(user_id: str, db: Session = Depends(get_db)):
-    post_count = db.query(Post).filter(Post.uid == user_id).count()
+    post_counts = db.query(Post).filter(Post.uid == user_id).count()
     
-    return {"post_count": post_count}
+    return {"post_counts": post_counts}
 
 

@@ -1,8 +1,5 @@
-import 'package:client/features/auth/view/widgets/loader.dart';
 import 'package:client/features/home/view/screens/my_posts_screen.dart';
 import 'package:client/features/home/view/widgets/profile_widget.dart';
-import 'package:client/features/profile/view/widgets/follow_count_widget.dart';
-import 'package:client/features/profile/viewmodel/profile_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,27 +22,21 @@ class ProfileScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: ref.watch(getFollowCountProvider).when(
-            data: (follows) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Flexible(
-                    flex: 2,
-                    child: ProfileWidget(),
-                  ),
-
-                  //my posts
-                  Flexible(
-                    flex: 3,
-                    child: MyPostsScreen(),
-                  ),
-                ],
-              );
-            },
-            error: (error, _) => Center(child: Text(error.toString())),
-            loading: () => const Loader(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Flexible(
+            flex: 2,
+            child: ProfileWidget(),
           ),
+
+          //my posts
+          Flexible(
+            flex: 3,
+            child: MyPostsScreen(),
+          ),
+        ],
+      ),
     );
   }
 }

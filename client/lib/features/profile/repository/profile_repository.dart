@@ -1,11 +1,10 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:client/core/app_failure/app_failure.dart';
 import 'package:client/core/constants/server_constant.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:http/http.dart' as http;
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'profile_repository.g.dart';
 
@@ -15,52 +14,13 @@ ProfileRepository profileRepository(ProfileRepositoryRef ref) {
 }
 
 class ProfileRepository {
-  Future<Either<AppFailure, String>> followUser(
-      {required String targetUserId, required String token}) async {
-    final url = Uri.parse('${ServerConstant.serverURL}/follow/$targetUserId');
-
-    final request = http.MultipartRequest('POST', url);
-
-    request.fields['target_user_id'] = targetUserId;
-
-    request.headers['x-auth-token'] = token;
-
-    final res = await request.send();
-    log(res.toString(), name: "Response in home repo");
-
-    if (res.statusCode != 201) {
-      return Left(AppFailure(await res.stream.bytesToString()));
-    }
-    return Right(await res.stream.bytesToString());
-  }
-
-  Future<void> unFollowUser(
-      {required String targetUserId, required String token}) async {
-    final url =
-        Uri.parse('${ServerConstant.serverURL}/follow/unfollow/$targetUserId');
-
-    final response = await http.delete(
-      url,
-      headers: {
-        'Authorization': 'Bearer $token',
-      },
-    );
-
-    if (response.statusCode == 200) {
-      log('UnFollowed successfully');
-    } else {
-      log('Error: ${response.body}');
-    }
-  }
-
-  Future<Either<AppFailure, Map<String, int>>> getFollowCounts({
+  Future<Either<AppFailure, Map<String, int>>> getPostsCounts({
     required String token,
     required String userId,
   }) async {
     try {
       final res = await http.get(
-        Uri.parse(
-            '${ServerConstant.serverURL}/follow/user/follow_counts/$userId'),
+        Uri.parse('${ServerConstant.serverURL}/post/post_counts/$userId'),
         headers: {
           'Content-Type': 'application/json',
           'x-auth-token': token,
@@ -74,8 +34,7 @@ class ProfileRepository {
       }
 
       return Right({
-        "followers": resBodyMap['follower_count'] ?? 0,
-        "following": resBodyMap['following_count'] ?? 0,
+        "post_counts": resBodyMap['post_counts'] ?? 0,
       });
     } catch (e) {
       return Left(AppFailure(e.toString()));

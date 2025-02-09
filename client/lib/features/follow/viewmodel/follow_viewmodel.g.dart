@@ -1,44 +1,44 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'profile_viewmodel.dart';
+part of 'follow_viewmodel.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getPostsCountsHash() => r'5e03966ef860decba60ac047427647db85c3929a';
+String _$getFollowCountHash() => r'96c41bbf8896cbdae47e09f820b42b997a20c932';
 
-/// See also [getPostsCounts].
-@ProviderFor(getPostsCounts)
-final getPostsCountsProvider =
+/// See also [getFollowCount].
+@ProviderFor(getFollowCount)
+final getFollowCountProvider =
     AutoDisposeFutureProvider<Map<String, int>>.internal(
-  getPostsCounts,
-  name: r'getPostsCountsProvider',
+  getFollowCount,
+  name: r'getFollowCountProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$getPostsCountsHash,
+      : _$getFollowCountHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef GetPostsCountsRef = AutoDisposeFutureProviderRef<Map<String, int>>;
-String _$profileViewModelHash() => r'9d0a612eba46f985c17c412e3ae27bee52d48a8e';
+typedef GetFollowCountRef = AutoDisposeFutureProviderRef<Map<String, int>>;
+String _$followViewModelHash() => r'05abad50676f00d2f660b452465f6a25387a27ff';
 
-/// See also [ProfileViewModel].
-@ProviderFor(ProfileViewModel)
-final profileViewModelProvider =
-    AutoDisposeNotifierProvider<ProfileViewModel, AsyncValue?>.internal(
-  ProfileViewModel.new,
-  name: r'profileViewModelProvider',
+/// See also [FollowViewModel].
+@ProviderFor(FollowViewModel)
+final followViewModelProvider =
+    AutoDisposeNotifierProvider<FollowViewModel, AsyncValue?>.internal(
+  FollowViewModel.new,
+  name: r'followViewModelProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$profileViewModelHash,
+      : _$followViewModelHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$ProfileViewModel = AutoDisposeNotifier<AsyncValue?>;
+typedef _$FollowViewModel = AutoDisposeNotifier<AsyncValue?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
