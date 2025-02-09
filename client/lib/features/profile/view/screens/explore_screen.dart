@@ -1,4 +1,4 @@
-import 'package:client/features/home/view/widgets/search_widget.dart';
+import 'package:client/features/profile/view/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 
 class ExploreScreen extends StatelessWidget {

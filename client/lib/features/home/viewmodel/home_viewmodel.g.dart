@@ -38,7 +38,7 @@ final getMyPostsProvider = AutoDisposeFutureProvider<List<PostModel>>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef GetMyPostsRef = AutoDisposeFutureProviderRef<List<PostModel>>;
-String _$homeViewModelHash() => r'9ffcdb0fc598a4135388bdefc1c125a9291ae98a';
+String _$homeViewModelHash() => r'784db59457c86be1663814d2de8d1f645720bfa2';
 
 /// See also [HomeViewModel].
 @ProviderFor(HomeViewModel)

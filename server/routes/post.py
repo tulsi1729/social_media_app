@@ -91,3 +91,12 @@ def delete_post(post_id: str, db: Session = Depends(get_db)):
     db.delete(post)
     db.commit()
     return {"message": "Post deleted successfully"}
+
+    
+@router.get("/post_counts/{user_id}")
+def get_post_counts(user_id: str, db: Session = Depends(get_db)):
+    post_count = db.query(Post).filter(Post.uid == user_id).count()
+    
+    return {"post_count": post_count}
+
+

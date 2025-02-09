@@ -9,6 +9,6 @@ class Story(Base):
 
     id = Column(TEXT, primary_key=True)
     image_url = Column(TEXT) 
-    created_at = Column(DateTime)
+    created_on = Column(DateTime)
     views = Column(TEXT)
     uid = Column(TEXT,ForeignKey("users.id"))

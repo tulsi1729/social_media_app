@@ -18,8 +18,7 @@ def signup_user(user : UserCreate,db :Session = Depends(get_db)):
     print(user.name)
     print(user.email)
     print(user.password)
-    # extract data that coming from req
-    # check is user already exits in db
+   
     user_db = db.query(User).filter(User.email == user.email).first() 
 
     if user_db :
@@ -61,6 +60,17 @@ def login_user(user : UserLogin,db: Session = Depends(get_db)):
 def current_user_data(db: Session=Depends(get_db), 
                      user_dict = Depends(auth_middleware)):
     user = db.query(User).filter(User.id == user_dict['uid']).first()
+
+    if not user:
+        raise HTTPException(404,'User not found! ')
+
+    return user
+
+
+@router.get('/get_user_lists')
+def get_user_list(db: Session=Depends(get_db), 
+                     user_dict = Depends(auth_middleware)):
+    user = db.query(User).all()
 
     if not user:
         raise HTTPException(404,'User not found! ')

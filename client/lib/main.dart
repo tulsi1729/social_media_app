@@ -6,6 +6,7 @@ import 'package:client/features/auth/viewmodel/auth_viewmodel.dart';
 import 'package:client/features/home/view/screens/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +32,10 @@ class MyApp extends ConsumerWidget {
     final currentUser = ref.watch(currentUserNotifierProvider);
     return MaterialApp(
       title: 'Social Media App',
-      home: currentUser == null ? SignupPage() : DashboardScreen(),
+      home: ScreenUtilInit(
+        designSize: Size(375, 812),
+        child: currentUser == null ? SignupPage() : DashboardScreen(),
+      ),
     );
   }
 }

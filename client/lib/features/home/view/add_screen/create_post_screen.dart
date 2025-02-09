@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'package:client/features/home/models/post_model.dart';
-import 'package:client/features/home/view/screens/profile_screen.dart';
+import 'package:client/features/home/view/screens/my_posts_screen.dart';
 import 'package:client/features/home/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -203,7 +203,7 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const ProfileScreen(),
+                        builder: (context) => MyPostsScreen(),
                       ),
                     );
                   } else {
@@ -215,7 +215,7 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const ProfileScreen(),
+                        builder: (context) => const MyPostsScreen(),
                       ),
                     );
                   }

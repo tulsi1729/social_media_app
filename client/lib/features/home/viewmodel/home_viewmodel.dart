@@ -39,23 +39,6 @@ Future<List<PostModel>> getMyPosts(GetMyPostsRef ref) async {
 }
 
 @riverpod
-// Future<List<PostModel>> getComments(GetCommentsRef ref) async {
-//   final token =
-//       ref.watch(currentUserNotifierProvider.select((user) => user!.token));
-//   final res = await ref.watch(homeRepositoryProvider).getComments(
-//         token: token,
-//         postId: postId,
-//       );
-
-//   log(res.toString(), name: " model story");
-
-//   return res.fold(
-//     (failure) => throw failure.message,
-//     (comments) => comments,
-//   );
-// }
-
-@riverpod
 class HomeViewModel extends _$HomeViewModel {
   late HomeRepository _homeRepository;
 

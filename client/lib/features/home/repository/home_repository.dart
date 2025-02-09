@@ -40,7 +40,11 @@ class HomeRepository {
       }
       return Right(await res.stream.bytesToString());
     } catch (e) {
-      return Left(AppFailure(e.toString()));
+      return Left(
+        AppFailure(
+          e.toString(),
+        ),
+      );
     }
   }
 

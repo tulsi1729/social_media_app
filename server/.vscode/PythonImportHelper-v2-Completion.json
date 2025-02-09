@@ -145,6 +145,38 @@
         "documentation": {}
     },
     {
+        "label": "Body",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Form",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "File",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -154,6 +186,54 @@
     },
     {
         "label": "UploadFile",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Form",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "File",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "UploadFile",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
         "importPath": "fastapi",
         "description": "fastapi",
         "isExtraImport": true,
@@ -315,6 +395,22 @@
         "documentation": {}
     },
     {
+        "label": "reel",
+        "importPath": "routes",
+        "description": "routes",
+        "isExtraImport": true,
+        "detail": "routes",
+        "documentation": {}
+    },
+    {
+        "label": "follow",
+        "importPath": "routes",
+        "description": "routes",
+        "isExtraImport": true,
+        "detail": "routes",
+        "documentation": {}
+    },
+    {
         "label": "sqlalchemy",
         "kind": 6,
         "isExtraImport": true,
@@ -388,6 +484,38 @@
         "documentation": {}
     },
     {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "TEXT",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "VARCHAR",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -461,6 +589,54 @@
     },
     {
         "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "TEXT",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "VARCHAR",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "DateTime",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -628,6 +804,38 @@
         "documentation": {}
     },
     {
+        "label": "Base",
+        "importPath": "models.base",
+        "description": "models.base",
+        "isExtraImport": true,
+        "detail": "models.base",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "models.base",
+        "description": "models.base",
+        "isExtraImport": true,
+        "detail": "models.base",
+        "documentation": {}
+    },
+    {
+        "label": "relationship",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "relationship",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
         "label": "relationship",
         "importPath": "sqlalchemy.orm",
         "description": "sqlalchemy.orm",
@@ -677,6 +885,22 @@
     },
     {
         "label": "joinedload",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
         "importPath": "sqlalchemy.orm",
         "description": "sqlalchemy.orm",
         "isExtraImport": true,
@@ -716,6 +940,79 @@
         "documentation": {}
     },
     {
+        "label": "datetime",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "Like",
         "importPath": "models.like",
         "description": "models.like",
@@ -817,6 +1114,22 @@
         "description": "pydantic",
         "isExtraImport": true,
         "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "auth_middleware",
+        "importPath": "middleware.auth_middleware",
+        "description": "middleware.auth_middleware",
+        "isExtraImport": true,
+        "detail": "middleware.auth_middleware",
+        "documentation": {}
+    },
+    {
+        "label": "auth_middleware",
+        "importPath": "middleware.auth_middleware",
+        "description": "middleware.auth_middleware",
+        "isExtraImport": true,
+        "detail": "middleware.auth_middleware",
         "documentation": {}
     },
     {
@@ -918,11 +1231,35 @@
         "documentation": {}
     },
     {
+        "label": "User",
+        "importPath": "models.user",
+        "description": "models.user",
+        "isExtraImport": true,
+        "detail": "models.user",
+        "documentation": {}
+    },
+    {
         "label": "UserCreate",
         "importPath": "pydantic_schemas.user_create",
         "description": "pydantic_schemas.user_create",
         "isExtraImport": true,
         "detail": "pydantic_schemas.user_create",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
         "documentation": {}
     },
     {
@@ -990,62 +1327,6 @@
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "timedelta",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
         "label": "Post",
         "importPath": "models.post",
         "description": "models.post",
@@ -1067,6 +1348,30 @@
         "description": "models.post",
         "isExtraImport": true,
         "detail": "models.post",
+        "documentation": {}
+    },
+    {
+        "label": "Follow",
+        "importPath": "models.follow",
+        "description": "models.follow",
+        "isExtraImport": true,
+        "detail": "models.follow",
+        "documentation": {}
+    },
+    {
+        "label": "current_user_data",
+        "importPath": "routes.auth",
+        "description": "routes.auth",
+        "isExtraImport": true,
+        "detail": "routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "routes.auth",
+        "description": "routes.auth",
+        "isExtraImport": true,
+        "detail": "routes.auth",
         "documentation": {}
     },
     {
@@ -1114,6 +1419,14 @@
         "documentation": {}
     },
     {
+        "label": "Reel",
+        "importPath": "models.reel",
+        "description": "models.reel",
+        "isExtraImport": true,
+        "detail": "models.reel",
+        "documentation": {}
+    },
+    {
         "label": "Story",
         "importPath": "models.story",
         "description": "models.story",
@@ -1149,6 +1462,15 @@
         "documentation": {}
     },
     {
+        "label": "Follow",
+        "kind": 6,
+        "importPath": "models.follow",
+        "description": "models.follow",
+        "peekOfCode": "class Follow(Base):\n    __tablename__ = 'follows'\n    id = Column(Integer, primary_key=True,autoincrement = True)\n    follower = Column(TEXT,ForeignKey(\"users.id\"))\n    following = Column(TEXT,ForeignKey(\"users.id\"))",
+        "detail": "models.follow",
+        "documentation": {}
+    },
+    {
         "label": "Like",
         "kind": 6,
         "importPath": "models.like",
@@ -1162,8 +1484,17 @@
         "kind": 6,
         "importPath": "models.post",
         "description": "models.post",
-        "peekOfCode": "class Post(Base):\n    __tablename__ = 'posts'\n    id = Column(TEXT, primary_key=True)\n    caption = Column(TEXT)\n    image_url = Column(TEXT) \n    uid = Column(TEXT, ForeignKey(\"users.id\"))\n    like = relationship(Like ,backref= 'posts' ,cascade=\"all, delete-orphan\",passive_deletes=True)\n    comment = relationship(Comment ,backref= 'posts' ,cascade=\"all, delete-orphan\",passive_deletes=True)",
+        "peekOfCode": "class Post(Base):\n    __tablename__ = 'posts'\n    id = Column(TEXT, primary_key=True)\n    caption = Column(TEXT)\n    image_url = Column(TEXT)    \n    uid = Column(TEXT, ForeignKey(\"users.id\"))\n    like = relationship(Like ,backref= 'posts' ,cascade=\"all, delete-orphan\",passive_deletes=True)\n    comment = relationship(Comment ,backref= 'posts' ,cascade=\"all, delete-orphan\",passive_deletes=True)",
         "detail": "models.post",
+        "documentation": {}
+    },
+    {
+        "label": "Reel",
+        "kind": 6,
+        "importPath": "models.reel",
+        "description": "models.reel",
+        "peekOfCode": "class Reel(Base) :\n    __tablename__ = 'reels'\n    id = Column(TEXT, primary_key=True)\n    uid = Column(TEXT, ForeignKey(\"users.id\"))\n    video_url = Column(TEXT) \n    caption = Column(TEXT)\n    created_on = Column(DateTime)",
+        "detail": "models.reel",
         "documentation": {}
     },
     {
@@ -1171,7 +1502,7 @@
         "kind": 6,
         "importPath": "models.story",
         "description": "models.story",
-        "peekOfCode": "class Story(Base):\n    __tablename__ = 'stories'\n    id = Column(TEXT, primary_key=True)\n    image_url = Column(TEXT) \n    created_at = Column(DateTime)\n    views = Column(TEXT)\n    uid = Column(TEXT,ForeignKey(\"users.id\"))",
+        "peekOfCode": "class Story(Base):\n    __tablename__ = 'stories'\n    id = Column(TEXT, primary_key=True)\n    image_url = Column(TEXT) \n    created_on = Column(DateTime)\n    views = Column(TEXT)\n    uid = Column(TEXT,ForeignKey(\"users.id\"))",
         "detail": "models.story",
         "documentation": {}
     },
@@ -1207,7 +1538,7 @@
         "kind": 2,
         "importPath": "routes.auth",
         "description": "routes.auth",
-        "peekOfCode": "def signup_user(user : UserCreate,db :Session = Depends(get_db)):\n    print(user.name)\n    print(user.email)\n    print(user.password)\n    # extract data that coming from req\n    # check is user already exits in db\n    user_db = db.query(User).filter(User.email == user.email).first() \n    if user_db :\n        raise HTTPException(400,'User with the same email already exists!')\n    hashed_pw = bcrypt.hashpw(user.password.encode(),bcrypt.gensalt())",
+        "peekOfCode": "def signup_user(user : UserCreate,db :Session = Depends(get_db)):\n    print(user.name)\n    print(user.email)\n    print(user.password)\n    user_db = db.query(User).filter(User.email == user.email).first() \n    if user_db :\n        raise HTTPException(400,'User with the same email already exists!')\n    hashed_pw = bcrypt.hashpw(user.password.encode(),bcrypt.gensalt())\n    user_db = User(id= str(uuid.uuid4()),email=user.email,password=hashed_pw,name=user.name)\n    # add the user to db",
         "detail": "routes.auth",
         "documentation": {}
     },
@@ -1225,7 +1556,16 @@
         "kind": 2,
         "importPath": "routes.auth",
         "description": "routes.auth",
-        "peekOfCode": "def current_user_data(db: Session=Depends(get_db), \n                     user_dict = Depends(auth_middleware)):\n    user = db.query(User).filter(User.id == user_dict['uid']).first()\n    if not user:\n        raise HTTPException(404,'User not found! ')\n    return user",
+        "peekOfCode": "def current_user_data(db: Session=Depends(get_db), \n                     user_dict = Depends(auth_middleware)):\n    user = db.query(User).filter(User.id == user_dict['uid']).first()\n    if not user:\n        raise HTTPException(404,'User not found! ')\n    return user\n@router.get('/get_user_lists')\ndef get_user_list(db: Session=Depends(get_db), \n                     user_dict = Depends(auth_middleware)):\n    user = db.query(User).all()",
+        "detail": "routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_list",
+        "kind": 2,
+        "importPath": "routes.auth",
+        "description": "routes.auth",
+        "peekOfCode": "def get_user_list(db: Session=Depends(get_db), \n                     user_dict = Depends(auth_middleware)):\n    user = db.query(User).all()\n    if not user:\n        raise HTTPException(404,'User not found! ')\n    return user",
         "detail": "routes.auth",
         "documentation": {}
     },
@@ -1234,7 +1574,7 @@
         "kind": 5,
         "importPath": "routes.auth",
         "description": "routes.auth",
-        "peekOfCode": "router = APIRouter()\n@router.post('/signup',status_code = 201 )\ndef signup_user(user : UserCreate,db :Session = Depends(get_db)):\n    print(user.name)\n    print(user.email)\n    print(user.password)\n    # extract data that coming from req\n    # check is user already exits in db\n    user_db = db.query(User).filter(User.email == user.email).first() \n    if user_db :",
+        "peekOfCode": "router = APIRouter()\n@router.post('/signup',status_code = 201 )\ndef signup_user(user : UserCreate,db :Session = Depends(get_db)):\n    print(user.name)\n    print(user.email)\n    print(user.password)\n    user_db = db.query(User).filter(User.email == user.email).first() \n    if user_db :\n        raise HTTPException(400,'User with the same email already exists!')\n    hashed_pw = bcrypt.hashpw(user.password.encode(),bcrypt.gensalt())",
         "detail": "routes.auth",
         "documentation": {}
     },
@@ -1243,7 +1583,7 @@
         "kind": 5,
         "importPath": "routes.auth",
         "description": "routes.auth",
-        "peekOfCode": "@router.post('/signup',status_code = 201 )\ndef signup_user(user : UserCreate,db :Session = Depends(get_db)):\n    print(user.name)\n    print(user.email)\n    print(user.password)\n    # extract data that coming from req\n    # check is user already exits in db\n    user_db = db.query(User).filter(User.email == user.email).first() \n    if user_db :\n        raise HTTPException(400,'User with the same email already exists!')",
+        "peekOfCode": "@router.post('/signup',status_code = 201 )\ndef signup_user(user : UserCreate,db :Session = Depends(get_db)):\n    print(user.name)\n    print(user.email)\n    print(user.password)\n    user_db = db.query(User).filter(User.email == user.email).first() \n    if user_db :\n        raise HTTPException(400,'User with the same email already exists!')\n    hashed_pw = bcrypt.hashpw(user.password.encode(),bcrypt.gensalt())\n    user_db = User(id= str(uuid.uuid4()),email=user.email,password=hashed_pw,name=user.name)",
         "detail": "routes.auth",
         "documentation": {}
     },
@@ -1281,6 +1621,42 @@
         "description": "routes.comment",
         "peekOfCode": "router = APIRouter()\n@router.post(\"/create_comment\")\ndef create_comment(\n    post_id: str = Form(...),\n    comment: str = Form(...),\n    created_at: datetime = datetime.now(),  \n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)\n):\n    # Validate post_id",
         "detail": "routes.comment",
+        "documentation": {}
+    },
+    {
+        "label": "get_follow_counts",
+        "kind": 2,
+        "importPath": "routes.follow",
+        "description": "routes.follow",
+        "peekOfCode": "def get_follow_counts(user_id: str, db: Session = Depends(get_db)):\n    follower_count = db.query(Follow).filter(Follow.following == user_id).count()\n    following_count = db.query(Follow).filter(Follow.follower == user_id).count()\n    return {\"follower_count\": follower_count, \"following_count\": following_count}\n@router.post(\"/{target_user_id}\")\ndef follow_user(\n    target_user_id: str,\n    db: Session = Depends(get_db),\n    auth_details= Depends(auth_middleware),):\n    uid = auth_details['uid']",
+        "detail": "routes.follow",
+        "documentation": {}
+    },
+    {
+        "label": "follow_user",
+        "kind": 2,
+        "importPath": "routes.follow",
+        "description": "routes.follow",
+        "peekOfCode": "def follow_user(\n    target_user_id: str,\n    db: Session = Depends(get_db),\n    auth_details= Depends(auth_middleware),):\n    uid = auth_details['uid']\n    if uid == target_user_id:\n        raise HTTPException(status_code=400, detail=\"You cannot follow yourself.\")\n    user_to_follow = db.query(User).filter(User.id == target_user_id).first()\n    if not user_to_follow:\n        raise HTTPException(status_code=404, detail=\"User not found.\")",
+        "detail": "routes.follow",
+        "documentation": {}
+    },
+    {
+        "label": "unfollow_user",
+        "kind": 2,
+        "importPath": "routes.follow",
+        "description": "routes.follow",
+        "peekOfCode": "def unfollow_user(\n    target_user_id: str,\n    db: Session = Depends(get_db),\n    auth_details= Depends(auth_middleware),\n):\n    uid = auth_details['uid']\n    # Check if the user is trying to unfollow themselves\n    if uid == target_user_id:\n        raise HTTPException(status_code=400, detail=\"You cannot unfollow yourself.\")\n    # Check if the target user exists",
+        "detail": "routes.follow",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "routes.follow",
+        "description": "routes.follow",
+        "peekOfCode": "router = APIRouter()\n@router.get(\"/user/follow_counts/{user_id}\")\ndef get_follow_counts(user_id: str, db: Session = Depends(get_db)):\n    follower_count = db.query(Follow).filter(Follow.following == user_id).count()\n    following_count = db.query(Follow).filter(Follow.follower == user_id).count()\n    return {\"follower_count\": follower_count, \"following_count\": following_count}\n@router.post(\"/{target_user_id}\")\ndef follow_user(\n    target_user_id: str,\n    db: Session = Depends(get_db),",
+        "detail": "routes.follow",
         "documentation": {}
     },
     {
@@ -1351,7 +1727,16 @@
         "kind": 2,
         "importPath": "routes.post",
         "description": "routes.post",
-        "peekOfCode": "def delete_post(post_id: str, db: Session = Depends(get_db)):\n    post = db.query(Post).filter(Post.id == post_id).first()\n    if not post:\n        raise HTTPException(status_code=404, detail=\"Post not found\")\n    db.delete(post)\n    db.commit()\n    return {\"message\": \"Post deleted successfully\"}",
+        "peekOfCode": "def delete_post(post_id: str, db: Session = Depends(get_db)):\n    post = db.query(Post).filter(Post.id == post_id).first()\n    if not post:\n        raise HTTPException(status_code=404, detail=\"Post not found\")\n    db.delete(post)\n    db.commit()\n    return {\"message\": \"Post deleted successfully\"}\n@router.get(\"/post_counts/{user_id}\")\ndef get_post_counts(user_id: str, db: Session = Depends(get_db)):\n    post_count = db.query(Post).filter(Post.uid == user_id).count()",
+        "detail": "routes.post",
+        "documentation": {}
+    },
+    {
+        "label": "get_post_counts",
+        "kind": 2,
+        "importPath": "routes.post",
+        "description": "routes.post",
+        "peekOfCode": "def get_post_counts(user_id: str, db: Session = Depends(get_db)):\n    post_count = db.query(Post).filter(Post.uid == user_id).count()\n    return {\"post_count\": post_count}",
         "detail": "routes.post",
         "documentation": {}
     },
@@ -1374,11 +1759,47 @@
         "documentation": {}
     },
     {
+        "label": "create_reel",
+        "kind": 2,
+        "importPath": "routes.reel",
+        "description": "routes.reel",
+        "peekOfCode": "def create_reel(\n    caption :str= Form(...),\n    video_url: str = Form(...),\n    db:Session= Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    reel_id = str(uuid.uuid4())\n    created_on =datetime.now()\n    new_reel = Reel(",
+        "detail": "routes.reel",
+        "documentation": {}
+    },
+    {
+        "label": "get_reels",
+        "kind": 2,
+        "importPath": "routes.reel",
+        "description": "routes.reel",
+        "peekOfCode": "def get_reels(\n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)\n):\n    reels = db.query(Reel).all()\n    return {\"message\": \"Reels get successfully\", \"reels\": reels}",
+        "detail": "routes.reel",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "routes.reel",
+        "description": "routes.reel",
+        "peekOfCode": "router = APIRouter()\n@router.post('/create_reel',status_code = 201)\ndef create_reel(\n    caption :str= Form(...),\n    video_url: str = Form(...),\n    db:Session= Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    reel_id = str(uuid.uuid4())",
+        "detail": "routes.reel",
+        "documentation": {}
+    },
+    {
+        "label": "@router.post('/create_reel',status_code",
+        "kind": 5,
+        "importPath": "routes.reel",
+        "description": "routes.reel",
+        "peekOfCode": "@router.post('/create_reel',status_code = 201)\ndef create_reel(\n    caption :str= Form(...),\n    video_url: str = Form(...),\n    db:Session= Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    reel_id = str(uuid.uuid4())\n    created_on =datetime.now()",
+        "detail": "routes.reel",
+        "documentation": {}
+    },
+    {
         "label": "create_story",
         "kind": 2,
         "importPath": "routes.story",
         "description": "routes.story",
-        "peekOfCode": "def create_story(\n    image_url: str = Form(...),\n    views :str= Form(...),\n    db:Session= Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    story_id = str(uuid.uuid4())   \n    created_at =datetime.now()\n    new_story = Story(",
+        "peekOfCode": "def create_story(\n    image_url: str = Form(...),\n    views :str= Form(...),\n    db:Session= Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    story_id = str(uuid.uuid4())   \n    created_on =datetime.now()\n    new_story = Story(",
         "detail": "routes.story",
         "documentation": {}
     },
@@ -1387,7 +1808,7 @@
         "kind": 2,
         "importPath": "routes.story",
         "description": "routes.story",
-        "peekOfCode": "def get_stories(\n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)\n):\n    uid = auth_details['uid']\n    yesterday = datetime.now() - timedelta(days = 1)\n    query = (\n       select(Story)\n        .where(Story.created_at > yesterday)\n        .where(Story.uid == uid)",
+        "peekOfCode": "def get_stories(\n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)\n):\n    uid = auth_details['uid']\n    yesterday = datetime.now() - timedelta(days = 1)\n    query = (\n       select(Story)\n        .where(Story.created_on > yesterday)\n        .where(Story.uid == uid)",
         "detail": "routes.story",
         "documentation": {}
     },
@@ -1405,7 +1826,7 @@
         "kind": 5,
         "importPath": "routes.story",
         "description": "routes.story",
-        "peekOfCode": "@router.post('/create_story',status_code = 201)\ndef create_story(\n    image_url: str = Form(...),\n    views :str= Form(...),\n    db:Session= Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    story_id = str(uuid.uuid4())   \n    created_at =datetime.now()",
+        "peekOfCode": "@router.post('/create_story',status_code = 201)\ndef create_story(\n    image_url: str = Form(...),\n    views :str= Form(...),\n    db:Session= Depends(get_db),\n    auth_details= Depends(auth_middleware)\n    ):\n    uid = auth_details['uid']\n    story_id = str(uuid.uuid4())   \n    created_on =datetime.now()",
         "detail": "routes.story",
         "documentation": {}
     },
@@ -1450,7 +1871,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "app = FastAPI()\napp.include_router(auth.router,prefix='/auth')\napp.include_router(post.router,prefix='/post')\napp.include_router(like.router,prefix='/like')\napp.include_router(comment.router,prefix='/comment')\napp.include_router(story.router,prefix='/story')\nBase.metadata.create_all(engine)",
+        "peekOfCode": "app = FastAPI()\napp.include_router(auth.router,prefix='/auth')\napp.include_router(post.router,prefix='/post')\napp.include_router(like.router,prefix='/like')\napp.include_router(comment.router,prefix='/comment')\napp.include_router(story.router,prefix='/story')\napp.include_router(reel.router,prefix='/reel')\napp.include_router(follow.router,prefix='/follow')\nBase.metadata.create_all(engine)",
         "detail": "main",
         "documentation": {}
     }

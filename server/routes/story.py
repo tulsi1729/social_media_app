@@ -25,13 +25,13 @@ def create_story(
     ):
     uid = auth_details['uid']
     story_id = str(uuid.uuid4())   
-    created_at =datetime.now()
+    created_on =datetime.now()
 
 
     new_story = Story(
         id = story_id,
         image_url = image_url,
-        created_at = created_at,
+        created_on = created_on,
         views = views,
         uid = uid
     )
@@ -50,9 +50,9 @@ def get_stories(
     yesterday = datetime.now() - timedelta(days = 1)
     query = (
        select(Story)
-        .where(Story.created_at > yesterday)
+        .where(Story.created_on > yesterday)
         .where(Story.uid == uid)
-       .order_by(desc(Story.created_at))
+       .order_by(desc(Story.created_on))
        
         
     )

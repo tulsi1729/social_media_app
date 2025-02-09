@@ -1,5 +1,5 @@
 import 'package:client/features/home/models/post_model.dart';
-import 'package:client/features/home/view/screens/create_post_screen.dart';
+import 'package:client/features/home/view/add_screen/create_post_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:client/features/auth/view/widgets/loader.dart';
 import 'package:client/features/home/view/widgets/heart_animation_widget.dart';
