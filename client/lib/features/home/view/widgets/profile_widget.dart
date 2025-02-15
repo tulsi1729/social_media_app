@@ -1,104 +1,147 @@
+import 'package:client/features/auth/view/widgets/loader.dart';
+import 'package:client/features/home/view/screens/edit_profile.dart';
 import 'package:client/features/home/view/widgets/post_count_widget.dart';
 import 'package:client/features/profile/view/widgets/follow_count_widget.dart';
+import 'package:client/features/profile/viewmodel/profile_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProfileWidget extends ConsumerWidget {
+class ProfileWidget extends ConsumerStatefulWidget {
   const ProfileWidget({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                height: 100,
-                width: 100,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: const Color.fromARGB(255, 229, 160, 236)),
-              ),
+  ConsumerState<ProfileWidget> createState() => _ProfileWidgetState();
+}
 
-              // Posts, Followers, Followings
+class _ProfileWidgetState extends ConsumerState<ProfileWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return ref.watch(getUserProvider).when(
+          data: (profile) {
+            return ListView.builder(
+              itemCount: profile.length,
+              itemBuilder: (context, index) {
+                final profileItem = profile[index];
+                return Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              profileItem.profileImage != null
+                                  ? CircleAvatar(
+                                      radius: 30,
+                                      backgroundImage: (profileItem
+                                                      .profileImage !=
+                                                  null &&
+                                              profileItem
+                                                  .profileImage!.isNotEmpty
+                                          ? NetworkImage(
+                                              profileItem.profileImage!)
+                                          : const AssetImage(
+                                                  'assets/default_profile.png')
+                                              as ImageProvider),
+                                    )
+                                  : Text("No image selected"),
 
-              Column(
-                children: [
-                  PostCountWidget(),
-                ],
-              ),
-              Column(
-                children: [
-                  FollowCountWidget(),
-                ],
-              ),
-            ],
-          ),
+                              // Posts, Followers, Followings
 
-          // Name & Bio
-          const SizedBox(height: 16),
-          Text(
-            "Hey hello",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-          ),
-          Text("I create apps"),
+                              Column(
+                                children: [
+                                  PostCountWidget(),
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  FollowCountWidget(),
+                                ],
+                              ),
+                            ],
+                          ),
 
-          // Edit Profile Section
-          const SizedBox(height: 20),
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Center(child: Text("Edit Profile")),
-                ),
-              ),
-              SizedBox(width: 8),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Center(child: Text("Ad Tools")),
-                ),
-              ),
-              SizedBox(width: 8),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Center(child: Text("Insights")),
-                ),
-              ),
-            ],
-          ),
+                          // Name & Bio
+                          const SizedBox(height: 12),
+                          Text(
+                            profileItem.userName!,
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            profileItem.bio!,
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                          ),
 
-          // Profile Pictures Section
-          // const SizedBox(height: 20),
-          // Row(
-          //   children: List.generate(
-          //     3,
-          //     (index) => Padding(
-          //       padding: const EdgeInsets.only(right: 10),
-          //       child: CircleAvatar(radius: 50),
-          //     ),
-          //   ),
-          // ),
-        ],
-      ),
-    );
+                          // Edit Profile Section
+                          const SizedBox(height: 15),
+                          Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => EditProfile(
+                                        isEditMode: true,
+                                        preFilledProfile: profileItem,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey),
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Center(child: Text("Edit Profile")),
+                                ),
+                              ),
+                              SizedBox(width: 8),
+                              Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey),
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Center(child: Text("Ad Tools")),
+                                ),
+                              ),
+                              SizedBox(width: 8),
+                              Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey),
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Center(child: Text("Insights")),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              },
+            );
+          },
+          error: (error, st) {
+            return Center(
+              child: Text(
+                error.toString(),
+              ),
+            );
+          },
+          loading: () => const Loader(),
+        );
   }
 }

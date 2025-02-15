@@ -24,7 +24,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       // const Story(),
       const ExploreScreen(),
       AddScreen(),
-      const ReelsScreen(),
+      ReelsScreen(),
       const ProfileScreen(),
     ];
   }

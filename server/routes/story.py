@@ -58,9 +58,6 @@ def get_stories(
     )
     stories = db.execute(query).scalars().all()
     
-    
-
-   
     if not stories:
         raise HTTPException(status_code=404, detail="No active stories found")
 

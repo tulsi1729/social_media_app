@@ -20,21 +20,25 @@ class _ReelsScreenState extends ConsumerState<ReelsScreen> {
         ),
         body: ref.watch(getReelsProvider).when(
               data: (reels) {
-                return ListView.builder(
-                    itemCount: reels.length,
-                    itemBuilder: (context, index) {
-                      final reel = reels[index];
-                      return ListTile(
-                        title: Column(
-                          children: [
-                            ReelItem(
-                                videoUrl: reel.videoUrl,
-                                caption: reel.caption,
-                                createdOn: reel.createdOn),
-                          ],
-                        ),
-                      );
-                    });
+                return reels.isEmpty
+                    ? Center(child: Text("No Reel Found"))
+                    : ListView.builder(
+                        itemCount: reels.length,
+                        itemBuilder: (context, index) {
+                          final reel = reels[index];
+                          return ListTile(
+                            title: Column(
+                              children: [
+                                ReelItem(
+                                  videoUrl: reel.videoUrl,
+                                  caption: reel.caption,
+                                  createdOn: reel.createdOn,
+                                  reelId: reel.id,
+                                ),
+                              ],
+                            ),
+                          );
+                        });
               },
               error: (error, st) {
                 return Center(
@@ -48,22 +52,24 @@ class _ReelsScreenState extends ConsumerState<ReelsScreen> {
   }
 }
 
-class ReelItem extends StatefulWidget {
+class ReelItem extends ConsumerStatefulWidget {
   final String videoUrl;
   final String caption;
   final DateTime createdOn;
+  final String reelId;
 
-  const ReelItem(
-      {super.key,
-      required this.videoUrl,
-      required this.caption,
-      required this.createdOn});
-
+  const ReelItem({
+    super.key,
+    required this.videoUrl,
+    required this.caption,
+    required this.createdOn,
+    required this.reelId,
+  });
   @override
-  _ReelItemState createState() => _ReelItemState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _ReelItemState();
 }
 
-class _ReelItemState extends State<ReelItem> {
+class _ReelItemState extends ConsumerState<ReelItem> {
   late VideoPlayerController _controller;
 
   @override
@@ -85,37 +91,70 @@ class _ReelItemState extends State<ReelItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        children: [
-          _controller.value.isInitialized
-              ? Column(
-                  children: [
-                    AspectRatio(
-                      aspectRatio: _controller.value.aspectRatio,
-                      child: VideoPlayer(_controller),
-                    ),
-                    IconButton(
-                      icon: Icon(
-                        _controller.value.isPlaying
-                            ? Icons.pause
-                            : Icons.play_arrow,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _controller.value.isPlaying
-                              ? _controller.pause()
-                              : _controller.play();
-                        });
-                      },
-                    ),
-                  ],
-                )
-              : const Center(child: CircularProgressIndicator()),
-          Text(widget.caption),
-          Text(widget.createdOn.toString()),
-        ],
-      ),
+    return Stack(
+      children: [
+        Card(
+          child: Column(
+            children: [
+              _controller.value.isInitialized
+                  ? Stack(
+                      children: [
+                        AspectRatio(
+                          aspectRatio: _controller.value.aspectRatio,
+                          child: VideoPlayer(_controller),
+                        ),
+                        Center(
+                          heightFactor: 15,
+                          child: IconButton(
+                            icon: Icon(
+                              _controller.value.isPlaying
+                                  ? Icons.pause
+                                  : Icons.play_arrow,
+                              size: 30,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _controller.value.isPlaying
+                                    ? _controller.pause()
+                                    : _controller.play();
+                              });
+                            },
+                          ),
+                        ),
+                        Positioned(
+                          right: 16,
+                          bottom: 100,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.favorite),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.comment),
+                              ),
+                              IconButton(
+                                onPressed: () async {
+                                  await ref
+                                      .read(reelViewModelProvider.notifier)
+                                      .deletedReel(
+                                        reelId: widget.reelId,
+                                      );
+                                },
+                                icon: Icon(Icons.delete),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    )
+                  : const Center(child: CircularProgressIndicator()),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

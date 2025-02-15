@@ -57,6 +57,14 @@
         "documentation": {}
     },
     {
+        "label": "Form",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "APIRouter",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -1085,6 +1093,14 @@
         "documentation": {}
     },
     {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "List",
         "importPath": "typing",
         "description": "typing",
@@ -1511,7 +1527,7 @@
         "kind": 6,
         "importPath": "models.user",
         "description": "models.user",
-        "peekOfCode": "class User(Base):\n    __tablename__ = 'users'\n    id = Column(TEXT,primary_key = True )\n    name = Column(VARCHAR(100))\n    email = Column(VARCHAR(100))\n    password = Column(LargeBinary)",
+        "peekOfCode": "class User(Base):\n    __tablename__ = 'users'\n    id = Column(TEXT,primary_key = True )\n    name = Column(VARCHAR(100))\n    email = Column(VARCHAR(100))\n    password = Column(LargeBinary)\n    profile_image = Column(TEXT,nullable=True)\n    bio = Column(TEXT,nullable=True)\n    user_name = Column(TEXT,nullable=True)",
         "detail": "models.user",
         "documentation": {}
     },
@@ -1520,7 +1536,7 @@
         "kind": 6,
         "importPath": "pydantic_schemas.user_create",
         "description": "pydantic_schemas.user_create",
-        "peekOfCode": "class UserCreate(BaseModel):\n    name:str\n    email:str\n    password:str",
+        "peekOfCode": "class UserCreate(BaseModel):\n    name:str\n    email:str\n    password:str\n    profile_image:Optional[str] = None\n    bio:Optional[str] = None \n    user_name:Optional[str] = None",
         "detail": "pydantic_schemas.user_create",
         "documentation": {}
     },
@@ -1538,7 +1554,7 @@
         "kind": 2,
         "importPath": "routes.auth",
         "description": "routes.auth",
-        "peekOfCode": "def signup_user(user : UserCreate,db :Session = Depends(get_db)):\n    print(user.name)\n    print(user.email)\n    print(user.password)\n    user_db = db.query(User).filter(User.email == user.email).first() \n    if user_db :\n        raise HTTPException(400,'User with the same email already exists!')\n    hashed_pw = bcrypt.hashpw(user.password.encode(),bcrypt.gensalt())\n    user_db = User(id= str(uuid.uuid4()),email=user.email,password=hashed_pw,name=user.name)\n    # add the user to db",
+        "peekOfCode": "def signup_user(user : UserCreate,db :Session = Depends(get_db)):\n    print(user.name)\n    print(user.email)\n    print(user.password)\n    user_db = db.query(User).filter(User.email == user.email).first() \n    if user_db :\n        raise HTTPException(400,'User with the same email already exists!')\n    hashed_pw = bcrypt.hashpw(user.password.encode(),bcrypt.gensalt())\n    user_db = User(\n        id= str(uuid.uuid4()),",
         "detail": "routes.auth",
         "documentation": {}
     },
@@ -1565,7 +1581,25 @@
         "kind": 2,
         "importPath": "routes.auth",
         "description": "routes.auth",
-        "peekOfCode": "def get_user_list(db: Session=Depends(get_db), \n                     user_dict = Depends(auth_middleware)):\n    user = db.query(User).all()\n    if not user:\n        raise HTTPException(404,'User not found! ')\n    return user",
+        "peekOfCode": "def get_user_list(db: Session=Depends(get_db), \n                     user_dict = Depends(auth_middleware)):\n    user = db.query(User).all()\n    if not user:\n        raise HTTPException(404,'User not found! ')\n    return user\n@router.put(\"/update_user\")\ndef update_profile(\n    profile_image:str = Form(...),\n    user_name:str = Form(...),",
+        "detail": "routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "update_profile",
+        "kind": 2,
+        "importPath": "routes.auth",
+        "description": "routes.auth",
+        "peekOfCode": "def update_profile(\n    profile_image:str = Form(...),\n    user_name:str = Form(...),\n    bio:str = Form(...),\n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)):\n    uid = auth_details['uid']\n    user = db.query(User).filter(User.id == uid).first()\n    if not user:\n        raise HTTPException(status_code=404, detail=\"User not found\")",
+        "detail": "routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_profile",
+        "kind": 2,
+        "importPath": "routes.auth",
+        "description": "routes.auth",
+        "peekOfCode": "def get_profile(\n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)\n):\n    uid = auth_details['uid']\n    profile = db.query(User).filter(User.id == uid).all()\n    return {\"message\": \"user get successfully\", \"user\": profile}",
         "detail": "routes.auth",
         "documentation": {}
     },
@@ -1583,7 +1617,7 @@
         "kind": 5,
         "importPath": "routes.auth",
         "description": "routes.auth",
-        "peekOfCode": "@router.post('/signup',status_code = 201 )\ndef signup_user(user : UserCreate,db :Session = Depends(get_db)):\n    print(user.name)\n    print(user.email)\n    print(user.password)\n    user_db = db.query(User).filter(User.email == user.email).first() \n    if user_db :\n        raise HTTPException(400,'User with the same email already exists!')\n    hashed_pw = bcrypt.hashpw(user.password.encode(),bcrypt.gensalt())\n    user_db = User(id= str(uuid.uuid4()),email=user.email,password=hashed_pw,name=user.name)",
+        "peekOfCode": "@router.post('/signup',status_code = 201 )\ndef signup_user(user : UserCreate,db :Session = Depends(get_db)):\n    print(user.name)\n    print(user.email)\n    print(user.password)\n    user_db = db.query(User).filter(User.email == user.email).first() \n    if user_db :\n        raise HTTPException(400,'User with the same email already exists!')\n    hashed_pw = bcrypt.hashpw(user.password.encode(),bcrypt.gensalt())\n    user_db = User(",
         "detail": "routes.auth",
         "documentation": {}
     },
@@ -1772,7 +1806,16 @@
         "kind": 2,
         "importPath": "routes.reel",
         "description": "routes.reel",
-        "peekOfCode": "def get_reels(\n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)\n):\n    reels = db.query(Reel).all()\n    return {\"message\": \"Reels get successfully\", \"reels\": reels}",
+        "peekOfCode": "def get_reels(\n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)\n):\n    reels = db.query(Reel).all()\n    return {\"message\": \"Reels get successfully\", \"reels\": reels}\n@router.delete(\"/delete_reel/{reel_id}\")\ndef delete_reel(reel_id: str, db: Session = Depends(get_db)):\n    reel = db.query(Reel).filter(Reel.id == reel_id).first()\n    if not reel:",
+        "detail": "routes.reel",
+        "documentation": {}
+    },
+    {
+        "label": "delete_reel",
+        "kind": 2,
+        "importPath": "routes.reel",
+        "description": "routes.reel",
+        "peekOfCode": "def delete_reel(reel_id: str, db: Session = Depends(get_db)):\n    reel = db.query(Reel).filter(Reel.id == reel_id).first()\n    if not reel:\n        raise HTTPException(status_code=404, detail=\"Post not found\")\n    db.delete(reel)\n    db.commit()\n    return {\"message\": \"Reel deleted successfully\"}",
         "detail": "routes.reel",
         "documentation": {}
     },

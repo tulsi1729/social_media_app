@@ -64,7 +64,6 @@ dev_dependencies:
   custom_lint: 0.7.0
   build_runner: ^2.4.7
   flutter_launcher_icons:
-
 flutter_icons:
   android: true
   ios: true

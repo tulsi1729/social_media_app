@@ -43,3 +43,15 @@ def get_reels(
 
     return {"message": "Reels get successfully", "reels": reels}
 
+
+@router.delete("/delete_reel/{reel_id}")
+def delete_reel(reel_id: str, db: Session = Depends(get_db)):
+
+    reel = db.query(Reel).filter(Reel.id == reel_id).first()
+    if not reel:
+        raise HTTPException(status_code=404, detail="Post not found")
+    db.delete(reel)
+    db.commit()
+    return {"message": "Reel deleted successfully"}
+
+    

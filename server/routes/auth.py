@@ -10,7 +10,7 @@ from sqlalchemy.orm import joinedload
 from database import get_db  
 from sqlalchemy.orm import Session
 from pydantic_schemas.user_login import UserLogin
-from fastapi import Header,HTTPException
+from fastapi import Header,HTTPException,Form
 
 router = APIRouter()
 @router.post('/signup',status_code = 201 )
@@ -26,7 +26,15 @@ def signup_user(user : UserCreate,db :Session = Depends(get_db)):
  
     
     hashed_pw = bcrypt.hashpw(user.password.encode(),bcrypt.gensalt())
-    user_db = User(id= str(uuid.uuid4()),email=user.email,password=hashed_pw,name=user.name)
+    user_db = User(
+        id= str(uuid.uuid4()),
+        email=user.email,
+        password=hashed_pw,
+        name=user.name,
+        bio= None,
+        profile_image = None,
+        user_name = None,
+        )
     # add the user to db
     db.add(user_db)
     db.commit()
@@ -77,3 +85,41 @@ def get_user_list(db: Session=Depends(get_db),
 
     return user
 
+
+@router.put("/update_user")
+def update_profile(
+    profile_image:str = Form(...),
+    user_name:str = Form(...),
+    bio:str = Form(...),
+    db: Session = Depends(get_db),
+    auth_details=Depends(auth_middleware)):
+    uid = auth_details['uid']
+    user = db.query(User).filter(User.id == uid).first()
+
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+
+    user.profile_image = profile_image
+    user.user_name = user_name
+    user.bio = bio
+
+    db.commit()
+    db.refresh(user)  # Refresh to get updated data
+
+    return {
+        "message": "Profile updated successfully",
+        "user" : user,
+    }
+
+@router.get("/user/get_user", status_code=200)
+def get_profile(
+    db: Session = Depends(get_db),
+    auth_details=Depends(auth_middleware)
+):
+    uid = auth_details['uid']
+    profile = db.query(User).filter(User.id == uid).all()
+
+    return {"message": "user get successfully", "user": profile}
+
+    

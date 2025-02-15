@@ -1,5 +1,6 @@
 import 'package:client/features/home/view/screens/my_posts_screen.dart';
 import 'package:client/features/home/view/widgets/profile_widget.dart';
+import 'package:client/features/home/view/widgets/user_name_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,7 +11,7 @@ class ProfileScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Hey hello"),
+        title: UserNameWidget(),
         actions: [
           IconButton(
             onPressed: () {},
@@ -26,7 +27,7 @@ class ProfileScreen extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Flexible(
-            flex: 2,
+            flex: 1,
             child: ProfileWidget(),
           ),
 

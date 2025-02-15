@@ -22,7 +22,7 @@ final getReelsProvider = AutoDisposeFutureProvider<List<ReelModel>>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef GetReelsRef = AutoDisposeFutureProviderRef<List<ReelModel>>;
-String _$reelViewModelHash() => r'ae279e0988e485478d4ef8b4b777775b3edec468';
+String _$reelViewModelHash() => r'f4c8200a442bfc47703ce5e56a2cbe45ec4eefc3';
 
 /// See also [ReelViewModel].
 @ProviderFor(ReelViewModel)

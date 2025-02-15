@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomField extends StatelessWidget {
   final String hintText;
+  final String labelText;
   final TextEditingController? controller;
   final bool isObscureText;
   final bool readOnly;
@@ -13,6 +14,7 @@ class CustomField extends StatelessWidget {
     this.isObscureText = false,
     this.readOnly = false,
     this.onTap,
+    this.labelText = '',
   });
 
   @override
@@ -23,6 +25,7 @@ class CustomField extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         hintText: hintText,
+        labelText: labelText,
       ),
       validator: (val) {
         if (val!.trim().isEmpty) {

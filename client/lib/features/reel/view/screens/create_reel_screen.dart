@@ -193,7 +193,7 @@ class _CreateReelScreenState extends ConsumerState<CreateReelScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const ReelsScreen(),
+                    builder: (context) => ReelsScreen(),
                   ),
                 );
               },

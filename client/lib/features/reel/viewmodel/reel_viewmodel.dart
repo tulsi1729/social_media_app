@@ -52,4 +52,15 @@ class ReelViewModel extends _$ReelViewModel {
     };
     print(val);
   }
+
+  Future<void> deletedReel({
+    required String reelId,
+  }) async {
+    state = const AsyncValue.loading();
+    final res = await _reelRepository.deleteReel(
+      reelId: reelId,
+      token: ref.read(currentUserNotifierProvider)!.token,
+    );
+    return res;
+  }
 }

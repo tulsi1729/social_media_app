@@ -24,7 +24,23 @@ final getPostsCountsProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef GetPostsCountsRef = AutoDisposeFutureProviderRef<Map<String, int>>;
-String _$profileViewModelHash() => r'9d0a612eba46f985c17c412e3ae27bee52d48a8e';
+String _$getUserHash() => r'e0cda8afd8edfec40e660fa8631998e50d16d01f';
+
+/// See also [getUser].
+@ProviderFor(getUser)
+final getUserProvider = AutoDisposeFutureProvider<List<UserModel>>.internal(
+  getUser,
+  name: r'getUserProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$getUserHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetUserRef = AutoDisposeFutureProviderRef<List<UserModel>>;
+String _$profileViewModelHash() => r'5cae745f1955f200d7b9c38d758d62780e7310ed';
 
 /// See also [ProfileViewModel].
 @ProviderFor(ProfileViewModel)

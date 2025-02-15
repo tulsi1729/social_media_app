@@ -76,4 +76,30 @@ class ReelRepository {
       return Left(AppFailure(e.toString()));
     }
   }
+
+  Future<void> deleteReel({
+    required String reelId,
+    required String token,
+  }) async {
+    final url =
+        Uri.parse('${ServerConstant.serverURL}/reel/delete_reel/$reelId');
+
+    try {
+      final response = await http.delete(
+        url,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'x-auth-token': token,
+        },
+      );
+
+      if (response.statusCode == 200) {
+        print("Reel deleted successfully");
+      } else {
+        print("Failed to delete reel: ${response.body}");
+      }
+    } catch (e) {
+      print("Error deleting reel: $e");
+    }
+  }
 }
