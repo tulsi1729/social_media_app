@@ -1,6 +1,7 @@
 from fastapi import APIRouter,Form,Depends,File,UploadFile 
 from datetime import datetime
 from database import get_db
+import routes
 from sqlalchemy.orm import Session
 from middleware.auth_middleware import auth_middleware
 from models.post import Post
@@ -35,3 +36,19 @@ def create_like(
 def get_likes(post_id: str = Form(...), db: Session = Depends(get_db)):
     likes = db.query(Like).filter(Like.post_id == post_id).first()
     return {"likes": likes}
+
+
+@router.get("/is_liked/{post_id}")
+def get_likes(post_id: str, db: Session = Depends(get_db),auth_details= Depends(auth_middleware)):
+    uid = auth_details['uid']
+    print(uid)
+    rows_count = db.query(Like).filter(Like.post_id == post_id , Like.liked_by == uid).count() 
+
+    return {"is_liked": rows_count > 0}
+
+
+@router.get("/post_likes_count/{post_id}")
+def get_post_like_counts(post_id: str, db: Session = Depends(get_db)):
+    post_likes_count = db.query(Like).filter(Like.post_id == post_id).count()
+    
+    return {"post_likes_count": post_likes_count}

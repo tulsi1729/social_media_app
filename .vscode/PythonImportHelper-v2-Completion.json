@@ -700,7 +700,7 @@
         "documentation": {}
     },
     {
-        "label": "TEXT",
+        "label": "Column",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -708,7 +708,7 @@
         "documentation": {}
     },
     {
-        "label": "Column",
+        "label": "TEXT",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -725,6 +725,14 @@
     },
     {
         "label": "LargeBinary",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "DateTime",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -953,6 +961,14 @@
         "isExtraImport": true,
         "importPath": "datetime",
         "description": "datetime",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
         "detail": "datetime",
         "documentation": {}
     },
@@ -1590,7 +1606,7 @@
         "kind": 2,
         "importPath": "server.routes.auth",
         "description": "server.routes.auth",
-        "peekOfCode": "def update_profile(\n    profile_image:str = Form(...),\n    user_name:str = Form(...),\n    bio:str = Form(...),\n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)):\n    uid = auth_details['uid']\n    user = db.query(User).filter(User.id == uid).first()\n    if not user:\n        raise HTTPException(status_code=404, detail=\"User not found\")",
+        "peekOfCode": "def update_profile(\n    profile_image:str = Form(...),\n    user_name:str = Form(...),\n    bio:str = Form(...),\n    created_on: datetime = datetime.now(),  \n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)):\n    uid = auth_details['uid']\n    user = db.query(User).filter(User.id == uid).first()\n    if not user:",
         "detail": "server.routes.auth",
         "documentation": {}
     },
@@ -1599,7 +1615,16 @@
         "kind": 2,
         "importPath": "server.routes.auth",
         "description": "server.routes.auth",
-        "peekOfCode": "def get_profile(\n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)\n):\n    uid = auth_details['uid']\n    profile = db.query(User).filter(User.id == uid).all()\n    return {\"message\": \"user get successfully\", \"user\": profile}",
+        "peekOfCode": "def get_profile(\n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)\n):\n    uid = auth_details['uid']\n    profile = db.query(User).filter(User.id == uid).all()\n    return {\"message\": \"user get successfully\", \"user\": profile}\n@router.get(\"/user/get_all_user\", status_code=200)\ndef get_profile(\n    db: Session = Depends(get_db),",
+        "detail": "server.routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_profile",
+        "kind": 2,
+        "importPath": "server.routes.auth",
+        "description": "server.routes.auth",
+        "peekOfCode": "def get_profile(\n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)\n):\n    uid = auth_details['uid']\n    profile = db.query(User).filter(User.id != uid).all()\n    return {\"message\": \"user get successfully\", \"user\": profile}",
         "detail": "server.routes.auth",
         "documentation": {}
     },
@@ -1644,7 +1669,16 @@
         "kind": 2,
         "importPath": "server.routes.comment",
         "description": "server.routes.comment",
-        "peekOfCode": "def delete_comment(comment_id: str, db: Session = Depends(get_db)):\n    comment = db.query(Comment).filter(Comment.id == comment_id).one()\n    if not comment:\n        raise HTTPException(status_code=404, detail=\"Comment not found\")\n    db.delete(comment)\n    db.commit()\n    return {\"message\": \"Comment deleted successfully\"}",
+        "peekOfCode": "def delete_comment(comment_id: str, db: Session = Depends(get_db)):\n    comment = db.query(Comment).filter(Comment.id == comment_id).one()\n    if not comment:\n        raise HTTPException(status_code=404, detail=\"Comment not found\")\n    db.delete(comment)\n    db.commit()\n    return {\"message\": \"Comment deleted successfully\"}\n@router.get(\"/post_comments_count/{post_id}\")\ndef get_post_comment_counts(post_id: str, db: Session = Depends(get_db)):\n    post_comments_count = db.query(Comment).filter(Comment.post_id == post_id).count()",
+        "detail": "server.routes.comment",
+        "documentation": {}
+    },
+    {
+        "label": "get_post_comment_counts",
+        "kind": 2,
+        "importPath": "server.routes.comment",
+        "description": "server.routes.comment",
+        "peekOfCode": "def get_post_comment_counts(post_id: str, db: Session = Depends(get_db)):\n    post_comments_count = db.query(Comment).filter(Comment.post_id == post_id).count()\n    return {\"post_comment_counts\": post_comments_count}",
         "detail": "server.routes.comment",
         "documentation": {}
     },
@@ -1653,7 +1687,7 @@
         "kind": 5,
         "importPath": "server.routes.comment",
         "description": "server.routes.comment",
-        "peekOfCode": "router = APIRouter()\n@router.post(\"/create_comment\")\ndef create_comment(\n    post_id: str = Form(...),\n    comment: str = Form(...),\n    created_at: datetime = datetime.now(),  \n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)\n):\n    # Validate post_id",
+        "peekOfCode": "router = APIRouter()\n@router.post(\"/create_comment\") \ndef create_comment(\n    post_id: str = Form(...),\n    comment: str = Form(...),\n    created_at: datetime = datetime.now(),  \n    db: Session = Depends(get_db),\n    auth_details=Depends(auth_middleware)\n):\n    # Validate post_id",
         "detail": "server.routes.comment",
         "documentation": {}
     },
@@ -1707,7 +1741,25 @@
         "kind": 2,
         "importPath": "server.routes.like",
         "description": "server.routes.like",
-        "peekOfCode": "def get_likes(post_id: str = Form(...), db: Session = Depends(get_db)):\n    likes = db.query(Like).filter(Like.post_id == post_id).first()\n    return {\"likes\": likes}",
+        "peekOfCode": "def get_likes(post_id: str = Form(...), db: Session = Depends(get_db)):\n    likes = db.query(Like).filter(Like.post_id == post_id).first()\n    return {\"likes\": likes}\n@router.get(\"/is_liked/{post_id}\")\ndef get_likes(post_id: str, db: Session = Depends(get_db),auth_details= Depends(auth_middleware)):\n    uid = auth_details['uid']\n    print(uid)\n    rows_count = db.query(Like).filter(Like.post_id == post_id , Like.liked_by == uid).count() \n    return {\"is_liked\": rows_count > 0}\n@router.get(\"/post_likes_count/{post_id}\")",
+        "detail": "server.routes.like",
+        "documentation": {}
+    },
+    {
+        "label": "get_likes",
+        "kind": 2,
+        "importPath": "server.routes.like",
+        "description": "server.routes.like",
+        "peekOfCode": "def get_likes(post_id: str, db: Session = Depends(get_db),auth_details= Depends(auth_middleware)):\n    uid = auth_details['uid']\n    print(uid)\n    rows_count = db.query(Like).filter(Like.post_id == post_id , Like.liked_by == uid).count() \n    return {\"is_liked\": rows_count > 0}\n@router.get(\"/post_likes_count/{post_id}\")\ndef get_post_like_counts(post_id: str, db: Session = Depends(get_db)):\n    post_likes_count = db.query(Like).filter(Like.post_id == post_id).count()\n    return {\"post_likes_count\": post_likes_count}",
+        "detail": "server.routes.like",
+        "documentation": {}
+    },
+    {
+        "label": "get_post_like_counts",
+        "kind": 2,
+        "importPath": "server.routes.like",
+        "description": "server.routes.like",
+        "peekOfCode": "def get_post_like_counts(post_id: str, db: Session = Depends(get_db)):\n    post_likes_count = db.query(Like).filter(Like.post_id == post_id).count()\n    return {\"post_likes_count\": post_likes_count}",
         "detail": "server.routes.like",
         "documentation": {}
     },

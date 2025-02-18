@@ -193,4 +193,31 @@ class HomeRepository {
       return Left(AppFailure(e.toString()));
     }
   }
+
+  Future<Either<AppFailure, Map<String, int>>> getPostLikesCounts({
+    required String token,
+    required String postId,
+  }) async {
+    try {
+      final res = await http.get(
+        Uri.parse('${ServerConstant.serverURL}/post/post_likes_counts/$postId'),
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': token,
+        },
+      );
+
+      final Map<String, dynamic> resBodyMap = jsonDecode(res.body);
+
+      // if (res.statusCode != 200) {
+      //   return Left(AppFailure(resBodyMap['detail'] ?? "Unknown error"));
+      // }
+
+      return Right({
+        "post_likes_counts": resBodyMap['post_likes_counts'] ?? 0,
+      });
+    } catch (e) {
+      return Left(AppFailure(e.toString()));
+    }
+  }
 }

@@ -24,23 +24,39 @@ final getPostsCountsProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef GetPostsCountsRef = AutoDisposeFutureProviderRef<Map<String, int>>;
-String _$getUserHash() => r'e0cda8afd8edfec40e660fa8631998e50d16d01f';
+String _$getAllUserHash() => r'ce4b14bb7232663aa3a90c0a2a6fa1c426310b42';
 
-/// See also [getUser].
-@ProviderFor(getUser)
-final getUserProvider = AutoDisposeFutureProvider<List<UserModel>>.internal(
-  getUser,
-  name: r'getUserProvider',
+/// See also [getAllUser].
+@ProviderFor(getAllUser)
+final getAllUserProvider = AutoDisposeFutureProvider<List<UserModel>>.internal(
+  getAllUser,
+  name: r'getAllUserProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$getUserHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$getAllUserHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef GetUserRef = AutoDisposeFutureProviderRef<List<UserModel>>;
-String _$profileViewModelHash() => r'5cae745f1955f200d7b9c38d758d62780e7310ed';
+typedef GetAllUserRef = AutoDisposeFutureProviderRef<List<UserModel>>;
+String _$getMyUserHash() => r'c87b0013d09a79f285ba764e78d5c71788468827';
+
+/// See also [getMyUser].
+@ProviderFor(getMyUser)
+final getMyUserProvider = AutoDisposeFutureProvider<List<UserModel>>.internal(
+  getMyUser,
+  name: r'getMyUserProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$getMyUserHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetMyUserRef = AutoDisposeFutureProviderRef<List<UserModel>>;
+String _$profileViewModelHash() => r'13e5669b472ce5c4b9dd1eb1f04dd473bccf5f50';
 
 /// See also [ProfileViewModel].
 @ProviderFor(ProfileViewModel)

@@ -12,13 +12,26 @@ final commentsProvider =
       ref.watch(currentUserNotifierProvider.select((user) => user!.token));
   final res = await ref.watch(commentRepositoryProvider).getComments(
         token: token,
-        postId: postId, // Pass the postId to the repository
+        postId: postId,
       );
 
   return res.fold(
     (failure) => throw failure.message,
     (comments) => comments,
   );
+});
+
+final commentCountProvider =
+    FutureProvider.family<int, String>((ref, postId) async {
+  final token =
+      ref.watch(currentUserNotifierProvider.select((user) => user!.token));
+
+  final res = await ref.read(commentRepositoryProvider).getCommentCount(
+        token: token,
+        postId: postId,
+      );
+
+  return res.fold((failure) => throw failure.message, (data) => data);
 });
 
 @riverpod

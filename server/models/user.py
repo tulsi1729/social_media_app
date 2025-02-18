@@ -1,6 +1,7 @@
-from sqlalchemy import  TEXT,Column,VARCHAR,LargeBinary
+import sqlalchemy
 from models.base import Base
 from sqlalchemy.orm import  relationship
+from sqlalchemy import Column,TEXT,VARCHAR,LargeBinary,DateTime
 
 class User(Base):
     __tablename__ = 'users'

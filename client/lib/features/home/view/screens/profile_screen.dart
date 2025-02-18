@@ -11,7 +11,11 @@ class ProfileScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: UserNameWidget(),
+        title: Row(
+          children: [
+            UserNameWidget(),
+          ],
+        ),
         actions: [
           IconButton(
             onPressed: () {},

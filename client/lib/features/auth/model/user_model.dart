@@ -26,6 +26,7 @@ class UserModel {
     String? userName,
     String? profileImage,
     String? bio,
+    DateTime? createdOn,
     String? token,
   }) {
     return UserModel(
@@ -56,9 +57,9 @@ class UserModel {
       name: map['name'] ?? '',
       email: map['email'] ?? '',
       id: map['id'] ?? '',
-      userName: map['user_name'] ?? '',
-      profileImage: map['profile_image'] ?? '',
-      bio: map['bio'] ?? '',
+      userName: map['user_name'] as String?,
+      profileImage: map['profile_image'] as String?,
+      bio: map['bio'] != null ? map['bio'] as String : null,
       token: map['token'] ?? '',
     );
   }
@@ -70,7 +71,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(name: $name, email: $email, id: $id,user_name: $userName,bio: $bio,profile_image: $profileImage, token: $token,)';
+    return 'UserModel(name: $name, email: $email, id: $id, user_name: $userName, profile_image: $profileImage, bio: $bio, token: $token)';
   }
 
   @override

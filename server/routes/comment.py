@@ -15,7 +15,7 @@ from database import get_db
 
 router = APIRouter()
 
-@router.post("/create_comment")
+@router.post("/create_comment") 
 def create_comment(
     post_id: str = Form(...),
     comment: str = Form(...),
@@ -84,3 +84,10 @@ def delete_comment(comment_id: str, db: Session = Depends(get_db)):
     db.commit()
 
     return {"message": "Comment deleted successfully"}
+
+
+@router.get("/post_comments_count/{post_id}")
+def get_post_comment_counts(post_id: str, db: Session = Depends(get_db)):
+    post_comments_count = db.query(Comment).filter(Comment.post_id == post_id).count()
+    
+    return {"post_comment_counts": post_comments_count}

@@ -38,6 +38,21 @@ Future<List<PostModel>> getMyPosts(GetMyPostsRef ref) async {
   );
 }
 
+final likesCountProvider =
+    FutureProvider.family<int, String>((ref, postId) async {
+  final token =
+      ref.watch(currentUserNotifierProvider.select((user) => user!.token));
+  final res = await ref.watch(homeRepositoryProvider).getPostLikesCounts(
+        token: token,
+        postId: postId,
+      );
+
+  return res.fold(
+    (failure) => throw failure.message,
+    (data) => data['post_likes_counts'] ?? 0,
+  );
+});
+
 @riverpod
 class HomeViewModel extends _$HomeViewModel {
   late HomeRepository _homeRepository;

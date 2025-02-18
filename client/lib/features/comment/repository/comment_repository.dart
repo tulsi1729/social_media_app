@@ -105,4 +105,34 @@ class CommentRepository {
       print("Error deleting post: $e");
     }
   }
+
+  Future<Either<AppFailure, int>> getCommentCount({
+    required String token,
+    required String postId,
+  }) async {
+    try {
+      final res = await http.get(
+        Uri.parse(
+            '${ServerConstant.serverURL}/post/post_comments_count/$postId'),
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': token,
+        },
+      );
+
+      final Map<String, dynamic> resBodyMap = jsonDecode(res.body);
+
+      log(res.body, name: "res body in commenst");
+      if (res.statusCode != 200) {
+        return Left(AppFailure(resBodyMap['detail'] ?? "Unknown error"));
+      }
+      final int commentCount = resBodyMap['post_comments_count'] ?? 0;
+
+      log(resBodyMap['detail'], name: "res details in commenst");
+
+      return Right(commentCount);
+    } catch (e) {
+      return Left(AppFailure(e.toString()));
+    }
+  }
 }

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:client/core/constants/server_constant.dart';
 import 'package:client/core/providers/current_user_notifier.dart';
+import 'package:client/features/auth/view/widgets/loader.dart';
 import 'package:client/features/home/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,7 +28,7 @@ class _LikeButtonState extends ConsumerState<LikeButton> {
   Future<bool> isLiked(String postId) async {
     final token = ref.read(currentUserNotifierProvider)!.token;
     final res = await http.get(
-      Uri.parse('${ServerConstant.serverURL}/like/get_likes/$postId'),
+      Uri.parse('${ServerConstant.serverURL}/like/is_liked/$postId'),
       headers: {
         'Content-Type': 'application/json',
         'x-auth-token': token,
@@ -35,7 +36,7 @@ class _LikeButtonState extends ConsumerState<LikeButton> {
     );
     if (res.statusCode == 200) {
       final data = jsonDecode(res.body);
-      return data['isLiked'] ?? false;
+      return data['is_liked'] ?? false;
     }
     return false;
   }
@@ -48,6 +49,7 @@ class _LikeButtonState extends ConsumerState<LikeButton> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return CircularProgressIndicator();
         }
+        _isLiked = snapshot.data ?? false;
 
         return Column(
           children: [
@@ -67,6 +69,19 @@ class _LikeButtonState extends ConsumerState<LikeButton> {
                 size: _isLiked == true ? 32 : 28,
               ),
             ),
+            ref.watch(likesCountProvider(widget.postId)).when(
+                  data: (likes) {
+                    return Text(likes.toString());
+                  },
+                  error: (error, st) {
+                    return Center(
+                      child: Text(
+                        error.toString(),
+                      ),
+                    );
+                  },
+                  loading: () => const Loader(),
+                )
           ],
         );
       },

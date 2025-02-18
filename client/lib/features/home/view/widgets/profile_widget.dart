@@ -16,7 +16,7 @@ class ProfileWidget extends ConsumerStatefulWidget {
 class _ProfileWidgetState extends ConsumerState<ProfileWidget> {
   @override
   Widget build(BuildContext context) {
-    return ref.watch(getUserProvider).when(
+    return ref.watch(getMyUserProvider).when(
           data: (profile) {
             return ListView.builder(
               itemCount: profile.length,
@@ -78,8 +78,9 @@ class _ProfileWidgetState extends ConsumerState<ProfileWidget> {
                           ),
 
                           // Edit Profile Section
-                          const SizedBox(height: 15),
+                          const SizedBox(height: 10),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               GestureDetector(
                                 onTap: () {
@@ -94,34 +95,36 @@ class _ProfileWidgetState extends ConsumerState<ProfileWidget> {
                                   );
                                 },
                                 child: Container(
-                                  padding: EdgeInsets.all(8),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 10, horizontal: 16),
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
-                                    borderRadius: BorderRadius.circular(5),
+                                    border: Border.all(
+                                        color:
+                                            const Color.fromARGB(255, 6, 5, 5)),
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
-                                  child: Center(child: Text("Edit Profile")),
+                                  child: Text(
+                                    "Edit Profile",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500),
+                                  ),
                                 ),
                               ),
-                              SizedBox(width: 8),
-                              Expanded(
-                                child: Container(
-                                  padding: EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: Center(child: Text("Ad Tools")),
+                              Container(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 16),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color:
+                                          const Color.fromARGB(255, 6, 5, 5)),
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
-                              ),
-                              SizedBox(width: 8),
-                              Expanded(
-                                child: Container(
-                                  padding: EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: Center(child: Text("Insights")),
+                                child: Text(
+                                  "Share Profile",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500),
                                 ),
                               ),
                             ],

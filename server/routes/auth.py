@@ -11,6 +11,7 @@ from database import get_db
 from sqlalchemy.orm import Session
 from pydantic_schemas.user_login import UserLogin
 from fastapi import Header,HTTPException,Form
+from datetime import datetime
 
 router = APIRouter()
 @router.post('/signup',status_code = 201 )
@@ -91,9 +92,11 @@ def update_profile(
     profile_image:str = Form(...),
     user_name:str = Form(...),
     bio:str = Form(...),
+    created_on: datetime = datetime.now(),  
     db: Session = Depends(get_db),
     auth_details=Depends(auth_middleware)):
     uid = auth_details['uid']
+    
     user = db.query(User).filter(User.id == uid).first()
 
     if not user:
@@ -103,6 +106,7 @@ def update_profile(
     user.profile_image = profile_image
     user.user_name = user_name
     user.bio = bio
+    user.created_on = created_on
 
     db.commit()
     db.refresh(user)  # Refresh to get updated data
@@ -112,13 +116,24 @@ def update_profile(
         "user" : user,
     }
 
-@router.get("/user/get_user", status_code=200)
+@router.get("/user/get_my_user", status_code=200)
 def get_profile(
     db: Session = Depends(get_db),
     auth_details=Depends(auth_middleware)
 ):
     uid = auth_details['uid']
     profile = db.query(User).filter(User.id == uid).all()
+
+    return {"message": "user get successfully", "user": profile}
+
+
+@router.get("/user/get_all_user", status_code=200)
+def get_profile(
+    db: Session = Depends(get_db),
+    auth_details=Depends(auth_middleware)
+):
+    uid = auth_details['uid']
+    profile = db.query(User).filter(User.id != uid).all()
 
     return {"message": "user get successfully", "user": profile}
 

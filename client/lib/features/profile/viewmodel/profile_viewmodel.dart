@@ -18,16 +18,30 @@ Future<Map<String, int>> getPostsCounts(GetPostsCountsRef ref) async {
       );
 
   return res.fold(
-    (failure) => throw failure.message, // Throws error properly
-    (posts) => posts, // Returns the correct data
+    (failure) => throw failure.message,
+    (posts) => posts,
   );
 }
 
 @riverpod
-Future<List<UserModel>> getUser(GetUserRef ref) async {
+Future<List<UserModel>> getAllUser(GetAllUserRef ref) async {
   final token =
       ref.watch(currentUserNotifierProvider.select((user) => user!.token));
-  final res = await ref.watch(profileRepositoryProvider).getUser(
+  final res = await ref.watch(profileRepositoryProvider).getAllUser(
+        token: token,
+      );
+
+  return res.fold(
+    (failure) => throw failure.message, // Throws error properly
+    (profile) => profile, // Returns the correct data
+  );
+}
+
+@riverpod
+Future<List<UserModel>> getMyUser(GetMyUserRef ref) async {
+  final token =
+      ref.watch(currentUserNotifierProvider.select((user) => user!.token));
+  final res = await ref.watch(profileRepositoryProvider).getMyUser(
         token: token,
       );
 

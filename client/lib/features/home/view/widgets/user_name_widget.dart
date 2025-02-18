@@ -12,12 +12,12 @@ class UserNameWidget extends ConsumerStatefulWidget {
 class _UserNameWidgetState extends ConsumerState<UserNameWidget> {
   @override
   Widget build(BuildContext context) {
-    return ref.watch(getUserProvider).when(
+    return ref.watch(getMyUserProvider).when(
           data: (profile) {
             return Text(
               profile.isNotEmpty
-                  ? profile.first.userName ?? 'Profile'
-                  : 'Profile',
+                  ? profile.first.userName ?? 'User Name'
+                  : 'User Name',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
             );
           },

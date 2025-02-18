@@ -1,5 +1,6 @@
 import 'package:client/features/home/models/post_model.dart';
 import 'package:client/features/home/view/add_screen/create_post_screen.dart';
+import 'package:client/features/profile/viewmodel/profile_viewmodel.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:client/features/auth/view/widgets/loader.dart';
 import 'package:client/features/home/view/widgets/heart_animation_widget.dart';
@@ -60,19 +61,47 @@ class _PostScreenState extends ConsumerState<PostScreen> {
                             children: [
                               Row(
                                 children: [
-                                  CircleAvatar(
-                                    radius: 20.0,
-                                    backgroundImage:
-                                        NetworkImage(post.imageUrl),
-                                  ),
+                                  ref.watch(getAllUserProvider).when(
+                                        data: (profile) {
+                                          return CircleAvatar(
+                                            radius: 30,
+                                            backgroundImage: (profile.first
+                                                            .profileImage !=
+                                                        null &&
+                                                    profile.first.profileImage!
+                                                        .isNotEmpty
+                                                ? NetworkImage(
+                                                    profile.first.profileImage!)
+                                                : const AssetImage(
+                                                        'assets/default_profile.png')
+                                                    as ImageProvider),
+                                          );
+                                        },
+                                        error: (error, str) => Center(
+                                          child: Text(error.toString()),
+                                        ),
+                                        loading: () => Loader(),
+                                      ),
                                   SizedBox(
                                     width: 10,
                                   ),
-                                  Text(
-                                    "Name",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
+                                  ref.watch(getAllUserProvider).when(
+                                        data: (profile) {
+                                          return Text(
+                                            profile.isNotEmpty
+                                                ? profile.first.userName ??
+                                                    'Profile'
+                                                : 'Profile',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 25),
+                                          );
+                                        },
+                                        error: (error, _) => Center(
+                                          child: Text(error.toString()),
+                                        ),
+                                        loading: () => Loader(),
+                                      ),
                                 ],
                               ),
                               IconButton(

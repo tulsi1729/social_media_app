@@ -78,10 +78,51 @@ class ProfileRepository {
     }
   }
 
-  Future<Either<AppFailure, List<UserModel>>> getUser({
+  Future<Either<AppFailure, List<UserModel>>> getAllUser({
     required String token,
   }) async {
-    final url = Uri.parse("${ServerConstant.serverURL}/auth/user/get_user");
+    final url = Uri.parse("${ServerConstant.serverURL}/auth/user/get_all_user");
+
+    try {
+      final res = await http.get(
+        url,
+        headers: {
+          "x-auth-token": token,
+          "Content-Type": "application/json",
+        },
+      );
+
+      if (res.statusCode != 200) {
+        final Map<String, dynamic> errorBody = jsonDecode(res.body);
+        return Left(AppFailure(errorBody['detail'] ?? 'Unknown error'));
+      }
+
+      final Map<String, dynamic> responseBody = jsonDecode(res.body);
+
+      if (!responseBody.containsKey('user') || responseBody['user'] == null) {
+        return Left(AppFailure("No users found"));
+      }
+
+      final dynamic usersData = responseBody['user'];
+
+      if (usersData is! List) {
+        return Left(AppFailure("Invalid response format: users is not a list"));
+      }
+
+      final List<UserModel> users =
+          usersData.map((data) => UserModel.fromMap(data)).toList();
+
+      return Right(users);
+    } catch (e) {
+      log("Error fetching profile: $e");
+      return Left(AppFailure("Error fetching profile: $e"));
+    }
+  }
+
+  Future<Either<AppFailure, List<UserModel>>> getMyUser({
+    required String token,
+  }) async {
+    final url = Uri.parse("${ServerConstant.serverURL}/auth/user/get_my_user");
 
     try {
       final res = await http.get(

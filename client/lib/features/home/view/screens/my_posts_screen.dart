@@ -3,7 +3,9 @@ import 'package:client/features/home/models/post_model.dart';
 import 'package:client/features/home/view/add_screen/create_post_screen.dart';
 import 'package:client/features/home/view/widgets/comment_tile.dart';
 import 'package:client/features/home/view/widgets/like_button.dart';
+import 'package:client/features/home/view/widgets/user_name_widget.dart';
 import 'package:client/features/home/viewmodel/home_viewmodel.dart';
+import 'package:client/features/profile/viewmodel/profile_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -52,10 +54,31 @@ class _MyPostsScreenState extends ConsumerState<MyPostsScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              CircleAvatar(
-                                radius: 20.0,
+                              ref.watch(getMyUserProvider).when(
+                                    data: (profile) {
+                                      return CircleAvatar(
+                                        radius: 30,
+                                        backgroundImage: (profile
+                                                        .first.profileImage !=
+                                                    null &&
+                                                profile.first.profileImage!
+                                                    .isNotEmpty
+                                            ? NetworkImage(
+                                                profile.first.profileImage!)
+                                            : const AssetImage(
+                                                    'assets/default_profile.png')
+                                                as ImageProvider),
+                                      );
+                                    },
+                                    error: (error, str) => Center(
+                                      child: Text(error.toString()),
+                                    ),
+                                    loading: () => Loader(),
+                                  ),
+                              SizedBox(
+                                width: 10,
                               ),
-                              Text("Name"),
+                              UserNameWidget(),
                             ],
                           ),
                           Stack(
