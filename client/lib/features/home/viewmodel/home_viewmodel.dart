@@ -38,19 +38,17 @@ Future<List<PostModel>> getMyPosts(GetMyPostsRef ref) async {
   );
 }
 
-final likesCountProvider =
+final likeCountProvider =
     FutureProvider.family<int, String>((ref, postId) async {
   final token =
       ref.watch(currentUserNotifierProvider.select((user) => user!.token));
-  final res = await ref.watch(homeRepositoryProvider).getPostLikesCounts(
+
+  final res = await ref.read(homeRepositoryProvider).getLikeCount(
         token: token,
         postId: postId,
       );
 
-  return res.fold(
-    (failure) => throw failure.message,
-    (data) => data['post_likes_counts'] ?? 0,
-  );
+  return res.fold((failure) => throw failure.message, (data) => data);
 });
 
 @riverpod
@@ -73,8 +71,6 @@ class HomeViewModel extends _$HomeViewModel {
       selectedImage: selectedImage,
       token: ref.read(currentUserNotifierProvider)!.token,
     );
-
-    log(res.toString(), name: "model create home story");
 
     final val = switch (res) {
       Left(value: final l) => state =

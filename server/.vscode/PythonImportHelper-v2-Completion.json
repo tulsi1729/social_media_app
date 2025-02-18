@@ -1678,7 +1678,7 @@
         "kind": 2,
         "importPath": "routes.comment",
         "description": "routes.comment",
-        "peekOfCode": "def get_post_comment_counts(post_id: str, db: Session = Depends(get_db)):\n    post_comments_count = db.query(Comment).filter(Comment.post_id == post_id).count()\n    return {\"post_comment_counts\": post_comments_count}",
+        "peekOfCode": "def get_post_comment_counts(post_id: str, db: Session = Depends(get_db)):\n    post_comments_count = db.query(Comment).filter(Comment.post_id == post_id).count()\n    return {\"post_comments_count\": post_comments_count}",
         "detail": "routes.comment",
         "documentation": {}
     },

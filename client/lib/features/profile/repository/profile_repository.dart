@@ -66,7 +66,6 @@ class ProfileRepository {
           'user_name': userName,
         },
       );
-      log(response.body, name: "res in repo edit");
 
       if (response.statusCode == 200) {
         log("Profile updated successfully: ${response.body}");

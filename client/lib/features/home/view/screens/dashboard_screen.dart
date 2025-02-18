@@ -1,8 +1,8 @@
 import 'package:client/features/home/view/add_screen/add_screen.dart';
 import 'package:client/features/home/view/screens/profile_screen.dart';
-import 'package:client/features/profile/view/screens/explore_screen.dart';
 import 'package:client/features/home/view/screens/home_screen.dart';
 import 'package:client/features/home/view/screens/reels_screen.dart';
+import 'package:client/features/story/view/screens/story.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -13,7 +13,7 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  int currentIndex = 4;
+  int currentIndex = 0;
   late List<Widget> screens;
 
   @override
@@ -21,8 +21,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
     super.initState();
     screens = [
       const HomeScreen(),
-      // const Story(),
-      const ExploreScreen(),
+      const Story(),
+      // const ExploreScreen(),
       AddScreen(),
       ReelsScreen(),
       const ProfileScreen(),

@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
-
 import 'package:client/core/app_failure/app_failure.dart';
 import 'package:client/core/constants/server_constant.dart';
 import 'package:client/features/comment/model/comment_model.dart';
@@ -36,7 +34,6 @@ class CommentRepository {
       request.headers['x-auth-token'] = token;
 
       final res = await request.send();
-      log(res.toString(), name: "Response in home repo");
 
       if (res.statusCode != 201) {
         return Left(AppFailure(await res.stream.bytesToString()));
@@ -113,7 +110,7 @@ class CommentRepository {
     try {
       final res = await http.get(
         Uri.parse(
-            '${ServerConstant.serverURL}/post/post_comments_count/$postId'),
+            '${ServerConstant.serverURL}/comment/post_comments_count/$postId'),
         headers: {
           'Content-Type': 'application/json',
           'x-auth-token': token,
@@ -122,13 +119,11 @@ class CommentRepository {
 
       final Map<String, dynamic> resBodyMap = jsonDecode(res.body);
 
-      log(res.body, name: "res body in commenst");
       if (res.statusCode != 200) {
         return Left(AppFailure(resBodyMap['detail'] ?? "Unknown error"));
       }
-      final int commentCount = resBodyMap['post_comments_count'] ?? 0;
 
-      log(resBodyMap['detail'], name: "res details in commenst");
+      final int commentCount = resBodyMap['post_comments_count'] ?? 0;
 
       return Right(commentCount);
     } catch (e) {

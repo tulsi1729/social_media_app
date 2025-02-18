@@ -1,8 +1,7 @@
-import 'dart:developer';
-
 import 'package:client/core/utils.dart';
 import 'package:client/features/auth/view/widgets/loader.dart';
 import 'package:client/features/comment/viewmodel/comment_viewmodel.dart';
+import 'package:client/features/home/view/screens/profile_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
@@ -69,6 +68,11 @@ class _CommentTileState extends ConsumerState<CommentTile> {
                                           postId: widget.postId,
                                           createdOn: DateTime.now(),
                                         );
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => ProfileScreen(),
+                                      ),
+                                    );
                                   },
                                   icon: Icon(Icons.arrow_upward),
                                 ),
@@ -153,7 +157,6 @@ class _CommentTileState extends ConsumerState<CommentTile> {
         ),
         ref.watch(commentCountProvider(widget.postId)).when(
             data: (commentCount) {
-              log(commentCount.toString(), name: "log");
               return Text(commentCount.toString());
             },
             error: (error, str) => Center(

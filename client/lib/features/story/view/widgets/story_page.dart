@@ -5,7 +5,10 @@ import 'package:client/features/story/view/widgets/story_bars.dart';
 import 'package:flutter/material.dart';
 
 class StoryPage extends StatefulWidget {
-  const StoryPage({super.key});
+  final int initialIndex;
+  final List<StoryModel> stories;
+  const StoryPage(
+      {super.key, required this.initialIndex, required this.stories});
 
   @override
   State<StoryPage> createState() => _StoryPageState();
@@ -13,26 +16,27 @@ class StoryPage extends StatefulWidget {
 
 class _StoryPageState extends State<StoryPage> {
   int currentStoryIndex = 0;
-  List<double> percentWatched = [];
-
-  final List<StoryModel> myStories = [
-    // Story1(),
-    // Story2(),
-    // Story3(),
-  ];
-
-  // final List<StoryModel> myStories = [];
+  late List<double> percentWatched;
+  Timer? _timer;
+  // final List<StoryModel> stories = [];
+  // final List<Widget> myStories = [
+  //   Story1(),
+  //   Story2(),
+  //   Story3(),
+  //   Story1(),
+  //   Story2(),
+  // ];
 
   @override
   void initState() {
     super.initState();
-    for (int i = 0; i < myStories.length; i++) {
-      percentWatched.add(0);
-    }
+    currentStoryIndex = widget.initialIndex;
+    percentWatched = List.generate(widget.stories.length, (_) => 0);
     _startWatching();
   }
 
   void _startWatching() {
+    _timer?.cancel();
     Timer.periodic(Duration(milliseconds: 50), (timer) {
       setState(() {
         // only add 0.01 as long as it's below 1
@@ -43,66 +47,65 @@ class _StoryPageState extends State<StoryPage> {
         else {
           percentWatched[currentStoryIndex] = 1;
           timer.cancel();
-
-          // also go to next story as long as there are more store to go through
-          if (currentStoryIndex < myStories.length - 1) {
-            currentStoryIndex++;
-            // restart story timer
-            _startWatching();
-          }
-
-          // id we are finishing last story then return to homepage
-          else {
-            Navigator.pop(context);
-          }
         }
       });
     });
+  }
+
+  void _nextStory() {
+    if (currentStoryIndex < widget.stories.length - 1) {
+      setState(() {
+        currentStoryIndex++;
+        _startWatching();
+      });
+    } else {
+      Navigator.pop(context); // Close the story viewer when done
+    }
+  }
+
+  void _previousStory() {
+    if (currentStoryIndex > 0) {
+      setState(() {
+        percentWatched[currentStoryIndex] = 0;
+        currentStoryIndex--;
+        _startWatching();
+      });
+    }
   }
 
   void _onTapDown(TapDownDetails details) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double dx = details.globalPosition.dx;
 
-    // user tap on first half of screen
-    if (dx < screenWidth / 2) {
-      setState(() {
-        if (currentStoryIndex > 0) {
-          percentWatched[currentStoryIndex - 1] = 0;
-          percentWatched[currentStoryIndex] = 0;
-
-          // go to previous screen
-          currentStoryIndex--;
-        }
-      });
+    if (dx < screenWidth / 3) {
+      _previousStory();
+    } else {
+      _nextStory();
     }
+  }
 
-    // user tap on second half of screen
-    else {
-      setState(() {
-        // if there are more story left
-        if (currentStoryIndex < myStories.length - 1) {
-          //finish current story
-          percentWatched[currentStoryIndex] = 1;
-          // move to next story
-          currentStoryIndex++;
-        }
-        // user is on the last story , finish the story
-        percentWatched[currentStoryIndex] = 1;
-      });
-    }
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      // backgroundColor: Colors.deepPurple,
       body: GestureDetector(
         onTapDown: (details) => _onTapDown(details),
         child: Stack(
           children: [
-            // myStories[currentStoryIndex],
-
+            Center(
+              child: Image.network(
+                widget.stories[currentStoryIndex].imageUrl,
+                fit: BoxFit.cover,
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+              ),
+            ),
             StoryBars(percentWatched: percentWatched),
           ],
         ),

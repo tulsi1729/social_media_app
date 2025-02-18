@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-// ignore: must_be_immutable
 class ProgressBar extends StatelessWidget {
-  double percentWatched = 0;
-  ProgressBar({super.key, required this.percentWatched});
+  final double percentWatched;
+
+  const ProgressBar({super.key, required this.percentWatched});
 
   @override
   Widget build(BuildContext context) {
     return LinearPercentIndicator(
-      lineHeight: 15,
-      percent: percentWatched,
-      progressColor: Colors.grey[400],
-      backgroundColor: Colors.grey[600],
+      lineHeight: 4,
+      percent: percentWatched.clamp(
+          0.0, 1.0), // Ensure percentage is between 0 and 1
+      progressColor: Colors.white,
+      backgroundColor: Colors.grey.withOpacity(0.3),
     );
   }
 }

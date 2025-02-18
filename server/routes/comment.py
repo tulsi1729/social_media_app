@@ -90,4 +90,4 @@ def delete_comment(comment_id: str, db: Session = Depends(get_db)):
 def get_post_comment_counts(post_id: str, db: Session = Depends(get_db)):
     post_comments_count = db.query(Comment).filter(Comment.post_id == post_id).count()
     
-    return {"post_comment_counts": post_comments_count}
+    return {"post_comments_count": post_comments_count}

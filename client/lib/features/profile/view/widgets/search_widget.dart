@@ -38,7 +38,6 @@ class _SearchWidgetState extends ConsumerState<SearchWidget> {
           'x-auth-token': token, // Sending Auth Token
         },
       );
-      log(response.body.toString(), name: "search in body ");
 
       if (response.statusCode != 200) {
         throw Exception("Failed to load users: ${response.statusCode}");

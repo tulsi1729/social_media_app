@@ -69,7 +69,7 @@ class _LikeButtonState extends ConsumerState<LikeButton> {
                 size: _isLiked == true ? 32 : 28,
               ),
             ),
-            ref.watch(likesCountProvider(widget.postId)).when(
+            ref.watch(likeCountProvider(widget.postId)).when(
                   data: (likes) {
                     return Text(likes.toString());
                   },

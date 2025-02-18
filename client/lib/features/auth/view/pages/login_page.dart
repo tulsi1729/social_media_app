@@ -46,6 +46,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             showSnackBar(context, error.toString());
           },
           loading: () {
+            //TODO: make sure this loader is working as expected
             Loader();
           },
         );

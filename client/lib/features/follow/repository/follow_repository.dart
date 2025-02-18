@@ -26,7 +26,6 @@ class FollowRepository {
     request.headers['x-auth-token'] = token;
 
     final res = await request.send();
-    log(res.toString(), name: "Response in home repo");
 
     if (res.statusCode != 201) {
       return Left(AppFailure(await res.stream.bytesToString()));

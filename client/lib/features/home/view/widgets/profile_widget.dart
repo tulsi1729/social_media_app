@@ -65,17 +65,22 @@ class _ProfileWidgetState extends ConsumerState<ProfileWidget> {
 
                           // Name & Bio
                           const SizedBox(height: 12),
-                          Text(
-                            profileItem.userName!,
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            profileItem.bio!,
-                            style: TextStyle(
-                              fontSize: 12,
-                            ),
-                          ),
+                          profileItem.userName != null
+                              ? Text(
+                                  profileItem.userName!,
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              : Text("user"),
+                          profileItem.bio != null
+                              ? Text(
+                                  profileItem.bio!,
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              : Text("user"),
 
                           // Edit Profile Section
                           const SizedBox(height: 10),

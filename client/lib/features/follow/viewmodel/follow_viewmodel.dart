@@ -38,12 +38,10 @@ class FollowViewModel extends _$FollowViewModel {
     required String targetUserId,
   }) async {
     state = const AsyncValue.loading();
-    final res = await _followRepository.followUser(
+    await _followRepository.followUser(
       targetUserId: targetUserId,
       token: ref.read(currentUserNotifierProvider)!.token,
     );
-
-    log(res.toString(), name: "model create profile ");
   }
 
   Future<void> unFollowUser({

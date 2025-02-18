@@ -26,14 +26,12 @@ class HomeRepository {
         Uri.parse('${ServerConstant.serverURL}/post/create_post'),
       );
 
-      log(selectedImage.toString(), name: "repo selected image");
       request.fields['image_url'] = selectedImage;
 
       request.fields['caption'] = caption;
       request.headers['x-auth-token'] = token;
 
       final res = await request.send();
-      log(res.toString(), name: "Response in home repo");
 
       if (res.statusCode != 201) {
         return Left(AppFailure(await res.stream.bytesToString()));
@@ -154,7 +152,6 @@ class HomeRepository {
           "image_url": selectedImage,
         },
       );
-      log(response.body, name: "res in repo edit");
 
       if (response.statusCode == 200) {
         log("Post updated successfully: ${response.body}");
@@ -183,7 +180,6 @@ class HomeRepository {
       request.headers['x-auth-token'] = token;
 
       final res = await request.send();
-      log(res.toString(), name: "Response in home repo");
 
       if (res.statusCode != 201) {
         return Left(AppFailure(await res.stream.bytesToString()));
@@ -194,13 +190,13 @@ class HomeRepository {
     }
   }
 
-  Future<Either<AppFailure, Map<String, int>>> getPostLikesCounts({
+  Future<Either<AppFailure, int>> getLikeCount({
     required String token,
     required String postId,
   }) async {
     try {
       final res = await http.get(
-        Uri.parse('${ServerConstant.serverURL}/post/post_likes_counts/$postId'),
+        Uri.parse('${ServerConstant.serverURL}/like/post_likes_count/$postId'),
         headers: {
           'Content-Type': 'application/json',
           'x-auth-token': token,
@@ -209,13 +205,13 @@ class HomeRepository {
 
       final Map<String, dynamic> resBodyMap = jsonDecode(res.body);
 
-      // if (res.statusCode != 200) {
-      //   return Left(AppFailure(resBodyMap['detail'] ?? "Unknown error"));
-      // }
+      if (res.statusCode != 200) {
+        return Left(AppFailure(resBodyMap['detail'] ?? "Unknown error"));
+      }
 
-      return Right({
-        "post_likes_counts": resBodyMap['post_likes_counts'] ?? 0,
-      });
+      final int likeCount = resBodyMap['post_likes_count'] ?? 0;
+
+      return Right(likeCount);
     } catch (e) {
       return Left(AppFailure(e.toString()));
     }

@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+import 'package:client/core/utils.dart';
 import 'package:client/features/auth/view/widgets/loader.dart';
 import 'package:client/features/story/viewmodel/story_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -16,44 +15,28 @@ class Story extends ConsumerWidget {
       ),
       body: ref.watch(getStoriesProvider).when(
             data: (stories) {
-              return Card(
-                child: Expanded(
-                  child: ListView.builder(
-                      itemCount: stories.length,
-                      itemBuilder: (context, index) {
-                        final story = stories[index];
-                        String formatDateTimeString(DateTime date) {
-                          DateTime now = DateTime.now();
-                          Duration difference = now.difference(date);
-                          log("Time ago: $difference");
+              return stories.isEmpty
+                  ? Center(child: Text("No Story Found"))
+                  : Card(
+                      child: Expanded(
+                        child: ListView.builder(
+                            itemCount: stories.length,
+                            itemBuilder: (context, index) {
+                              final story = stories[index];
+                              formatDateTimeString(story.createdAt);
 
-                          if (difference.inSeconds < 60) {
-                            return '${difference.inSeconds} seconds ago';
-                          } else if (difference.inMinutes < 60) {
-                            return '${difference.inMinutes} minutes ago';
-                          } else if (difference.inHours < 24) {
-                            return '${difference.inHours} hours ago';
-                          } else if (difference.inDays < 30) {
-                            return '${difference.inDays} days ago';
-                          } else if (difference.inDays < 365) {
-                            return '${(difference.inDays / 30).floor()} months ago';
-                          } else {
-                            return '${(difference.inDays / 365).floor()} years ago';
-                          }
-                        }
-
-                        return ListTile(
-                          title: Column(
-                            children: [
-                              Image.network(story.imageUrl),
-                              Text(formatDateTimeString(story.createdAt)),
-                              Text(story.views.toString()),
-                            ],
-                          ),
-                        );
-                      }),
-                ),
-              );
+                              return ListTile(
+                                title: Column(
+                                  children: [
+                                    Image.network(story.imageUrl),
+                                    Text(formatDateTimeString(story.createdAt)),
+                                    Text(story.views.toString()),
+                                  ],
+                                ),
+                              );
+                            }),
+                      ),
+                    );
             },
             error: (error, st) {
               return Center(
