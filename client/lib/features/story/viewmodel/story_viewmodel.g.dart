@@ -22,6 +22,23 @@ final getStoriesProvider = AutoDisposeFutureProvider<List<StoryModel>>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef GetStoriesRef = AutoDisposeFutureProviderRef<List<StoryModel>>;
+String _$getMyStoriesHash() => r'946e1480a080bcf2de1772a640e7b98e5e785ed5';
+
+/// See also [getMyStories].
+@ProviderFor(getMyStories)
+final getMyStoriesProvider =
+    AutoDisposeFutureProvider<List<StoryModel>>.internal(
+  getMyStories,
+  name: r'getMyStoriesProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$getMyStoriesHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetMyStoriesRef = AutoDisposeFutureProviderRef<List<StoryModel>>;
 String _$storyViewModelHash() => r'eef690d8f916d0d8d4c043bdd89342b63ffdf8d4';
 
 /// See also [StoryViewModel].

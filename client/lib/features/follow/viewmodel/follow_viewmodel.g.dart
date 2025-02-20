@@ -24,7 +24,7 @@ final getFollowCountProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef GetFollowCountRef = AutoDisposeFutureProviderRef<Map<String, int>>;
-String _$followViewModelHash() => r'05abad50676f00d2f660b452465f6a25387a27ff';
+String _$followViewModelHash() => r'3efd358fbabc0712ad1fc119b0c759f2cb86221b';
 
 /// See also [FollowViewModel].
 @ProviderFor(FollowViewModel)

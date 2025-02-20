@@ -18,6 +18,19 @@ Future<List<StoryModel>> getStories(GetStoriesRef ref) async {
   );
 }
 
+
+@riverpod
+Future<List<StoryModel>> getMyStories(GetMyStoriesRef ref) async {
+  final token =
+      ref.watch(currentUserNotifierProvider.select((user) => user!.token));
+  final res = await ref.watch(storyRepositoryProvider).getMyStories(token: token);
+
+  return res.fold(
+    (failure) => throw failure.message,
+    (stories) => stories,
+  );
+}
+
 @riverpod
 class StoryViewModel extends _$StoryViewModel {
   late StoryRepository _storyRepository;

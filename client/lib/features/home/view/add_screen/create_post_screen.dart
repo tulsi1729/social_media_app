@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:client/features/home/models/post_model.dart';
 import 'package:client/features/home/view/screens/my_posts_screen.dart';
+import 'package:client/features/home/view/screens/profile_screen.dart';
 import 'package:client/features/home/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -59,7 +60,7 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
     }
   }
 
-  Future<void> _uploadImage() async {
+  Future<void> _uploadImage({required String folderPath}) async {
     if (imageFileList == null || imageFileList!.isEmpty) {
       log('No images selected.');
       return;
@@ -77,6 +78,7 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
             Uri.parse('https://api.cloudinary.com/v1_1/dppvl48gh/upload');
         final request = http.MultipartRequest("POST", url)
           ..fields['upload_preset'] = 'xzxyhatj'
+          ..fields['folder'] = folderPath
           ..files.add(await http.MultipartFile.fromPath('file', image.path));
 
         final response = await request.send();
@@ -88,7 +90,6 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
           final uploadedImageUrl = jsonMap['secure_url'];
 
           uploadedUrls.add(uploadedImageUrl);
-
           log('Image uploaded: $uploadedImageUrl');
         } else {
           log('Failed to upload image. Status code: ${response.statusCode}');
@@ -171,7 +172,7 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
               ),
             ElevatedButton(
               onPressed: () {
-                _uploadImage();
+                _uploadImage(folderPath: "public/posts");
               },
               child: Text("Upload to cloudinary"),
             ),
@@ -215,7 +216,7 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const MyPostsScreen(),
+                        builder: (context) => const ProfileScreen(),
                       ),
                     );
                   }

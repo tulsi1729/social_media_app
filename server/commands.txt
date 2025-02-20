@@ -16,5 +16,7 @@
     pip install pydantic
     pip install psycopg2-binary
 
-    pip3 install pyJWT 
+    pip3 install pyJWT
 
+  riverpod generate file
+  flutter pub run build_runner watch -d

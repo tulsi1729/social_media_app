@@ -27,12 +27,13 @@ class _CreateStoryScreenState extends ConsumerState<CreateStoryScreen> {
     });
   }
 
-  Future<void> _uploadImage() async {
+  Future<void> _uploadImage({required String folderPath}) async {
     final url = Uri.parse('https://api.cloudinary.com/v1_1/dppvl48gh/upload');
 
     if (_imageFile != null) {
       final request = http.MultipartRequest("POST", url)
         ..fields['upload_preset'] = 'xzxyhatj'
+        ..fields['folder'] = folderPath
         ..files
             .add(await http.MultipartFile.fromPath('file', _imageFile!.path));
       final response = await request.send();
@@ -41,6 +42,8 @@ class _CreateStoryScreenState extends ConsumerState<CreateStoryScreen> {
 
         final responseString = String.fromCharCodes(responseData);
         final jsonMap = jsonDecode(responseString);
+          // log(,name: 'posts_image');
+
         setState(() {
           final url = jsonMap['url'];
           _imageUrl = url;
@@ -66,16 +69,17 @@ class _CreateStoryScreenState extends ConsumerState<CreateStoryScreen> {
                 child: Text("select from gallery"),
               ),
               if (_imageFile != null)
-                if (_imageUrl != null) ...[
-                  Image.network(_imageUrl!),
-                  Text("Cloudinary Url : $_imageUrl")
-                ],
+                  Image.file(_imageFile!),
+              
               ElevatedButton(
                 onPressed: () {
-                  _uploadImage();
+                  _uploadImage(folderPath: "public/stories");
                 },
                 child: Text("Upload to cloudinary"),
               ),
+                if (_imageUrl != null) ...[
+                  Text("Cloudinary Url : $_imageUrl")
+                ],
               ElevatedButton(
                 onPressed: () async {
                   await ref.read(storyViewModelProvider.notifier).createStory(

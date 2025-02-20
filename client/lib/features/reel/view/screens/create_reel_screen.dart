@@ -68,6 +68,7 @@ class _CreateReelScreenState extends ConsumerState<CreateReelScreen> {
 
     var request = http.MultipartRequest("POST", url)
       ..fields['upload_preset'] = 'xzxyhatj'
+      ..fields['folder'] = "public/reels"
       ..files.add(await http.MultipartFile.fromPath('file', videoFile!.path));
 
     try {
@@ -142,7 +143,7 @@ class _CreateReelScreenState extends ConsumerState<CreateReelScreen> {
                       IconButton(
                         icon: Icon(
                           _videoController!.value.isPlaying
-                              ? Icons.pause
+                            ? Icons.pause
                               : Icons.play_arrow,
                         ),
                         onPressed: () {

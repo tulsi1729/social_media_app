@@ -1,4 +1,4 @@
-from fastapi import FastAPI 
+from fastapi import FastAPI
 from routes import auth,post,story,comment,like,reel,follow
 from models.base import Base
 from database import engine

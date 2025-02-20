@@ -16,22 +16,6 @@ class HomeScreen extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text("Social Media App"),
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.add),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.favorite),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.share),
-                ),
-              ],
-            )
           ],
         ),
         elevation: 2,

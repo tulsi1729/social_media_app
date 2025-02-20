@@ -8,7 +8,7 @@ class Story(Base):
     __tablename__ = 'stories'
 
     id = Column(TEXT, primary_key=True)
-    image_url = Column(TEXT) 
+    image_url = Column(TEXT)
     created_on = Column(DateTime)
     views = Column(TEXT)
     uid = Column(TEXT,ForeignKey("users.id"))

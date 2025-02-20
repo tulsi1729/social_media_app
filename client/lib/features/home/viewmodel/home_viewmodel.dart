@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:client/core/providers/current_user_notifier.dart';
 import 'package:client/features/home/models/post_model.dart';

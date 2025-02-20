@@ -1,7 +1,6 @@
 import 'package:client/features/story/view/widgets/progress_bar.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class StoryBars extends StatelessWidget {
   final List<double> percentWatched;
   StoryBars({super.key, required this.percentWatched});

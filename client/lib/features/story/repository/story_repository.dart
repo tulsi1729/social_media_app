@@ -44,6 +44,43 @@ class StoryRepository {
     }
   }
 
+  Future<Either<AppFailure, List<StoryModel>>> getMyStories({
+    required String token,
+  }) async {
+    try {
+      final res = await http.get(
+          Uri.parse(
+            '${ServerConstant.serverURL}/story/my_stories',
+          ),
+          headers: {
+            'Content-Type': 'application/json',
+            'x-auth-token': token,
+          });
+      log(res.body.toString(), name: "repo home story");
+
+      if (res.statusCode != 200) {
+        final Map<String, dynamic> errorBody = jsonDecode(res.body);
+        return Left(AppFailure(errorBody['detail'] ?? 'Unknown error'));
+      }
+
+      final List<dynamic> responseBody = jsonDecode(res.body);
+      // final Map<String, dynamic> responseBody = jsonDecode(res.body);
+
+      // // Ensure you're accessing the "stories" key from the response
+      // final List<dynamic> storiesList = responseBody['stories'];
+
+      final stories = responseBody
+          .map((storyData) => StoryModel.fromMap(storyData))
+          .toList();
+
+      log(stories.toString(), name: "repo Right story");
+
+      return Right(stories);
+    } catch (e) {
+      return Left(AppFailure(e.toString()));
+    }
+  }
+
   Future<Either<AppFailure, List<StoryModel>>> getStories({
     required String token,
   }) async {
@@ -80,4 +117,5 @@ class StoryRepository {
       return Left(AppFailure(e.toString()));
     }
   }
+
 }

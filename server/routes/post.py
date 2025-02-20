@@ -43,7 +43,7 @@ def create_post(
     return new_post
 
 @router.get('/get_posts')
-def get_posts(db: Session=Depends(get_db), 
+def get_posts(db: Session=Depends(get_db),
                auth_details=Depends(auth_middleware)):
     uid = auth_details['uid']
     print(uid)
@@ -51,7 +51,7 @@ def get_posts(db: Session=Depends(get_db),
     return posts
 
 @router.get('/my_posts')
-def get_my_posts(db: Session=Depends(get_db), 
+def get_my_posts(db: Session=Depends(get_db),
                auth_details=Depends(auth_middleware)):
     uid = auth_details['uid']
     print(uid)

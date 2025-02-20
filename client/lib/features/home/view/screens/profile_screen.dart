@@ -1,6 +1,7 @@
 import 'package:client/features/home/view/screens/my_posts_screen.dart';
 import 'package:client/features/home/view/widgets/profile_widget.dart';
 import 'package:client/features/home/view/widgets/user_name_widget.dart';
+import 'package:client/features/profile/view/screens/create_all_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -18,12 +19,14 @@ class ProfileScreen extends ConsumerWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => CreateAllScreen(),
+                ),
+              );
+            },
             icon: Icon(Icons.add),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.menu),
           ),
         ],
       ),

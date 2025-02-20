@@ -3,7 +3,7 @@ import uuid
 from typing import List
 import sqlalchemy
 import fastapi
-from fastapi import APIRouter,Form,Depends,File
+from fastapi import APIRouter,Form,Depends,File, HTTPException
 from datetime import datetime
 from database import get_db
 from sqlalchemy.orm import Session
@@ -24,7 +24,7 @@ def create_story(
     auth_details= Depends(auth_middleware)
     ):
     uid = auth_details['uid']
-    story_id = str(uuid.uuid4())   
+    story_id = str(uuid.uuid4())
     created_on =datetime.now()
 
 
@@ -41,6 +41,26 @@ def create_story(
     db.refresh(new_story)
     return new_story
 
+@router.get('/my_stories')
+def get_my_stories(
+    db: Session = Depends(get_db),
+    auth_details=Depends(auth_middleware)
+):
+    uid = auth_details['uid']
+    yesterday = datetime.now() - timedelta(days = 1)
+    query = (
+       select(Story)
+       .where(Story.uid == uid)
+        .where(Story.created_on > yesterday)
+       .order_by(desc(Story.created_on))
+    )
+    stories = db.execute(query).scalars().all()
+    if not stories:
+        raise HTTPException(status_code=404, detail="No active stories found")
+
+    return stories
+
+
 @router.get('/get_stories')
 def get_stories(
     db: Session = Depends(get_db),
@@ -50,17 +70,12 @@ def get_stories(
     yesterday = datetime.now() - timedelta(days = 1)
     query = (
        select(Story)
+        .where(Story.uid != uid)
         .where(Story.created_on > yesterday)
-        .where(Story.uid == uid)
        .order_by(desc(Story.created_on))
-       
-        
     )
     stories = db.execute(query).scalars().all()
-    
     if not stories:
         raise HTTPException(status_code=404, detail="No active stories found")
 
     return stories
-
-
