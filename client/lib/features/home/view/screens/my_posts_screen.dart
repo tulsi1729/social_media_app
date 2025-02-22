@@ -45,146 +45,142 @@ class _MyPostsScreenState extends ConsumerState<MyPostsScreen> {
                   final post = posts[index];
                   List<String> imageUrlList = post.imageUrl.split(",");
 
-                  return Container(
-                    decoration:
-                        BoxDecoration(border: Border.all(color: Colors.red)),
-                    child: ListTile(
-                      title: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ref.watch(getMyUserProvider).when(
-                                    data: (profile) {
-                                      return CircleAvatar(
-                                        radius: 30,
-                                        backgroundImage: (profile
-                                                        .first.profileImage !=
-                                                    null &&
-                                                profile.first.profileImage!
-                                                    .isNotEmpty
-                                            ? NetworkImage(
-                                                profile.first.profileImage!)
-                                            : const AssetImage(
-                                                    'assets/default_profile.png')
-                                                as ImageProvider),
-                                      );
-                                    },
-                                    error: (error, str) => Center(
-                                      child: Text(error.toString()),
-                                    ),
-                                    loading: () => Loader(),
-                                  ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              UserNameWidget(),
-                            ],
-                          ),
-                          Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: GestureDetector(
-                                  child: Row(
-                                    children: imageUrlList.map((imageUrl) {
-                                      return Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Image.network(
-                                          imageUrl,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.7,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.7,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      );
-                                    }).toList(),
-                                  ),
-                                  onDoubleTap: () async {
-                                    // await ref
-                                    //     .read(homeViewModelProvider.notifier)
-                                    //     .likePost(
-                                    //       postId: post.id,
-                                    //     );
-
-                                    // setState(
-                                    //   () {
-                                    //     isHeartAnimation = true;
-                                    //     isLiked = true;
-                                    //   },
-                                    // );
+                  return ListTile(
+                    title: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            ref.watch(getMyUserProvider).when(
+                                  data: (profile) {
+                                    return CircleAvatar(
+                                      radius: 30,
+                                      backgroundImage: (profile
+                                                      .first.profileImage !=
+                                                  null &&
+                                              profile.first.profileImage!
+                                                  .isNotEmpty
+                                          ? NetworkImage(
+                                              profile.first.profileImage!)
+                                          : const AssetImage(
+                                                  'assets/default_profile.png')
+                                              as ImageProvider),
+                                    );
                                   },
-                                ),
-                              ),
-                              // Opacity(
-                              //   opacity: isHeartAnimation ? 1 : 0,
-                              //   child: HeartAnimationWidget(
-                              //     isAnimating: isHeartAnimation,
-                              //     duration: const Duration(milliseconds: 700),
-                              //     child: const Icon(
-                              //       Icons.favorite,
-                              //       color: Colors.white,
-                              //       size: 150,
-                              //     ),
-                              //     onEnd: () => setState(
-                              //         () => isHeartAnimation = false),
-                              //   ),
-                              // ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              LikeButton(postId: post.id),
-                              CommentTile(postId: post.id),
-                              Column(
-                                children: [
-                                  IconButton(
-                                    icon: const Icon(Icons.share),
-                                    onPressed: () {},
+                                  error: (error, str) => Center(
+                                    child: Text(error.toString()),
                                   ),
-                                ],
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text('Caption : ${post.caption}'),
-                              SizedBox(
-                                width: 50,
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  navigateToCreatePost(
-                                    context,
-                                    post,
-                                  );
+                                  loading: () => Loader(),
+                                ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            UserNameWidget(),
+                          ],
+                        ),
+                        Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: GestureDetector(
+                                child: Row(
+                                  children: imageUrlList.map((imageUrl) {
+                                    return Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Image.network(
+                                        imageUrl,
+                                        width: MediaQuery.of(context)
+                                                .size
+                                                .width *
+                                            0.7,
+                                        height: MediaQuery.of(context)
+                                                .size
+                                                .width *
+                                            0.7,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    );
+                                  }).toList(),
+                                ),
+                                onDoubleTap: () async {
+                                  // await ref
+                                  //     .read(homeViewModelProvider.notifier)
+                                  //     .likePost(
+                                  //       postId: post.id,
+                                  //     );
+                  
+                                  // setState(
+                                  //   () {
+                                  //     isHeartAnimation = true;
+                                  //     isLiked = true;
+                                  //   },
+                                  // );
                                 },
-                                icon: Icon(Icons.edit),
                               ),
-                              IconButton(
-                                onPressed: () async {
-                                  await ref
-                                      .read(homeViewModelProvider.notifier)
-                                      .deletedPost(
-                                        postId: post.id,
-                                      );
-                                },
-                                icon: Icon(Icons.delete),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                            // Opacity(
+                            //   opacity: isHeartAnimation ? 1 : 0,
+                            //   child: HeartAnimationWidget(
+                            //     isAnimating: isHeartAnimation,
+                            //     duration: const Duration(milliseconds: 700),
+                            //     child: const Icon(
+                            //       Icons.favorite,
+                            //       color: Colors.white,
+                            //       size: 150,
+                            //     ),
+                            //     onEnd: () => setState(
+                            //         () => isHeartAnimation = false),
+                            //   ),
+                            // ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            LikeButton(postId: post.id),
+                            CommentTile(postId: post.id),
+                            Column(
+                              children: [
+                                IconButton(
+                                  icon: const Icon(Icons.share),
+                                  onPressed: () {},
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('Caption : ${post.caption}'),
+                            SizedBox(
+                              width: 50,
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                navigateToCreatePost(
+                                  context,
+                                  post,
+                                );
+                              },
+                              icon: Icon(Icons.edit),
+                            ),
+                            IconButton(
+                              onPressed: () async {
+                                await ref
+                                    .read(homeViewModelProvider.notifier)
+                                    .deletedPost(
+                                      postId: post.id,
+                                    );
+                              },
+                              icon: Icon(Icons.delete),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   );
                 },

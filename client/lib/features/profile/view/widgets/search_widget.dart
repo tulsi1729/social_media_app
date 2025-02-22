@@ -107,7 +107,9 @@ class _SearchWidgetState extends ConsumerState<SearchWidget> {
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 final user = snapshot.data![index];
+                // final isFollowing = followStatus[user.id] ?? false;
                 final isFollowing = followStatus[user.id] ?? false;
+
                 return ListTile(
                   title: Text(user.name),
                   subtitle: Text(user.email),
@@ -117,7 +119,7 @@ class _SearchWidgetState extends ConsumerState<SearchWidget> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: isFollowing ? Colors.red : Colors.blue,
                     ),
-                    child: Text(isFollowing ? "Unfollow" : "Follow"),
+                    child: Text(isFollowing ? "UnFollow" : "Follow"),
                   ),
                 );
               },

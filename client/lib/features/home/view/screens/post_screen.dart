@@ -1,9 +1,10 @@
 import 'package:client/features/home/models/post_model.dart';
 import 'package:client/features/home/view/add_screen/create_post_screen.dart';
+import 'package:client/features/home/view/widgets/comment_tile.dart';
+import 'package:client/features/home/view/widgets/like_button.dart';
 import 'package:client/features/profile/viewmodel/profile_viewmodel.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:client/features/auth/view/widgets/loader.dart';
-import 'package:client/features/home/view/widgets/heart_animation_widget.dart';
 import 'package:client/features/home/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,6 @@ class PostScreen extends ConsumerStatefulWidget {
 
 class _PostScreenState extends ConsumerState<PostScreen> {
   final captionController = TextEditingController();
-  bool isHeartAnimation = false;
   bool isLiked = false;
 
   void navigateToCreatePost(BuildContext context, PostModel postModel) {
@@ -39,8 +39,6 @@ class _PostScreenState extends ConsumerState<PostScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final icon = isLiked ? Icons.favorite : Icons.favorite_border_outlined;
-    final color = isLiked ? Colors.red : Colors.grey;
     return ref.watch(getPostsProvider).when(
           data: (posts) {
             return Card(
@@ -104,64 +102,40 @@ class _PostScreenState extends ConsumerState<PostScreen> {
                                       ),
                                 ],
                               ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.menu),
-                              ),
+                              // IconButton(
+                              //   onPressed: () {},
+                              //   icon: Icon(Icons.menu),
+                              // ),
                             ],
                           ),
                         ),
 
                         //post
-                        GestureDetector(
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              SingleChildScrollView(
-                                scrollDirection: Axis
-                                    .horizontal, // Allow horizontal scrolling
-                                child: Row(
-                                  children: imageUrlList.map((imageUrl) {
-                                    return Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Image.network(
-                                        imageUrl, // Trim spaces to avoid errors
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.7,
-                                        height:
-                                            MediaQuery.of(context).size.width *
-                                                0.7,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    );
-                                  }).toList(),
-                                ),
+                        Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            SingleChildScrollView(
+                              scrollDirection: Axis
+                                  .horizontal, // Allow horizontal scrolling
+                              child: Row(
+                                children: imageUrlList.map((imageUrl) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Image.network(
+                                      imageUrl, // Trim spaces to avoid errors
+                                      width:
+                                          MediaQuery.of(context).size.width *
+                                              0.7,
+                                      height:
+                                          MediaQuery.of(context).size.width *
+                                              0.7,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  );
+                                }).toList(),
                               ),
-                              Opacity(
-                                opacity: isHeartAnimation ? 1 : 0,
-                                child: HeartAnimationWidget(
-                                  isAnimating: isHeartAnimation,
-                                  duration: const Duration(milliseconds: 700),
-                                  child: const Icon(
-                                    Icons.favorite,
-                                    color: Colors.white,
-                                    size: 150,
-                                  ),
-                                  onEnd: () =>
-                                      setState(() => isHeartAnimation = false),
-                                ),
-                              ),
-                            ],
-                          ),
-                          onDoubleTap: () {
-                            setState(
-                              () {
-                                isHeartAnimation = true;
-                                isLiked = true;
-                              },
-                            );
-                          },
+                            ),
+                          ],
                         ),
 
                         //below the post like,comment,share button
@@ -172,32 +146,10 @@ class _PostScreenState extends ConsumerState<PostScreen> {
                               children: [
                                 Column(
                                   children: [
-                                    HeartAnimationWidget(
-                                      isAnimating: isLiked,
-                                      child: IconButton(
-                                        icon: Icon(
-                                          icon,
-                                          color: color,
-                                          size: 28,
-                                        ),
-                                        onPressed: () =>
-                                            setState(() => isLiked = !isLiked),
-                                      ),
-                                    ),
+                                    LikeButton(postId: post.id)
                                   ],
                                 ),
-                                Column(
-                                  children: [
-                                    IconButton(
-                                      icon: const Icon(Icons.comment),
-                                      onPressed: () => showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        context: context,
-                                        builder: (context) => buildSheet(),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                CommentTile(postId: post.id),
                                 Column(
                                   children: [
                                     IconButton(
@@ -208,32 +160,14 @@ class _PostScreenState extends ConsumerState<PostScreen> {
                                 )
                               ],
                             ),
-                            IconButton(
-                              icon: const Icon(Icons.bookmark),
-                              onPressed: () {},
-                            )
+                            // IconButton(
+                            //   icon: const Icon(Icons.bookmark),
+                            //   onPressed: () {},
+                            // )
                           ],
                         ),
                         const SizedBox(
                           height: 10,
-                        ),
-                        //likedBy line
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              Text(
-                                "Liked by ",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              Text("me "),
-                              Text("and "),
-                              Text(
-                                "others",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -244,6 +178,31 @@ class _PostScreenState extends ConsumerState<PostScreen> {
                             ),
                           ],
                         ),
+                        //likedBy line
+                         isLiked == true ?
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Liked by ",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              ref.watch(getMyUserProvider).when(
+                                  data: (user) => Text(user.first.userName ?? ''),
+                                  error: (error, str) {
+                                    return Center(
+                                      child: Text(str.toString()),
+                                    );},
+                                    loading:
+                                    () => Loader(),
+                                  ),
+                            ],
+                          ),
+                        )
+                        :
+                                  Text(""),
+                        
                       ],
                     ),
                   );

@@ -56,7 +56,7 @@ def get_my_stories(
     )
     stories = db.execute(query).scalars().all()
     if not stories:
-        raise HTTPException(status_code=404, detail="No active stories found")
+        raise HTTPException(status_code=404, detail="No My stories")
 
     return stories
 
@@ -76,6 +76,6 @@ def get_stories(
     )
     stories = db.execute(query).scalars().all()
     if not stories:
-        raise HTTPException(status_code=404, detail="No active stories found")
+        raise HTTPException(status_code=404, detail="")
 
     return stories

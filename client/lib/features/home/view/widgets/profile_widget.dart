@@ -22,122 +22,118 @@ class _ProfileWidgetState extends ConsumerState<ProfileWidget> {
               itemCount: profile.length,
               itemBuilder: (context, index) {
                 final profileItem = profile[index];
-                return Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                return Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          profileItem.profileImage != null
+                              ? CircleAvatar(
+                                  radius: 31,
+                                  backgroundImage: (profileItem
+                                                  .profileImage !=
+                                              null &&
+                                          profileItem
+                                              .profileImage!.isNotEmpty
+                                      ? NetworkImage(
+                                          profileItem.profileImage!)
+                                      : const AssetImage(
+                                              'assets/default_profile.png')
+                                          as ImageProvider),
+                                )
+                              : Text("No image selected"),
+                
+                          // Posts, Followers, Followings
+                
+                          Column(
                             children: [
-                              profileItem.profileImage != null
-                                  ? CircleAvatar(
-                                      radius: 30,
-                                      backgroundImage: (profileItem
-                                                      .profileImage !=
-                                                  null &&
-                                              profileItem
-                                                  .profileImage!.isNotEmpty
-                                          ? NetworkImage(
-                                              profileItem.profileImage!)
-                                          : const AssetImage(
-                                                  'assets/default_profile.png')
-                                              as ImageProvider),
-                                    )
-                                  : Text("No image selected"),
-
-                              // Posts, Followers, Followings
-
-                              Column(
-                                children: [
-                                  PostCountWidget(),
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  FollowCountWidget(),
-                                ],
-                              ),
+                              PostCountWidget(),
                             ],
                           ),
-
-                          // Name & Bio
-                          const SizedBox(height: 12),
-                          profileItem.userName != null
-                              ? Text(
-                                  profileItem.userName!,
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                )
-                              : Text("user"),
-                          profileItem.bio != null
-                              ? Text(
-                                  profileItem.bio!,
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                )
-                              : Text("user"),
-
-                          // Edit Profile Section
-                          const SizedBox(height: 10),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          Column(
                             children: [
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => EditProfile(
-                                        isEditMode: true,
-                                        preFilledProfile: profileItem,
-                                      ),
-                                    ),
-                                  );
-                                },
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 10, horizontal: 16),
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color:
-                                            const Color.fromARGB(255, 6, 5, 5)),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Text(
-                                    "Edit Profile",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 16),
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color:
-                                          const Color.fromARGB(255, 6, 5, 5)),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Text(
-                                  "Share Profile",
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ),
+                              FollowCountWidget(),
                             ],
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                
+                      // Name & Bio
+                      const SizedBox(height: 5),
+                      profileItem.userName != null
+                          ? Text(
+                              profileItem.userName!,
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          : Text("No user name"),
+                      profileItem.bio != null
+                          ? Text(
+                              profileItem.bio!,
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          : Text("No Bio"),
+                
+                      // Edit Profile Section
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => EditProfile(
+                                    isEditMode: true,
+                                    preFilledProfile: profileItem,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 8, horizontal: 16),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color:
+                                        const Color.fromARGB(255, 6, 5, 5)),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                "Edit Profile",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 8, horizontal: 16),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color:
+                                      const Color.fromARGB(255, 6, 5, 5)),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Text(
+                              "Share Profile",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 );
               },
             );

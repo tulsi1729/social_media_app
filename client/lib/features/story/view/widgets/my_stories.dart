@@ -14,8 +14,7 @@ class MyStories extends ConsumerStatefulWidget {
 }
 
 class _MyStoriesState extends ConsumerState<MyStories> {
-
-  void _openStory( List<StoryModel> stories) {
+  void _openStory(List<StoryModel> stories) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -30,16 +29,18 @@ class _MyStoriesState extends ConsumerState<MyStories> {
   Widget build(BuildContext context) {
     return ref.watch(getMyStoriesProvider).when(
         data: (myStories) {
-          return GestureDetector(
-            onTap: () => _openStory(myStories),
-            child: MyProfile(),
-          );
+          return myStories.isNotEmpty
+              ? GestureDetector(
+                  onTap: () => _openStory(myStories),
+                  child: MyProfile(),
+                )
+              : MyProfile();
         },
         error: (error, str) {
-            return Center(
-              child: Text(error.toString()),
-            );
-          },
-          loading: () => Loader());
+          return Center(
+            child: Text(error.toString()),
+          );
+        },
+        loading: () => Loader());
   }
 }

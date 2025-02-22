@@ -9,34 +9,39 @@ class CreateAllScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Column(
-      children: [
-        TextButton(
-          onPressed: () => Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => CreatePostScreen(),
+    return Scaffold(
+      appBar:  AppBar(),
+      body: Center(
+        child: Column(
+          children: [
+            TextButton(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => CreatePostScreen(),
+                ),
+              ),
+              child: Text("Create Post"),
             ),
-          ),
-          child: Text("Create Post"),
-        ),
-        TextButton(
-          onPressed: () => Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => CreateStoryScreen(),
+            TextButton(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => CreateStoryScreen(),
+                ),
+              ),
+              child: Text("Create Story"),
             ),
-          ),
-          child: Text("Create Story"),
-        ),
-        TextButton(
-          onPressed: () => Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => CreateReelScreen(),
+            TextButton(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => CreateReelScreen(),
+                ),
+              ),
+              child: Text("Create Reel"),
             ),
-          ),
-          child: Text("Create Reel"),
+            
+          ],
         ),
-        
-      ],
+      ),
     );
   }
 }

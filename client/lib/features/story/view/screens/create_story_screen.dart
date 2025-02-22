@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:client/features/home/view/screens/home_screen.dart';
 import 'package:client/features/story/viewmodel/story_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -63,20 +64,22 @@ class _CreateStoryScreenState extends ConsumerState<CreateStoryScreen> {
           child: Column(
             children: [
               ElevatedButton(
-                onPressed: () {
-                  _pickImage(ImageSource.gallery);
-                },
-                child: Text("select from gallery"),
-              ),
-              if (_imageFile != null)
-                  Image.file(_imageFile!),
-              
+                      onPressed: () {
+                        _pickImage(ImageSource.gallery);
+                      },
+                      child: Text("select from gallery"),
+                    ),
               ElevatedButton(
                 onPressed: () {
                   _uploadImage(folderPath: "public/stories");
                 },
                 child: Text("Upload to cloudinary"),
               ),
+              if(_imageFile != null) ...[
+                Image.file(_imageFile!,fit: BoxFit.cover,
+                                width: 150,
+                                height: 150,),
+              ],
                 if (_imageUrl != null) ...[
                   Text("Cloudinary Url : $_imageUrl")
                 ],
@@ -86,10 +89,16 @@ class _CreateStoryScreenState extends ConsumerState<CreateStoryScreen> {
                         selectedImage: _imageUrl!,
                         views: "view",
                       );
+                      Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => HomeScreen(),
+                ),
+              );
                 },
                 child: Text("Share Story"),
               ),
-            ],
+              ],
+
           ),
         ));
   }
