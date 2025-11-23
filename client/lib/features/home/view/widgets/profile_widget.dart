@@ -79,58 +79,58 @@ class _ProfileWidgetState extends ConsumerState<ProfileWidget> {
                                   fontWeight: FontWeight.bold),
                             )
                           : Text("No Bio"),
-                
                       // Edit Profile Section
-                      const SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => EditProfile(
-                                    isEditMode: true,
-                                    preFilledProfile: profileItem,
+                      SafeArea(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => EditProfile(
+                                      isEditMode: true,
+                                      preFilledProfile: profileItem,
+                                    ),
                                   ),
+                                );
+                              },
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 8, horizontal: 16),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color:
+                                          const Color.fromARGB(255, 6, 5, 5)),
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
-                              );
-                            },
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 8, horizontal: 16),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                    color:
-                                        const Color.fromARGB(255, 6, 5, 5)),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Text(
-                                "Edit Profile",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500),
+                                child: Text(
+                                  "Edit Profile",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500),
+                                ),
                               ),
                             ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 8, horizontal: 16),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                  color:
-                                      const Color.fromARGB(255, 6, 5, 5)),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Text(
-                              "Share Profile",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        ],
+                            // Container(
+                            //   padding: EdgeInsets.symmetric(
+                            //       vertical: 8, horizontal: 16),
+                            //   decoration: BoxDecoration(
+                            //     border: Border.all(
+                            //         color:
+                            //             const Color.fromARGB(255, 6, 5, 5)),
+                            //     borderRadius: BorderRadius.circular(8),
+                            //   ),
+                            //   child: Text(
+                            //     "Share Profile",
+                            //     style: TextStyle(
+                            //         fontSize: 16,
+                            //         fontWeight: FontWeight.w500),
+                            //   ),
+                            // ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

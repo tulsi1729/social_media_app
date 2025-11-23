@@ -38,7 +38,7 @@ class _SignupPageState extends ConsumerState<SignupPage> {
           data: (data) {
             showSnackBar(
               context,
-              'Account created successfully! .',
+              'Login successfully! .',
             );
             Navigator.push(
               context,
@@ -74,16 +74,19 @@ class _SignupPageState extends ConsumerState<SignupPage> {
               ),
               const SizedBox(height: 30),
               CustomField(
+                labelText: 'Name',
                 hintText: 'Name',
                 controller: nameController,
               ),
               const SizedBox(height: 15),
               CustomField(
+                labelText: 'Email',
                 hintText: 'Email',
                 controller: emailController,
               ),
               const SizedBox(height: 15),
               CustomField(
+                labelText: 'Password',
                 hintText: 'Password',
                 controller: passwordController,
                 isObscureText: true,

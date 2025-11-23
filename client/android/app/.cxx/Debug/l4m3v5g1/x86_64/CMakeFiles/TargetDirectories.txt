@@ -1,0 +1,2 @@
+/Users/tom/development/social_media_app/client/android/app/.cxx/Debug/l4m3v5g1/x86_64/CMakeFiles/edit_cache.dir
+/Users/tom/development/social_media_app/client/android/app/.cxx/Debug/l4m3v5g1/x86_64/CMakeFiles/rebuild_cache.dir

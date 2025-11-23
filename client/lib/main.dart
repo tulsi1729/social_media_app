@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:client/core/providers/current_user_notifier.dart';
+import 'package:client/features/auth/view/pages/login_page.dart';
 import 'package:client/features/auth/view/pages/signup_page.dart';
 import 'package:client/features/auth/viewmodel/auth_viewmodel.dart';
 import 'package:client/features/home/view/screens/dashboard_screen.dart';
@@ -34,7 +35,8 @@ class MyApp extends ConsumerWidget {
       title: 'Social Media App',
       home: ScreenUtilInit(
         designSize: Size(375, 812),
-        child: currentUser == null ? SignupPage() : DashboardScreen(),
+        // child: currentUser == null ? SignupPage() : DashboardScreen(),
+        child: LoginPage(),
       ),
     );
   }

@@ -71,11 +71,13 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               const SizedBox(height: 30),
               CustomField(
                 hintText: 'Email',
+                labelText: 'Email',
                 controller: emailController,
               ),
               const SizedBox(height: 15),
               CustomField(
                 hintText: 'Password',
+                labelText:'Password',
                 controller: passwordController,
                 isObscureText: true,
               ),

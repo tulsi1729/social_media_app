@@ -1,7 +1,7 @@
+import 'package:client/features/auth/view/pages/login_page.dart';
 import 'package:client/features/home/view/screens/my_posts_screen.dart';
 import 'package:client/features/home/view/widgets/profile_widget.dart';
 import 'package:client/features/home/view/widgets/user_name_widget.dart';
-import 'package:client/features/profile/view/screens/create_all_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -18,32 +18,41 @@ class ProfileScreen extends ConsumerWidget {
           ],
         ),
         actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).push(
+          // IconButton(
+          //   onPressed: () {
+          //     Navigator.of(context).push(
+          //       MaterialPageRoute(
+          //         builder: (context) => CreateAllScreen(),
+          //       ),
+          //     );
+          //   },
+          //   icon: Icon(Icons.add),
+          // ),
+          IconButton(onPressed: (){
+             Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => CreateAllScreen(),
+                  builder: (context) => LoginPage(),
                 ),
               );
-            },
-            icon: Icon(Icons.add),
-          ),
+          }, icon: Icon(Icons.logout),),
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Flexible(
-            flex: 1,
-            child: ProfileWidget(),
-          ),
-
-          //my posts
-          Flexible(
-            flex: 3,
-            child: MyPostsScreen(),
-          ),
-        ],
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Flexible(
+              flex: 1,
+              child: ProfileWidget(),
+            ),
+        const SizedBox(height: 10),
+            //my posts
+            Flexible(
+              flex: 3,
+              child: MyPostsScreen(),
+            ),
+          ],
+        ),
       ),
     );
   }
